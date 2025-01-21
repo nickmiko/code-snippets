@@ -31,11 +31,12 @@ class CalculateAllProjections:
                 self.auction_values.append((projection_system, rankings))
         return self.auction_values
     def calculate_weighted_average(self, df):
-        weights = {'depthcharts': 0.2, 'oopsy': 0.1, 'steamer': 0.7}
+        weights = {'depthcharts': 0.1, 'oopsy': 0.1, 'steamer': 0.1, 'atc': 0.7}
         df['weighted_average'] = (
             df['depthcharts'] * weights['depthcharts'] +
             df['oopsy'] * weights['oopsy'] +
-            df['steamer'] * weights['steamer']
+            df['steamer'] * weights['steamer'] +
+            df['atc'] * weights['atc']
         )
         return df
 

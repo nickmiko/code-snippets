@@ -70,7 +70,6 @@ class PlayerRankings:
         
         # Calculate weighted z-scores for hitters
         for stat in hitting_stats:
-            print(stat)
             if stat in hitters_df.columns and stat in hitter_weights:
                 hitters_df[f'{stat}_z'] = (
                     ((hitters_df[stat] - hitters_df[stat].mean()) / hitters_df[stat].std()) 
@@ -79,7 +78,6 @@ class PlayerRankings:
         
         # Calculate weighted z-scores for pitchers
         for stat in pitching_stats:
-            print(stat)
             if stat in pitchers_df.columns and stat in pitcher_weights:
                 # Reverse z-score for ERA and WHIP since lower is better
                 if stat in ['ERA', 'WHIP']:
