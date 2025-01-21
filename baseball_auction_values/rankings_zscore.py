@@ -1,51 +1,53 @@
 import pandas as pd
 import numpy as np
-import os
+import sys
 
 class RankingsZScore:
-    def __init__(self, rankings, total_budget):
-        self.rankings = rankings
+    def __init__(self, rankings_file, total_budget, roster_size=23, num_teams=12):
+        self.rankings_file = rankings_file
         self.total_budget = total_budget
+        self.roster_size = roster_size
+        self.num_teams = num_teams
 
-    def generate_dollar_values(self, top_n=40):
-        # Read the rankings from the CSV file
-        df = pd.read_csv(self.rankings, header=None, names=['Name'])
-        
-        # Initialize dollar values
-        dollar_values = []
-        
-        # Define the budget distribution
-        top_n_budget = self.total_budget * 0.7  # 70% of the budget for top N
-        remaining_budget = self.total_budget * 0.3  # 30% of the budget for the rest
-        
-        # Calculate dollar values for top N using linear distribution
-        top_n_values = np.linspace(top_n_budget / top_n, top_n_budget, top_n)[::-1]
-        dollar_values.extend(top_n_values)
-        
-        # Calculate dollar values for the rest using flat distribution
-        remaining_value = np.ceil(remaining_budget / (len(df) - top_n))
-        dollar_values.extend([remaining_value] * (len(df) - top_n))
-        
-        # Add dollar values to the DataFrame
-        df['dollar_value'] = dollar_values
-        
+    def load_data(self):
+        """Load rankings data from CSV file"""
+        try:
+            df = pd.read_csv(self.rankings_file)
+        except FileNotFoundError:
+            print("Error: Rankings CSV file not found")
+            sys.exit(1)
+        except Exception as e:
+            print(f"Error reading data: {e}")
+            sys.exit(1)
+        return df
+
+    def calculate_dollar_values(self, df):
+        """Calculate dollar values based on player rankings"""
+        total_players = self.roster_size * self.num_teams
+        df = df.head(total_players)  # Limit to the top N players
+
+        # Assign dollar values based on rank
+        df = df.copy()
+        df.loc[:, 'rank'] = np.arange(1, len(df) + 1)
+        df.loc[:, 'dollar_value'] = (self.total_budget / total_players) * (total_players - df['rank'] + 1)
+        df.loc[:, 'dollar_value'] = df['dollar_value'].round(2)
+
+        # Include player names in the returned DataFrame
+        df = df[['Name', 'dollar_value']]
+
+        return df
+
+    def run(self):
+        """Run the full ranking process"""
+        df = self.load_data()
+        df = self.calculate_dollar_values(df)
         return df
 
 # Example usage
 if __name__ == "__main__":
-    projections_folder = 'projections'
-    total_budget = 80  # Example total budget
+    rankings_file = 'ibw_rankings.csv'
+    total_budget = 260
 
-    for filename in os.listdir(projections_folder):
-        if filename.endswith('_rankings.csv'):
-            if filename.startswith('ibw'):
-                total_budget = 260
-                top_n = 100
-            else:
-                total_budget = 80
-                top_n = 40
-            rankings_path = os.path.join(projections_folder, filename)
-            zscore = RankingsZScore(rankings_path, total_budget)
-            df = zscore.generate_dollar_values(top_n=top_n)
-            output_path = os.path.join('auction_values', filename)
-            df.to_csv(output_path, index=False)
+    zscore = RankingsZScore(rankings_file, total_budget)
+    df = zscore.run()
+    df.to_csv('calculated_auction_values.csv', index=False)

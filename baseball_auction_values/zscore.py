@@ -3,11 +3,13 @@ import sys
 import os
 
 class PlayerRankings:
-    def __init__(self, hitter_input_file: str, pitcher_input_file: str, output_file: str):
+    def __init__(self, hitter_input_file: str, pitcher_input_file: str, keeper_file:str, output_file: str):
         self.hitter_input_file = hitter_input_file
         self.pitcher_input_file = pitcher_input_file
         self.output_file = output_file
+        self.keeper_file = keeper_file
         self.df = None
+        self.keepers = None
 
     def read_data(self, input_file):
         """Read CSV data into DataFrame"""
@@ -32,8 +34,8 @@ class PlayerRankings:
             sys.exit(1)
         return hitters_df, pitchers_df
 
-    def calculate_auction_values(self, hitters_df, pitchers_df, budget=260, roster_size=23, num_teams=12, 
-                            hitter_budget_pct=0.65,
+    def calculate_auction_values(self, hitters_df, pitchers_df, keeper_df, budget=260, roster_size=20, num_teams=12, 
+                            hitter_budget_pct=0.80,
                             hitter_weights={'HR': 1.25, 'R': 1.0, 'RBI': 1.0, 'SB': 0.75, 'BB/K': 1.5, 'OBP': 1.5, 'PA': 1.25},
                             pitcher_weights={'QS': 1.25, 'SV': 0.25, 'HLD': 0.25, 'K': 1.0, 'K-BB%' : 1.5, 'ERA': 1.0, 'WHIP': 1.0, 'IP': 1.25}):
         """
@@ -42,6 +44,7 @@ class PlayerRankings:
         Parameters:
         hitters_df: DataFrame with hitter statistics
         pitchers_df: DataFrame with pitcher statistics
+        keeper_df: DataFrame with keeper players
         budget: Total budget per team (default $260)
         roster_size: Number of players per team (default 23)
         num_teams: Number of teams in league (default 12)
@@ -52,13 +55,22 @@ class PlayerRankings:
         Returns:
         tuple: (hitters_df, pitchers_df) with calculated values
         """
+        # Ensure hitters_df and pitchers_df are defined
+        if hitters_df is None or pitchers_df is None:
+            raise ValueError("hitters_df and pitchers_df must be provided")
+
+        # Remove keepers from hitters and pitchers dataframes
+        if keeper_df is not None:
+            hitters_df = hitters_df[~hitters_df['Name'].isin(keeper_df['Name'])]
+            pitchers_df = pitchers_df[~pitchers_df['Name'].isin(keeper_df['Name'])]
+
         # Calculate total league budget and split between hitters/pitchers
         total_league_budget = budget * num_teams
         hitter_budget = total_league_budget * hitter_budget_pct
         pitcher_budget = total_league_budget * (1 - hitter_budget_pct)
         
         # Typical roster construction (can be adjusted)
-        hitter_roster_size = int(roster_size * 0.6)  # Usually 14 hitters
+        hitter_roster_size = int(roster_size * 0.5)  # Usually 14 hitters
         pitcher_roster_size = roster_size - hitter_roster_size  # Usually 9 pitchers
         
         # Calculate total rostered players by type
@@ -138,7 +150,8 @@ class PlayerRankings:
     def run(self):
         """Run the full ranking process"""
         hitters_df, pitchers_df = self.load_data()
-        hitters_df, pitchers_df = self.calculate_auction_values(hitters_df, pitchers_df)
+        keepers = self.read_data(self.keeper_file)
+        hitters_df, pitchers_df = self.calculate_auction_values(hitters_df, pitchers_df, keepers)
         combined_results = self.combine_data(hitters_df, pitchers_df)
         self.df = combined_results
         # self.save_results(combined_results)
@@ -150,5 +163,6 @@ if __name__ == "__main__":
     hitter_input_file = 'fangraphs-leaderboard-projections_hitters.csv'
     pitcher_input_file = 'fangraphs-leaderboard-projections_pitchers.csv'
     output_file = 'player_rankings.csv'
-    rankings = PlayerRankings(hitter_input_file, pitcher_input_file, output_file)
+    keeper_file = 'keepers.csv'
+    rankings = PlayerRankings(hitter_input_file, pitcher_input_file, keeper_file, output_file)
     results = rankings.run()
