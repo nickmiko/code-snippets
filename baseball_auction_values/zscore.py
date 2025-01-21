@@ -34,13 +34,13 @@ class PlayerRankings:
     def calculate_auction_values(self, hitters_df, pitchers_df, budget=260, roster_size=23, num_teams=12, 
                             hitter_budget_pct=0.70,
                             hitter_weights={'HR': 1.25, 'R': 1.0, 'RBI': 1.0, 'SB': 0.75, 'OBP': 1.25, 'PA': 1.0},
-                            pitcher_weights={'QS': 1.0, 'SV': 0.75, 'HLD': 0.75, 'K': 1.25, 'ERA': 1.0, 'WHIP': 1.0, 'IP': 1.0}):
+                            pitcher_weights={'QS': 1.0, 'SV': 0.25, 'HLD': 0.25, 'K': 1.25, 'ERA': 1.0, 'WHIP': 1.0, 'IP': 1.25}):
         """
         Calculate auction values based on weighted z-scores with separate hitter/pitcher inputs.
         
         Parameters:
         hitters_df: DataFrame with hitter statistics (HR, R, RBI, SB, AVG)
-        pitchers_df: DataFrame with pitcher statistics (W, SV, K, ERA, WHIP)
+        pitchers_df: DataFrame with pitcher statistics (W, SV, K, ERA, WHIP)4
         budget: Total budget per team (default $260)
         roster_size: Number of players per team (default 23)
         num_teams: Number of teams in league (default 12)
@@ -65,11 +65,12 @@ class PlayerRankings:
         total_rostered_pitchers = pitcher_roster_size * num_teams
         
         # Define category lists
-        hitting_stats = ['HR', 'R', 'RBI', 'SB', 'AVG']
-        pitching_stats = ['W', 'SV', 'K', 'ERA', 'WHIP']
+        hitting_stats = list(hitter_weights.keys())
+        pitching_stats = list(pitcher_weights.keys())
         
         # Calculate weighted z-scores for hitters
         for stat in hitting_stats:
+            print(stat)
             if stat in hitters_df.columns and stat in hitter_weights:
                 hitters_df[f'{stat}_z'] = (
                     ((hitters_df[stat] - hitters_df[stat].mean()) / hitters_df[stat].std()) 
@@ -78,6 +79,7 @@ class PlayerRankings:
         
         # Calculate weighted z-scores for pitchers
         for stat in pitching_stats:
+            print(stat)
             if stat in pitchers_df.columns and stat in pitcher_weights:
                 # Reverse z-score for ERA and WHIP since lower is better
                 if stat in ['ERA', 'WHIP']:
@@ -148,6 +150,7 @@ class PlayerRankings:
         except Exception as e:
             print(f"Error saving results: {e}")
             sys.exit(1)
+
     def run(self):
         """Run the full ranking process"""
         hitters_df, pitchers_df = self.load_data()
