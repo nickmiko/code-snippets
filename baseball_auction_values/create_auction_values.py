@@ -1,117 +1,116 @@
+import zscore
+from pathlib import Path
 import pandas as pd
-import numpy as np
-from typing import Dict
-import sys
+from typing import List, Tuple, Dict
+from dataclasses import dataclass
+from rankings_zscore import RankingsZScore
 
-class PlayerRankings:
-    def __init__(self, input_file: str, output_file: str, weights: Dict[str, float]):
-        self.input_file = input_file
-        self.output_file = output_file
-        self.weights = weights
-        self.df = None
+@dataclass
+class ProjectionConfig:
+    PROJECTION_WEIGHTS: Dict[str, float] = {
+        'depthcharts': 0.05, 
+        'oopsy': 0.05, 
+        'steamer': 0.05, 
+        'thebat': 0.2, 
+        'atc': 0.65
+    }
+    DEFAULT_BUDGET: int = 35
+    DEFAULT_ROSTER_SIZE: int = 10
+    IBW_BUDGET: int = 60
+    IBW_ROSTER_SIZE: int = 23
 
-    def read_data(self):
-        """Read CSV data into DataFrame"""
-        try:
-            self.df = pd.read_csv(self.input_file)
-        except FileNotFoundError:
-            print("Error: Input CSV file not found")
-            sys.exit(1)
-        except Exception as e:
-            print(f"Error reading data: {e}")
-            sys.exit(1)
+class CalculateAllProjections:
+    def __init__(self):
+        self.auction_values: List[Tuple[str, pd.DataFrame]] = []
+        self.keeper_file = Path('keepers.csv')
+        self.config = ProjectionConfig()
 
-    def preprocess_data(self, player_type: str):
-        """Clean and prepare data for analysis"""
-        key_columns = {
-            'hitter': ['Name', 'Team', 'PA', 'HR', 'RBI', 'R', 'SB', 'OBP'],
-            'pitcher': ['Name', 'Team', 'IP', 'K/9', 'QS', 'SV', 'ERA', 'WHIP']
-        }
-        if player_type not in key_columns:
-            print("Error: Invalid player type")
-            sys.exit(1)
-        self.df = self.df.dropna(subset=key_columns[player_type])
+    def calculate_rankings(self, hitter_path: Path, pitcher_path: Path) -> Tuple[pd.DataFrame, str]:
+        """Calculate rankings for a single projection system"""
+        projection_system = hitter_path.stem.split('_')[0]
+        output_file = f'{projection_system}_player_rankings.csv'
+        
+        calculator = zscore.PlayerRankings(
+            str(hitter_path), 
+            str(pitcher_path), 
+            str(self.keeper_file), 
+            output_file
+        )
+        return calculator.run(), projection_system
 
-    def calculate_weighted_zscore(self):
-        """Calculate weighted z-scores for each statistic"""
-        try:
-            z_scores = pd.DataFrame()
-            for metric, weight in self.weights.items():
-                z_scores[metric] = (self.df[metric] - self.df[metric].mean()) / self.df[metric].std()
-                z_scores[metric] = z_scores[metric] * weight
-            self.df['weighted_zscore'] = z_scores.sum(axis=1)
-            self.df = self.df.sort_values('weighted_zscore', ascending=False)
-        except Exception as e:
-            print(f"Error calculating z-scores: {e}")
-            sys.exit(1)
+    def process_all_files(self, folder_path: str) -> None:
+        """Process all projection files in the given folder"""
+        folder = Path(folder_path)
+        hitter_files = list(folder.glob('*_hitter.csv'))
+        
+        for hitter_file in hitter_files:
+            projection_system = hitter_file.stem.split('_')[0]
+            pitcher_file = folder / f'{projection_system}_pitcher.csv'
+            
+            if not pitcher_file.exists():
+                continue
+                
+            rankings, system = self.calculate_rankings(hitter_file, pitcher_file)
+            if not rankings.empty:
+                rankings['dollar_value'] = pd.to_numeric(rankings['dollar_value'], errors='coerce').fillna(0)
+                self.auction_values.append((system, rankings))
 
-    def calculate_auction_values(self):
-        """Calculate the dollar value to be spent on each player"""
-        try:
-            total_teams = 12
-            budget = 260
-            players_per_team = 23  # Total players per team (11 hitters + 12 pitchers)
-            league_budget = total_teams * budget
-            rostered_players = total_teams * players_per_team
+    def calculate_weighted_average(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Calculate weighted averages using vectorized operations"""
+        weights = pd.Series(self.config.PROJECTION_WEIGHTS)
+        available_systems = weights.index.intersection(df.columns)
+        
+        if not available_systems.empty:
+            normalized_weights = weights[available_systems] / weights[available_systems].sum()
+            df['projection_weighted_average'] = df[available_systems].mul(normalized_weights).sum(axis=1)
+            
+        return df
 
-            total_zscore = self.df['weighted_zscore'].sum()
-            if total_zscore == 0:
-                print("Error: Total z-score is zero, cannot divide by zero")
-                sys.exit(1)
+    def save_results(self) -> None:
+        """Save processed results to CSV"""
+        if not self.auction_values:
+            raise ValueError("No auction values to process")
 
-            dollar_per_zscore = league_budget / total_zscore
-            self.df['auction_value'] = (self.df['weighted_zscore'] * dollar_per_zscore).round(1)
-            self.df = self.df.sort_values('auction_value', ascending=False)
-        except Exception as e:
-            print(f"Error calculating auction values: {e}")
-            sys.exit(1)
+        # Concatenate all DataFrames efficiently
+        all_values = pd.concat(
+            [df.assign(system=sys) for sys, df in self.auction_values],
+            ignore_index=True
+        )
 
-    def save_results(self, player_type: str):
-        """Save the ranked players to a CSV file"""
-        try:
-            self.df.to_csv(f'{player_type}_{self.output_file}', index=False)
-        except Exception as e:
-            print(f"Error saving results: {e}")
-            sys.exit(1)
+        # Create pivot table with optimized settings
+        pivot_values = pd.pivot_table(
+            all_values,
+            index='Name',
+            columns='system',
+            values='dollar_value',
+            aggfunc='first',  # More efficient than 'sum' when values are unique
+            fill_value=0
+        ).reset_index()
 
-    def run(self, player_type: str, input_file: str):
-        """Run the full ranking process"""
-        self.input_file = input_file
-        self.read_data()
-        self.preprocess_data(player_type)
-        self.calculate_weighted_zscore()
-        self.calculate_auction_values()
-        self.save_results(player_type)
-        return self.df[['Name', 'auction_value']]
+        # Calculate weighted averages
+        pivot_values = self.calculate_weighted_average(pivot_values)
+        
+        # Sort by weighted average
+        if 'projection_weighted_average' in pivot_values.columns:
+            pivot_values = pivot_values.sort_values(
+                'projection_weighted_average', 
+                ascending=False
+            )
+
+        # Save results efficiently
+        output_dir = Path('auction_values')
+        output_dir.mkdir(exist_ok=True)
+        pivot_values.to_csv(
+            output_dir / 'all_auction_values.csv',
+            index=False,
+            float_format='%.2f'  # Limit decimal places for better readability
+        )
+
+def main():
+    folder_path = 'projections'
+    calculator = CalculateAllProjections()
+    calculator.process_all_files(folder_path)
+    calculator.save_results()
 
 if __name__ == "__main__":
-    hitter_weights = {
-        'OBP': 0.20,
-        'HR': 0.20,
-        'RBI': 0.15,
-        'R': 0.20,
-        'SB': 0.15,
-        'PA': 0.10
-    }
-    pitcher_weights = {
-        'IP': 0.20,
-        'K/9': 0.20,
-        'QS': 0.15,
-        'SV': 0.15,
-        'ERA': 0.15,
-        'WHIP': 0.15
-    }
-    hitter_input_file = 'fangraphs-leaderboard-projections_hitters.csv'
-    pitcher_input_file = 'fangraphs-leaderboard-projections_pitchers.csv'
-    output_file = 'player_rankings.csv'
-    
-    rankings = PlayerRankings(hitter_input_file, output_file, hitter_weights)
-    hitter_results = rankings.run('hitter', hitter_input_file)
-    
-    rankings.weights = pitcher_weights
-    pitcher_results = rankings.run('pitcher', pitcher_input_file)
-    
-    # Combine hitter and pitcher results
-    results = pd.concat([hitter_results, pitcher_results])
-    results = results.sort_values('auction_value', ascending=False)
-    results.to_csv(output_file, index=False)
+    main()
