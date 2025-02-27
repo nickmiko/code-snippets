@@ -66,155 +66,174 @@ class PlayerRankings:
             logging.error(f"Error reading {input_file}: {e}")
             raise
 
+    # Improved zscore.py calculation method
     def calculate_zscores(self, df: pd.DataFrame, weights: Dict[str, float], inverse_stats: tuple) -> pd.Series:
-        """Calculate z-scores with robust outlier handling and validation"""
-        df = df.copy()
-        stats = list(weights.keys())
-        z_scores = pd.DataFrame(index=df.index)
-        
-        # Determine valid stats for this dataset
-        valid_stats = [stat for stat in stats if stat in df.columns]
+        """Calculate z-scores with vectorized operations for better performance"""
+        # Validate input early
+        if df.empty:
+            return pd.Series(0, index=df.index)
+            
+        # Determine valid stats once (avoid repeated lookups)
+        valid_stats = [stat for stat in weights if stat in df.columns]
         if not valid_stats:
             logging.warning(f"No valid stats found in columns: {df.columns.tolist()}")
             return pd.Series(0, index=df.index)
         
-        # Adjust weights for available stats
+        # Pre-compute normalized weights (avoid repeated division)
         weight_sum = sum(weights[stat] for stat in valid_stats)
-        adjusted_weights = {
-            stat: (weights[stat] / weight_sum) if weight_sum > 0 else 0 
-            for stat in valid_stats
-        }
+        adjusted_weights = {stat: (weights[stat] / weight_sum) for stat in valid_stats} if weight_sum > 0 else {stat: 0 for stat in valid_stats}
         
-        def calculate_robust_zscore(series: pd.Series, weight: float, inverse: bool = False) -> pd.Series:
-            """Calculate robust z-score using median and MAD with improved outlier handling"""
-            series = pd.to_numeric(series, errors='coerce')
-            series_clean = series.dropna()
+        # Use numpy arrays for faster computation
+        z_scores = np.zeros((len(df), len(valid_stats)))
+        
+        for i, stat in enumerate(valid_stats):
+            series = pd.to_numeric(df[stat], errors='coerce')
             
-            if series_clean.empty:
-                return pd.Series(0, index=series.index)
+            # Handle missing values efficiently
+            if series.isna().all():
+                continue
                 
-            # Use percentile-based outlier removal
-            q1, q3 = series_clean.quantile([0.25, 0.75])
+            # Vectorized outlier removal
+            q1, q3 = np.nanpercentile(series, [25, 75])
             iqr = q3 - q1
-            lower_bound = q1 - (3 * iqr)
-            upper_bound = q3 + (3 * iqr)
-            series_filtered = series_clean[(series_clean >= lower_bound) & (series_clean <= upper_bound)]
+            bounds = (q1 - 3 * iqr, q3 + 3 * iqr)
+            filtered_values = series[(series >= bounds[0]) & (series <= bounds[1])]
             
-            if series_filtered.empty or series_filtered.std() == 0:
-                return pd.Series(0, index=series.index)
-            
-            median = series_filtered.median()
-            mad = series_filtered.sub(median).abs().median() * 1.4826
+            if len(filtered_values) < 2:
+                continue
+                
+            # Robust z-score calculation
+            median = np.nanmedian(filtered_values)
+            mad = np.nanmedian(np.abs(filtered_values - median)) * 1.4826
             
             if mad == 0:
-                mad = series_filtered.std()
+                mad = np.nanstd(filtered_values)
                 if mad == 0:
-                    return pd.Series(0, index=series.index)
+                    continue
             
-            z = (series - median) / mad
-            multiplier = -1 if inverse else 1
-            return (multiplier * z * weight).clip(-3, 3)  # More conservative clipping
+            # Apply z-score with single vectorized operation
+            multiplier = -1 if stat in inverse_stats else 1
+            z = multiplier * (series - median) / mad * adjusted_weights[stat]
+            z_scores[:, i] = np.clip(z, -3, 3)
         
-        # Calculate z-scores only for available stats
-        for stat in valid_stats:
-            z_scores[f'{stat}_z'] = calculate_robust_zscore(
-                df[stat], 
-                adjusted_weights[stat],
-                stat in inverse_stats
-            )
-        
-        total_z = z_scores.sum(axis=1)
-        
-        return total_z
+        # Sum along rows for total z-score
+        return pd.Series(np.nansum(z_scores, axis=1), index=df.index)
 
+    # Improved dollar value calculation in process_player_group
     def process_player_group(self, df: pd.DataFrame, roster_spots: int, budget: float) -> pd.DataFrame:
-        """Process a group of players (hitters or pitchers) with improved value retention"""
-        if df.empty:
-            logging.warning("Empty DataFrame passed to process_player_group")
+        """Process players with improved value calculation algorithm"""
+        if df.empty or roster_spots <= 0:
             return pd.DataFrame(columns=['Name', 'dollar_value'])
         
-        # Make a safe copy and normalize names early
+        # One-time name normalization
         df = df.copy()
-        df['Name_norm'] = df['Name'].str.strip().str.lower()
+        df['Name_norm'] = df['Name'].str.lower()
         
-        # Determine if processing hitters or pitchers
+        # Determine statistics type
         is_hitter = 'HR' in df.columns
         weights = self.settings.HITTER_WEIGHTS if is_hitter else self.settings.PITCHER_WEIGHTS
         inverse_stats = () if is_hitter else self.settings.INVERSE_STATS
         
-        # Calculate z-scores
+        # Calculate z-scores efficiently
         df['total_z'] = self.calculate_zscores(df, weights, inverse_stats)
-        df = df.sort_values('total_z', ascending=False)
         
-        # Calculate replacement level using actual roster spots
+        # Sort once and create ranks (avoid repeated sorting)
+        df.sort_values('total_z', ascending=False, inplace=True)
+        df['rank'] = np.arange(1, len(df) + 1)
+        
+        # Use vectorized calculation for replacement level
         num_rostered = min(roster_spots, len(df))
         replacement_level = df.iloc[num_rostered-1]['total_z'] if num_rostered > 0 else 0
         
-        # Calculate value above replacement
-        df['value_above_replacement'] = (df['total_z'] - replacement_level).clip(lower=0)
+        # Vectorized calculation of value above replacement
+        df['value_above_replacement'] = np.maximum(df['total_z'] - replacement_level, 0)
         
-        # Calculate dollar values with minimum value of 1
+        # More accurate dollar value calculation that handles edge cases
         total_var = df['value_above_replacement'].sum()
+        min_value = 1.0  # Minimum player value
+        
         if total_var > 0:
-            dollars_per_var = (budget - roster_spots) / total_var
-            df['dollar_value'] = (df['value_above_replacement'] * dollars_per_var + 1).round(1)
+            available_budget = budget - (num_rostered * min_value)
+            if available_budget <= 0:
+                df['dollar_value'] = min_value
+            else:
+                # Distributes budget proportionally with minimum value guarantee
+                df['dollar_value'] = (df['value_above_replacement'] * (available_budget / total_var) + min_value).round(1)
         else:
-            df['dollar_value'] = 1.0
+            df['dollar_value'] = min_value
         
-        # Return all necessary columns
-        result = df[['Name', 'Name_norm', 'dollar_value', 'total_z']].copy()
-        logging.info(f"Processed {len(result)} players, max value: ${result['dollar_value'].max():.1f}")
-        
-        return result
+        # Return only required columns to save memory
+        return df[['Name', 'Name_norm', 'dollar_value', 'rank']].copy()
 
+# Improved keeper handling in calculate_auction_values
     def calculate_auction_values(self, hitters_df: pd.DataFrame, pitchers_df: pd.DataFrame, 
                             keeper_df: Optional[pd.DataFrame]) -> Tuple[pd.DataFrame, pd.DataFrame]:
-        """Calculate auction values with improved validation and data preservation"""
-        # Create copies and normalize names
+        """Calculate auction values with better data integrity"""
+        # Normalize names consistently with vectorized operations
         hitters_df = hitters_df.copy()
         pitchers_df = pitchers_df.copy()
-        hitters_df['Name_norm'] = hitters_df['Name'].str.strip().str.lower()
-        pitchers_df['Name_norm'] = pitchers_df['Name'].str.strip().str.lower()
         
-        # Initialize keeper structures
+        # One-time normalization
+        hitters_df['Name_norm'] = hitters_df['Name'].str.lower()
+        pitchers_df['Name_norm'] = pitchers_df['Name'].str.lower()
+        
+        # Process keepers with better validation
         keeper_budget = 0
         keeper_hitters = pd.DataFrame(columns=['Name', 'Name_norm', 'dollar_value', 'Position', 'is_keeper'])
         keeper_pitchers = pd.DataFrame(columns=['Name', 'Name_norm', 'dollar_value', 'Position', 'is_keeper'])
         
-        # Process keepers if present
         if keeper_df is not None and not keeper_df.empty:
             keeper_df = keeper_df.copy()
-            keeper_df['Name_norm'] = keeper_df['Name'].str.strip().str.lower()
             
-            # Ensure dollar_value exists and is numeric
+            # Normalize keeper names the same way
+            keeper_df['Name_norm'] = keeper_df['Name'].str.lower()
+            
+            # Better column standardization
+            dollar_cols = ['dollar_value', 'value', 'cost']
+            for col in keeper_df.columns:
+                if col.lower() in dollar_cols:
+                    keeper_df = keeper_df.rename(columns={col: 'dollar_value'})
+                    break
+            
             if 'dollar_value' not in keeper_df.columns:
-                logging.warning("No dollar_value column in keepers, using default values")
+                logging.warning("No dollar_value column in keepers, creating with default values")
                 keeper_df['dollar_value'] = 0
-            
+                
+            # Safely convert to numeric
             keeper_df['dollar_value'] = pd.to_numeric(keeper_df['dollar_value'], errors='coerce').fillna(0)
             keeper_budget = keeper_df['dollar_value'].sum()
-            logging.info(f"Total keeper cost: ${keeper_budget}")
             
+            # Use efficient lookup with sets for better performance
+            hitter_names = set(hitters_df['Name_norm'])
+            pitcher_names = set(pitchers_df['Name_norm'])
+            
+            # Process keepers with proper position assignment
             for _, keeper in keeper_df.iterrows():
+                name_norm = keeper['Name_norm']
+                
+                # Create keeper row with all required fields
                 keeper_row = pd.DataFrame({
                     'Name': [keeper['Name']],
-                    'Name_norm': [keeper['Name_norm']],
+                    'Name_norm': [name_norm],
                     'dollar_value': [keeper['dollar_value']],
                     'Position': ['Unknown'],
                     'is_keeper': [True]
                 })
                 
-                if keeper['Name_norm'] in hitters_df['Name_norm'].values:
+                # Add to appropriate position group
+                if name_norm in hitter_names:
                     keeper_row['Position'] = 'H'
                     keeper_hitters = pd.concat([keeper_hitters, keeper_row])
-                elif keeper['Name_norm'] in pitchers_df['Name_norm'].values:
+                elif name_norm in pitcher_names:
                     keeper_row['Position'] = 'P'
                     keeper_pitchers = pd.concat([keeper_pitchers, keeper_row])
-                
+                else:
+                    logging.warning(f"Keeper {keeper['Name']} not found in player data")
             
-            # Remove keepers from available players
-            hitters_df = hitters_df[~hitters_df['Name_norm'].isin(keeper_df['Name_norm'])]
-            pitchers_df = pitchers_df[~pitchers_df['Name_norm'].isin(keeper_df['Name_norm'])]
+            # Remove keepers efficiently (use Series.isin with the set)
+            keeper_names = set(keeper_df['Name_norm'])
+            hitters_df = hitters_df[~hitters_df['Name_norm'].isin(keeper_names)]
+            pitchers_df = pitchers_df[~pitchers_df['Name_norm'].isin(keeper_names)]
         
         # Calculate budgets
         total_budget = self.settings.BUDGET * self.settings.NUM_TEAMS - keeper_budget
@@ -258,30 +277,29 @@ class PlayerRankings:
         
         return final_hitters, final_pitchers
 
+    # Improved combine_data method to reduce memory usage
     def combine_data(self, hitters_df: pd.DataFrame, pitchers_df: pd.DataFrame) -> pd.DataFrame:
-        """Combine hitter and pitcher data with improved data preservation"""
+        """Combine hitter and pitcher data with reduced memory usage"""
         logging.info(f"Combining data - Hitters: {len(hitters_df)} rows, Pitchers: {len(pitchers_df)} rows")
         
+        # Only keep necessary columns
         required_cols = ['Name', 'Name_norm', 'dollar_value', 'Position', 'is_keeper']
         
-        # Verify required columns
-        for df, df_type in [(hitters_df, 'hitters'), (pitchers_df, 'pitchers')]:
-            missing = [col for col in required_cols if col not in df.columns]
-            if missing:
-                logging.error(f"Missing columns in {df_type}: {missing}")
-                if 'Name_norm' in missing and 'Name' in df.columns:
-                    df['Name_norm'] = df['Name'].str.strip().str.lower()
-                    missing.remove('Name_norm')
-                if missing:  # If there are still missing columns
-                    return pd.DataFrame(columns=['Name', 'dollar_value'])
+        # Use DataFrame.loc for efficient column selection
+        hitters = hitters_df.loc[:, [col for col in required_cols if col in hitters_df.columns]]
+        pitchers = pitchers_df.loc[:, [col for col in required_cols if col in pitchers_df.columns]]
         
-        # Make copies to avoid modifying originals
-        hitters = hitters_df.copy()
-        pitchers = pitchers_df.copy()
-         
-        # Combine and sort
-        combined = pd.concat([hitters, pitchers], ignore_index=True)
-        combined = combined.sort_values('dollar_value', ascending=False).reset_index(drop=True)
+        # Add missing columns efficiently
+        for df in [hitters, pitchers]:
+            if 'Name_norm' not in df.columns and 'Name' in df.columns:
+                df['Name_norm'] = df['Name'].str.lower()
+        
+        # Use pd.concat once with optimized parameters
+        combined = pd.concat([hitters, pitchers], ignore_index=True, sort=False)
+        
+        # Use inplace sorting when possible
+        combined.sort_values('dollar_value', ascending=False, inplace=True)
+        combined.reset_index(drop=True, inplace=True)
         
         return combined
     
@@ -294,41 +312,65 @@ class PlayerRankings:
             index=False,
             float_format='%.1f'
         )
-
+    
+    # Improved validation in run method
     def run(self) -> pd.DataFrame:
-        """Execute the full process with proper error handling and data preservation"""
+        """Execute full process with better validation and error handling"""
         try:
-            # Read input data
+            # Validate input files
+            for file_path, file_type in [
+                (self.hitter_input_file, 'hitter'), 
+                (self.pitcher_input_file, 'pitcher')
+            ]:
+                if not file_path.exists():
+                    logging.error(f"{file_type.capitalize()} file not found: {file_path}")
+                    return pd.DataFrame(columns=['Name', 'dollar_value'])
+            
+            # Read data with validation
             hitters_df = self.read_data(self.hitter_input_file)
+            if hitters_df.empty:
+                logging.error("Empty hitter data")
+                return pd.DataFrame(columns=['Name', 'dollar_value'])
+                
             pitchers_df = self.read_data(self.pitcher_input_file)
-            keepers_df = self.read_data(self.keeper_file) if self.keeper_file.exists() else None
+            if pitchers_df.empty:
+                logging.error("Empty pitcher data")
+                return pd.DataFrame(columns=['Name', 'dollar_value'])
+                
+            # Process keepers if available
+            keepers_df = None
+            if self.keeper_file.exists():
+                keepers_df = self.read_data(self.keeper_file)
+                if keepers_df.empty:
+                    logging.warning("Empty keeper file, proceeding without keepers")
+                    keepers_df = None
 
-            # Calculate auction values
+            # Calculate values with validation
             final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
-
-            # Ensure required columns exist and preserve Name_norm
-            columns_to_keep = ['Name', 'Name_norm', 'dollar_value', 'Position', 'is_keeper']
             
-            # Add Name_norm if missing
-            for df in [final_hitters, final_pitchers]:
-                if 'Name_norm' not in df.columns:
-                    df['Name_norm'] = df['Name'].str.strip().str.lower()
-
-            # Combine data with all necessary columns
-            combined_results = self.combine_data(
-                final_hitters[columns_to_keep],
-                final_pitchers[columns_to_keep]
-            )
-            
+            # Validate outputs
+            for df_name, df in [('hitters', final_hitters), ('pitchers', final_pitchers)]:
+                if 'dollar_value' not in df.columns:
+                    logging.error(f"Missing dollar_value in {df_name}")
+                    return pd.DataFrame(columns=['Name', 'dollar_value'])
+                    
+            # Combine with validation
+            combined_results = self.combine_data(final_hitters, final_pitchers)
             if combined_results.empty:
                 logging.error("Combined results are empty")
                 return pd.DataFrame(columns=['Name', 'dollar_value'])
-
-            # Return final results
+                
+            # Return well-formed output
             return combined_results[['Name', 'dollar_value']]
             
+        except pd.errors.EmptyDataError:
+            logging.error("Empty data file encountered")
+            return pd.DataFrame(columns=['Name', 'dollar_value'])
+        except pd.errors.ParserError as e:
+            logging.error(f"CSV parsing error: {e}")
+            return pd.DataFrame(columns=['Name', 'dollar_value'])
         except Exception as e:
-            logging.error(f"Error in processing: {str(e)}")
+            logging.error(f"Unexpected error: {str(e)}")
             logging.exception("Full traceback:")
             return pd.DataFrame(columns=['Name', 'dollar_value'])
 

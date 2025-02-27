@@ -1,17 +1,22 @@
 import zscore
+from rankings_zscore import RankingsZScore  # Add this import
 from pathlib import Path
 import pandas as pd
-from typing import List, Tuple, Dict
+from typing import List, Tuple, Dict, Optional
 from dataclasses import dataclass, field
+import logging
 
 def get_projection_weights() -> Dict[str, float]:
     """Factory function for projection system weights"""
     return {
-        'depthcharts': 0.05, 
+        'depthcharts': 0.025, 
         'oopsy': 0.05, 
-        'steamer': 0.05, 
-        'thebat': 0.2, 
-        'atc': 0.65
+        'steamer': 0.025, 
+        'thebat': 0.4, 
+        'atc': 0.4,
+        'pitcherlisting_rank': 0.05,
+        'sarris_rank': 0.025,
+        'sporer_rank': 0.025
     }
 
 @dataclass
@@ -27,13 +32,25 @@ class CalculateAllProjections:
         self.auction_values: List[Tuple[str, pd.DataFrame]] = []
         self.keeper_file = Path('keepers.csv')
         self.config = ProjectionConfig()
+        self._setup_logging()
+    def _setup_logging(self) -> None:
+            """Set up logging configuration"""
+            logging.basicConfig(
+                level=logging.INFO,
+                format='%(asctime)s - %(levelname)s - %(message)s',
+                handlers=[
+                    logging.StreamHandler(),
+                    logging.FileHandler('auction_calculations.log')
+                ]
+            )
+            self.logger = logging.getLogger(__name__)
 
     def calculate_rankings(self, hitter_path: Path, pitcher_path: Path) -> Tuple[pd.DataFrame, str]:
         """Calculate rankings for a single projection system"""
         projection_system = hitter_path.stem.split('_')[0]
         output_file = f'{projection_system}_player_rankings.csv'
         
-        print(f"\nCalculating rankings for {projection_system}")
+        self.logger.info(f"Calculating rankings for {projection_system}")
         
         calculator = zscore.PlayerRankings(
             str(hitter_path), 
@@ -43,95 +60,137 @@ class CalculateAllProjections:
         )
         
         rankings = calculator.run()
-        
-        # Debug rankings data
-        print(f"Rankings returned: {rankings.shape} rows")
-        print(f"Columns in rankings: {rankings.columns.tolist()}")
-        print(f"First few names: {rankings['Name'].head().tolist()}")
-        
         return rankings, projection_system
 
     def process_all_files(self, folder_path: str) -> None:
+        """Process all projection files and rankings files"""
+        # Process traditional projection files
+        self._process_projection_files(folder_path)
+        
+        # Process rankings files - NEW!
+        self._process_rankings_files(folder_path)
+
+    def _process_projection_files(self, folder_path: str) -> None:
         """Process all projection files in the given folder"""
         folder = Path(folder_path)
         hitter_files = list(folder.glob('*_hitter.csv'))
         
-        print(f"\nProcessing {len(hitter_files)} projection systems...")
+        self.logger.info(f"Processing {len(hitter_files)} projection systems...")
         
         for hitter_file in hitter_files:
             projection_system = hitter_file.stem.split('_')[0]
             pitcher_file = folder / f'{projection_system}_pitcher.csv'
             
-            print(f"\nProcessing {projection_system}:")
-            print(f"Hitter file: {hitter_file}")
-            print(f"Pitcher file: {pitcher_file}")
+            self.logger.info(f"Processing {projection_system}")
             
             # Validate input files
             if not hitter_file.exists():
-                print(f"Error: Hitter file {hitter_file} not found")
+                self.logger.error(f"Error: Hitter file {hitter_file} not found")
                 continue
             
             if not pitcher_file.exists():
-                print(f"Error: Pitcher file {pitcher_file} not found")
+                self.logger.error(f"Error: Pitcher file {pitcher_file} not found")
                 continue
             
             try:
-                # Load and check hitter data
+                # Validate hitter data
                 hitter_df = pd.read_csv(hitter_file)
-                print(f"Hitter file loaded: {len(hitter_df)} rows")
                 if 'Name' not in hitter_df.columns:
-                    print(f"Error: Name column missing in {hitter_file}")
+                    self.logger.error(f"Error: Name column missing in {hitter_file}")
                     continue
                     
                 rankings, system = self.calculate_rankings(hitter_file, pitcher_file)
-                if not rankings.empty:
-                    if 'Name' not in rankings.columns or 'dollar_value' not in rankings.columns:
-                        print(f"Error: Required columns missing in {system} rankings")
-                        continue
+                if rankings is None or rankings.empty:
+                    self.logger.warning(f"Empty rankings for {system}")
+                    continue
+                    
+                if 'Name' not in rankings.columns or 'dollar_value' not in rankings.columns:
+                    self.logger.error(f"Error: Required columns missing in {system} rankings")
+                    continue
                         
-                    print(f"Rankings processed: {len(rankings)} rows")
-                    rankings['dollar_value'] = pd.to_numeric(rankings['dollar_value'], errors='coerce').fillna(0)
+                self.logger.info(f"Rankings processed: {len(rankings)} rows")
+                rankings['dollar_value'] = pd.to_numeric(rankings['dollar_value'], errors='coerce').fillna(0)
 
-                    self.auction_values.append((system, rankings))
-                    print(f"Added {system} to auction_values")
-                else:
-                    print(f"Empty rankings for {system}")
+                self.auction_values.append((system, rankings))
+                self.logger.info(f"Added {system} to auction_values")
                     
             except Exception as e:
-                print(f"Error processing {projection_system}: {str(e)}")
+                self.logger.exception(f"Error processing {projection_system}: {str(e)}")
                 continue
 
-    def calculate_weighted_average(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Calculate weighted averages using vectorized operations"""
-        weights = pd.Series(self.config.PROJECTION_WEIGHTS)
-        available_systems = weights.index.intersection(df.columns)
+    # NEW METHOD TO PROCESS RANKING FILES
+    def _process_rankings_files(self, folder_path: str) -> None:
+        """Process all ranking files in the given folder"""
+        folder = Path(folder_path)
+        ranking_files = list(folder.glob('*_rankings.csv'))
         
-        if not available_systems.empty:
-            normalized_weights = weights[available_systems] / weights[available_systems].sum()
-            df['projection_weighted_average'] = df[available_systems].mul(normalized_weights).sum(axis=1)
+        self.logger.info(f"Processing {len(ranking_files)} ranking files...")
+        
+        for ranking_file in ranking_files:
+            # Extract system name from filename (e.g., "fangraphs_rankings.csv" -> "fangraphs")
+            system_name = ranking_file.stem.split('_')[0]
+            system_id = f"{system_name}_rank"  # Add suffix to distinguish from projections
             
-        return df
-
-    def save_results(self) -> None:
-        """Save processed results to CSV with enhanced debugging"""
+            self.logger.info(f"Processing {system_name} rankings file")
+            
+            try:
+                # Use the RankingsZScore class to convert rankings to dollar values
+                calculator = RankingsZScore(
+                    rankings_file=str(ranking_file),
+                    total_budget=self.config.IBW_BUDGET,  # Using your specified budget
+                    roster_size=self.config.IBW_ROSTER_SIZE,
+                    num_teams=12,  # Standard league size
+                    hitter_pct=0.67,  # 67% to hitters, 33% to pitchers
+                    exponential_factor=0.9  # Controls value curve steepness
+                )
+                
+                # Generate dollar values
+                values_df = calculator.run()
+                
+                # Validate results
+                if values_df is None or values_df.empty:
+                    self.logger.warning(f"Empty dollar values for {system_name} rankings")
+                    continue
+                
+                if 'Name' not in values_df.columns or 'dollar_value' not in values_df.columns:
+                    self.logger.error(f"Required columns missing in {system_name} values")
+                    continue
+                
+                # Ensure consistent format
+                values_df['dollar_value'] = pd.to_numeric(values_df['dollar_value'], errors='coerce').fillna(0)
+                
+                # Add to auction values with the ranking-specific ID
+                self.auction_values.append((system_id, values_df[['Name', 'dollar_value']]))
+                self.logger.info(f"Added {system_id} to auction_values with {len(values_df)} players")
+                
+            except Exception as e:
+                self.logger.exception(f"Error processing ranking file {ranking_file}: {str(e)}")
+                continue
+            
+    # Improved pivot table creation in calculate_all.py
+    def create_pivot_table(self) -> pd.DataFrame:
+        """Create pivot table with better performance"""
         if not self.auction_values:
             raise ValueError("No auction values to process")
-
-        print("\n=== Data Flow Debugging ===")
-        # Step 2: Concatenate with system column
-        all_values = pd.concat(
-            [df.assign(system=sys)[['Name', 'system', 'dollar_value']] 
-            for sys, df in self.auction_values],
-            ignore_index=True
-        )
         
-        # Step 3: Create pivot table with debugging
-        print("\n3. Pivot Table Creation:")
-        print(f"Input shape: {all_values.shape}")
-        print(f"Unique names: {len(all_values['Name'].unique())}")
-        print(f"Unique systems: {all_values['system'].unique().tolist()}")
+        # Extract columns with minimal memory usage
+        data = []
+        systems = []
         
-        pivot_values = pd.pivot_table(
+        self.logger.info(f"Input shape: ({sum(len(df) for _, df in self.auction_values)}, 3)")
+        self.logger.info(f"Unique names: {len(set(name for _, df in self.auction_values for name in df['Name']))}") 
+        self.logger.info(f"Unique systems: {sorted(set(sys for sys, _ in self.auction_values))}")
+        
+        # Build data more efficiently
+        for system, df in self.auction_values:
+            systems.append(system)
+            data.append(df[['Name', 'dollar_value']].assign(system=system))
+        
+        # Concatenate once
+        all_values = pd.concat(data, ignore_index=True)
+        
+        # Create pivot with optimizations
+        pivot = pd.pivot_table(
             all_values,
             index='Name',
             columns='system',
@@ -140,40 +199,77 @@ class CalculateAllProjections:
             fill_value=0
         ).reset_index()
         
-        # Step 4: Calculate weighted averages
+        return pivot
+
+    def calculate_weighted_average(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Calculate weighted averages excluding zero values for each player"""
         weights = pd.Series(self.config.PROJECTION_WEIGHTS)
-        available_systems = weights.index.intersection(pivot_values.columns)
+        available_systems = weights.index.intersection(df.columns)
         
         if not available_systems.empty:
-            normalized_weights = weights[available_systems] / weights[available_systems].sum()
-            print("\n4. Weight Calculation:")
-            print(f"Available systems: {available_systems.tolist()}")
-            print(f"Normalized weights: {normalized_weights.to_dict()}")
+            self.logger.info(f"Calculating weighted averages with systems: {list(available_systems)}")
             
-            pivot_values['projection_weighted_average'] = (
-                pivot_values[available_systems].mul(normalized_weights).sum(axis=1)
-            )
+            # Create a copy to avoid SettingWithCopyWarning
+            result_df = df.copy()
+            result_df['projection_weighted_average'] = 0.0
+            
+            # Process each player individually to handle their specific non-zero projections
+            for idx, row in result_df.iterrows():
+                # Get systems with non-zero values for this player
+                non_zero_systems = [sys for sys in available_systems if row[sys] > 0]
+                
+                if non_zero_systems:
+                    # Get weights for non-zero systems and normalize them
+                    player_weights = weights[non_zero_systems]
+                    normalized_weights = player_weights / player_weights.sum()
+                    
+                    # Calculate weighted average using only non-zero systems
+                    weighted_sum = sum(row[sys] * normalized_weights[sys] for sys in non_zero_systems)
+                    result_df.at[idx, 'projection_weighted_average'] = weighted_sum
+                else:
+                    # If all projections are zero, keep the weighted average as zero
+                    result_df.at[idx, 'projection_weighted_average'] = 0
+            
+            # Log some stats about the calculation
+            non_zero_counts = (df[available_systems] > 0).sum()
+            self.logger.info(f"System coverage (non-zero values): {non_zero_counts.to_dict()}")
+            
+            return result_df
+        else:
+            self.logger.warning("No projection systems found in data that match the configured weights")
+            return df
+
+    def save_results(self) -> None:
+        """Save processed results to CSV"""
+        # Create pivot table
+        pivot_values = self.create_pivot_table()
+        
+        # Calculate weighted averages
+        pivot_values = self.calculate_weighted_average(pivot_values)
+        
+        # Sort by weighted average
+        if 'projection_weighted_average' in pivot_values.columns:
+            pivot_values = pivot_values.sort_values('projection_weighted_average', ascending=False)
+        
         # Save results
         output_dir = Path('auction_values')
         output_dir.mkdir(exist_ok=True)
         output_path = output_dir / 'all_auction_values.csv'
         
-        # Sort by weighted average before saving
-        if 'projection_weighted_average' in pivot_values.columns:
-            pivot_values = pivot_values.sort_values('projection_weighted_average', ascending=False)
-        
         pivot_values.to_csv(output_path, index=False, float_format='%.2f')
         
-        print(f"\nOutput Summary:")
-        print(f"Total rows saved: {len(pivot_values)}")
-        print(f"Total columns: {len(pivot_values.columns)}")
-        print(f"Systems included: {[col for col in pivot_values.columns if col not in ['Name', 'projection_weighted_average']]}")
+        self.logger.info(f"Output saved to {output_path}")
+        self.logger.info(f"Total players: {len(pivot_values)}")
+        self.logger.info(f"Systems included: {[col for col in pivot_values.columns if col not in ['Name', 'projection_weighted_average']]}")
 
 def main():
-    folder_path = 'projections'
-    calculator = CalculateAllProjections()
-    calculator.process_all_files(folder_path)
-    calculator.save_results()
+    try:
+        folder_path = 'projections'
+        calculator = CalculateAllProjections()
+        calculator.process_all_files(folder_path)
+        calculator.save_results()
+    except Exception as e:
+        logging.exception(f"Fatal error in main: {str(e)}")
 
 if __name__ == "__main__":
     main()

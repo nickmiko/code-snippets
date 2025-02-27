@@ -1,0 +1,814 @@
+2025-02-25 10:35:07,563 - INFO - Logging initialized. Log file: auction_calculations.log
+2025-02-25 10:35:07,563 - INFO - Found 5 potential projection systems in projections
+2025-02-25 10:35:07,595 - INFO - Validated 5 projection systems
+2025-02-25 10:35:07,596 - INFO - Processing 5 projection systems in parallel...
+2025-02-25 10:35:08,239 - INFO - Rankings processed for thebat: 1472 players
+2025-02-25 10:35:08,255 - INFO - Rankings processed for atc: 1509 players
+2025-02-25 10:35:08,256 - INFO - Rankings processed for depthcharts: 1455 players
+2025-02-25 10:35:08,261 - INFO - Rankings processed for oopsy: 1455 players
+2025-02-25 10:35:08,392 - INFO - Rankings processed for steamer: 9359 players
+2025-02-25 10:35:08,518 - INFO - Creating pivot table from 5 projection systems
+2025-02-25 10:35:08,539 - INFO - Pivot table created with 9201 players
+2025-02-25 10:35:08,540 - INFO - Using normalized weights from 5 systems
+2025-02-25 10:35:08,542 - INFO - Sorted results by weighted average
+2025-02-25 10:35:08,584 - INFO - Output saved to auction_values/all_auction_values.csv
+2025-02-25 10:35:08,584 - INFO - Total players: 9201
+2025-02-25 10:35:08,584 - INFO - Systems included: ['atc', 'depthcharts', 'oopsy', 'steamer', 'thebat']
+2025-02-25 10:35:08,586 - INFO - Top valued players: 
+            Name  projection_weighted_average
+   Shohei Ohtani                        81.03
+     Aaron Judge                        64.76
+  Bobby Witt Jr.                        59.48
+Ronald Acuña Jr.                        56.94
+       Juan Soto                        54.68
+2025-02-25 10:35:08,586 - INFO - Calculation completed successfully
+2025-02-25 10:35:24,768 - INFO - Processing 5 projection systems...
+2025-02-25 10:35:24,768 - INFO - Processing thebat
+2025-02-25 10:35:24,778 - INFO - Calculating rankings for thebat
+2025-02-25 10:35:24,798 - INFO - Total keeper cost: $264
+2025-02-25 10:35:24,814 - INFO - Processed 659 players, max value: $83.7
+2025-02-25 10:35:24,818 - INFO - Processed 793 players, max value: $23.7
+2025-02-25 10:35:24,819 - INFO - Processed 671 hitters, max value: $83.7
+2025-02-25 10:35:24,820 - INFO - Processed 801 pitchers, max value: $38.0
+2025-02-25 10:35:24,820 - INFO - Combining data - Hitters: 671 rows, Pitchers: 801 rows
+2025-02-25 10:35:24,821 - INFO - Rankings returned: 1472 rows
+2025-02-25 10:35:24,821 - INFO - Rankings processed: 1472 rows
+2025-02-25 10:35:24,821 - INFO - Added thebat to auction_values
+2025-02-25 10:35:24,821 - INFO - Processing atc
+2025-02-25 10:35:24,827 - INFO - Calculating rankings for atc
+2025-02-25 10:35:24,843 - INFO - Total keeper cost: $264
+2025-02-25 10:35:24,856 - INFO - Processed 613 players, max value: $81.9
+2025-02-25 10:35:24,860 - INFO - Processed 876 players, max value: $21.3
+2025-02-25 10:35:24,861 - INFO - Processed 625 hitters, max value: $81.9
+2025-02-25 10:35:24,861 - INFO - Processed 884 pitchers, max value: $38.0
+2025-02-25 10:35:24,861 - INFO - Combining data - Hitters: 625 rows, Pitchers: 884 rows
+2025-02-25 10:35:24,862 - INFO - Rankings returned: 1509 rows
+2025-02-25 10:35:24,863 - INFO - Rankings processed: 1509 rows
+2025-02-25 10:35:24,863 - INFO - Added atc to auction_values
+2025-02-25 10:35:24,863 - INFO - Processing depthcharts
+2025-02-25 10:35:24,869 - INFO - Calculating rankings for depthcharts
+2025-02-25 10:35:24,884 - INFO - Total keeper cost: $264
+2025-02-25 10:35:24,898 - INFO - Processed 607 players, max value: $84.3
+2025-02-25 10:35:24,902 - INFO - Processed 828 players, max value: $18.0
+2025-02-25 10:35:24,903 - INFO - Processed 619 hitters, max value: $84.3
+2025-02-25 10:35:24,903 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-25 10:35:24,904 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-25 10:35:24,905 - INFO - Rankings returned: 1455 rows
+2025-02-25 10:35:24,905 - INFO - Rankings processed: 1455 rows
+2025-02-25 10:35:24,905 - INFO - Added depthcharts to auction_values
+2025-02-25 10:35:24,905 - INFO - Processing oopsy
+2025-02-25 10:35:24,909 - INFO - Calculating rankings for oopsy
+2025-02-25 10:35:24,924 - INFO - Total keeper cost: $264
+2025-02-25 10:35:24,937 - INFO - Processed 607 players, max value: $90.1
+2025-02-25 10:35:24,941 - INFO - Processed 828 players, max value: $17.7
+2025-02-25 10:35:24,942 - INFO - Processed 619 hitters, max value: $90.1
+2025-02-25 10:35:24,942 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-25 10:35:24,942 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-25 10:35:24,943 - INFO - Rankings returned: 1455 rows
+2025-02-25 10:35:24,944 - INFO - Rankings processed: 1455 rows
+2025-02-25 10:35:24,944 - INFO - Added oopsy to auction_values
+2025-02-25 10:35:24,944 - INFO - Processing steamer
+2025-02-25 10:35:24,966 - INFO - Calculating rankings for steamer
+2025-02-25 10:35:25,027 - INFO - Total keeper cost: $264
+2025-02-25 10:35:25,046 - INFO - Processed 4133 players, max value: $95.4
+2025-02-25 10:35:25,052 - INFO - Processed 5206 players, max value: $1.0
+2025-02-25 10:35:25,053 - INFO - Processed 4145 hitters, max value: $95.4
+2025-02-25 10:35:25,054 - INFO - Processed 5214 pitchers, max value: $38.0
+2025-02-25 10:35:25,055 - INFO - Combining data - Hitters: 4145 rows, Pitchers: 5214 rows
+2025-02-25 10:35:25,058 - INFO - Rankings returned: 9359 rows
+2025-02-25 10:35:25,059 - INFO - Rankings processed: 9359 rows
+2025-02-25 10:35:25,059 - INFO - Added steamer to auction_values
+2025-02-25 10:35:25,062 - INFO - Creating pivot table from 15250 rows
+2025-02-25 10:35:25,076 - INFO - Pivot table created with 9201 players
+2025-02-25 10:35:25,077 - INFO - Using normalized weights: {'depthcharts': 0.05, 'oopsy': 0.05, 'steamer': 0.05, 'thebat': 0.2, 'atc': 0.65}
+2025-02-25 10:35:25,116 - INFO - Output saved to auction_values/all_auction_values.csv
+2025-02-25 10:35:25,116 - INFO - Total players: 9201
+2025-02-25 10:35:25,116 - INFO - Systems included: ['atc', 'depthcharts', 'oopsy', 'steamer', 'thebat']
+2025-02-25 10:36:06,366 - INFO - Processing 5 projection systems...
+2025-02-25 10:36:06,366 - INFO - Processing thebat
+2025-02-25 10:36:06,378 - INFO - Calculating rankings for thebat
+2025-02-25 10:36:06,382 - INFO - Loaded thebat_hitter.csv: 671 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:36:06,387 - INFO - Loaded thebat_pitcher.csv: 801 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:36:06,388 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:36:06,389 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:36:06,391 - INFO - Processing 21 keepers
+2025-02-25 10:36:06,391 - INFO - Total keeper cost: $264.00
+2025-02-25 10:36:06,395 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:36:06,399 - INFO - Rankings returned: 0 rows
+2025-02-25 10:36:06,399 - WARNING - Empty rankings for thebat
+2025-02-25 10:36:06,399 - INFO - Processing atc
+2025-02-25 10:36:06,404 - INFO - Calculating rankings for atc
+2025-02-25 10:36:06,407 - INFO - Loaded atc_hitter.csv: 625 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:36:06,411 - INFO - Loaded atc_pitcher.csv: 884 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:36:06,412 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:36:06,413 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:36:06,414 - INFO - Processing 21 keepers
+2025-02-25 10:36:06,414 - INFO - Total keeper cost: $264.00
+2025-02-25 10:36:06,416 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:36:06,417 - INFO - Rankings returned: 0 rows
+2025-02-25 10:36:06,417 - WARNING - Empty rankings for atc
+2025-02-25 10:36:06,417 - INFO - Processing depthcharts
+2025-02-25 10:36:06,422 - INFO - Calculating rankings for depthcharts
+2025-02-25 10:36:06,425 - INFO - Loaded depthcharts_hitter.csv: 619 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:36:06,428 - INFO - Loaded depthcharts_pitcher.csv: 836 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:36:06,429 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:36:06,429 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:36:06,430 - INFO - Processing 21 keepers
+2025-02-25 10:36:06,431 - INFO - Total keeper cost: $264.00
+2025-02-25 10:36:06,432 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:36:06,433 - INFO - Rankings returned: 0 rows
+2025-02-25 10:36:06,433 - WARNING - Empty rankings for depthcharts
+2025-02-25 10:36:06,433 - INFO - Processing oopsy
+2025-02-25 10:36:06,437 - INFO - Calculating rankings for oopsy
+2025-02-25 10:36:06,439 - INFO - Loaded oopsy_hitter.csv: 619 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:36:06,443 - INFO - Loaded oopsy_pitcher.csv: 836 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:36:06,444 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:36:06,444 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:36:06,445 - INFO - Processing 21 keepers
+2025-02-25 10:36:06,445 - INFO - Total keeper cost: $264.00
+2025-02-25 10:36:06,447 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:36:06,448 - INFO - Rankings returned: 0 rows
+2025-02-25 10:36:06,448 - WARNING - Empty rankings for oopsy
+2025-02-25 10:36:06,448 - INFO - Processing steamer
+2025-02-25 10:36:06,470 - INFO - Calculating rankings for steamer
+2025-02-25 10:36:06,482 - INFO - Loaded steamer_hitter.csv: 4145 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:36:06,500 - INFO - Loaded steamer_pitcher.csv: 5214 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:36:06,501 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:36:06,501 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:36:06,503 - INFO - Processing 21 keepers
+2025-02-25 10:36:06,504 - INFO - Total keeper cost: $264.00
+2025-02-25 10:36:06,505 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:36:06,506 - INFO - Rankings returned: 0 rows
+2025-02-25 10:36:06,506 - WARNING - Empty rankings for steamer
+2025-02-25 10:36:06,506 - ERROR - Fatal error in main: No auction values to process
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/calculate_all.py", line 183, in main
+    calculator.save_results()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/calculate_all.py", line 158, in save_results
+    pivot_values = self.create_pivot_table()
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/calculate_all.py", line 117, in create_pivot_table
+    raise ValueError("No auction values to process")
+ValueError: No auction values to process
+2025-02-25 10:36:13,455 - INFO - Processing 5 projection systems...
+2025-02-25 10:36:13,456 - INFO - Processing thebat
+2025-02-25 10:36:13,461 - INFO - Calculating rankings for thebat
+2025-02-25 10:36:13,478 - INFO - Total keeper cost: $264
+2025-02-25 10:36:13,496 - INFO - Processed 659 players, max value: $83.7
+2025-02-25 10:36:13,504 - INFO - Processed 793 players, max value: $23.7
+2025-02-25 10:36:13,505 - INFO - Processed 671 hitters, max value: $83.7
+2025-02-25 10:36:13,506 - INFO - Processed 801 pitchers, max value: $38.0
+2025-02-25 10:36:13,506 - INFO - Combining data - Hitters: 671 rows, Pitchers: 801 rows
+2025-02-25 10:36:13,509 - INFO - Rankings returned: 1472 rows
+2025-02-25 10:36:13,509 - INFO - Rankings processed: 1472 rows
+2025-02-25 10:36:13,510 - INFO - Added thebat to auction_values
+2025-02-25 10:36:13,510 - INFO - Processing atc
+2025-02-25 10:36:13,519 - INFO - Calculating rankings for atc
+2025-02-25 10:36:13,540 - INFO - Total keeper cost: $264
+2025-02-25 10:36:13,557 - INFO - Processed 613 players, max value: $81.9
+2025-02-25 10:36:13,562 - INFO - Processed 876 players, max value: $21.3
+2025-02-25 10:36:13,564 - INFO - Processed 625 hitters, max value: $81.9
+2025-02-25 10:36:13,564 - INFO - Processed 884 pitchers, max value: $38.0
+2025-02-25 10:36:13,565 - INFO - Combining data - Hitters: 625 rows, Pitchers: 884 rows
+2025-02-25 10:36:13,566 - INFO - Rankings returned: 1509 rows
+2025-02-25 10:36:13,566 - INFO - Rankings processed: 1509 rows
+2025-02-25 10:36:13,567 - INFO - Added atc to auction_values
+2025-02-25 10:36:13,567 - INFO - Processing depthcharts
+2025-02-25 10:36:13,572 - INFO - Calculating rankings for depthcharts
+2025-02-25 10:36:13,590 - INFO - Total keeper cost: $264
+2025-02-25 10:36:13,605 - INFO - Processed 607 players, max value: $84.3
+2025-02-25 10:36:13,610 - INFO - Processed 828 players, max value: $18.0
+2025-02-25 10:36:13,611 - INFO - Processed 619 hitters, max value: $84.3
+2025-02-25 10:36:13,612 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-25 10:36:13,612 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-25 10:36:13,614 - INFO - Rankings returned: 1455 rows
+2025-02-25 10:36:13,614 - INFO - Rankings processed: 1455 rows
+2025-02-25 10:36:13,614 - INFO - Added depthcharts to auction_values
+2025-02-25 10:36:13,614 - INFO - Processing oopsy
+2025-02-25 10:36:13,618 - INFO - Calculating rankings for oopsy
+2025-02-25 10:36:13,638 - INFO - Total keeper cost: $264
+2025-02-25 10:36:13,655 - INFO - Processed 607 players, max value: $90.1
+2025-02-25 10:36:13,659 - INFO - Processed 828 players, max value: $17.7
+2025-02-25 10:36:13,660 - INFO - Processed 619 hitters, max value: $90.1
+2025-02-25 10:36:13,660 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-25 10:36:13,661 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-25 10:36:13,662 - INFO - Rankings returned: 1455 rows
+2025-02-25 10:36:13,662 - INFO - Rankings processed: 1455 rows
+2025-02-25 10:36:13,663 - INFO - Added oopsy to auction_values
+2025-02-25 10:36:13,663 - INFO - Processing steamer
+2025-02-25 10:36:13,687 - INFO - Calculating rankings for steamer
+2025-02-25 10:36:13,743 - INFO - Total keeper cost: $264
+2025-02-25 10:36:13,761 - INFO - Processed 4133 players, max value: $95.4
+2025-02-25 10:36:13,768 - INFO - Processed 5206 players, max value: $1.0
+2025-02-25 10:36:13,770 - INFO - Processed 4145 hitters, max value: $95.4
+2025-02-25 10:36:13,771 - INFO - Processed 5214 pitchers, max value: $38.0
+2025-02-25 10:36:13,771 - INFO - Combining data - Hitters: 4145 rows, Pitchers: 5214 rows
+2025-02-25 10:36:13,776 - INFO - Rankings returned: 9359 rows
+2025-02-25 10:36:13,776 - INFO - Rankings processed: 9359 rows
+2025-02-25 10:36:13,777 - INFO - Added steamer to auction_values
+2025-02-25 10:36:13,778 - INFO - Creating pivot table from 15250 rows
+2025-02-25 10:36:13,793 - INFO - Pivot table created with 9201 players
+2025-02-25 10:36:13,793 - INFO - Using normalized weights: {'depthcharts': 0.05, 'oopsy': 0.05, 'steamer': 0.05, 'thebat': 0.2, 'atc': 0.65}
+2025-02-25 10:36:13,835 - INFO - Output saved to auction_values/all_auction_values.csv
+2025-02-25 10:36:13,835 - INFO - Total players: 9201
+2025-02-25 10:36:13,835 - INFO - Systems included: ['atc', 'depthcharts', 'oopsy', 'steamer', 'thebat']
+2025-02-27 10:46:08,967 - INFO - Processing 5 projection systems...
+2025-02-27 10:46:09,550 - INFO - Processing thebat
+2025-02-27 10:46:10,254 - INFO - Calculating rankings for thebat
+2025-02-27 10:46:10,293 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:46:10,314 - INFO - Processed 671 hitters, max value: $83.7
+2025-02-27 10:46:10,314 - INFO - Processed 801 pitchers, max value: $38.0
+2025-02-27 10:46:10,314 - INFO - Combining data - Hitters: 671 rows, Pitchers: 801 rows
+2025-02-27 10:46:10,316 - INFO - Rankings returned: 1472 rows
+2025-02-27 10:46:10,316 - INFO - Rankings processed: 1472 rows
+2025-02-27 10:46:10,316 - INFO - Added thebat to auction_values
+2025-02-27 10:46:10,316 - INFO - Processing atc
+2025-02-27 10:46:10,321 - INFO - Calculating rankings for atc
+2025-02-27 10:46:10,343 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:46:10,365 - INFO - Processed 625 hitters, max value: $81.9
+2025-02-27 10:46:10,366 - INFO - Processed 884 pitchers, max value: $38.0
+2025-02-27 10:46:10,367 - INFO - Combining data - Hitters: 625 rows, Pitchers: 884 rows
+2025-02-27 10:46:10,369 - INFO - Rankings returned: 1509 rows
+2025-02-27 10:46:10,369 - INFO - Rankings processed: 1509 rows
+2025-02-27 10:46:10,369 - INFO - Added atc to auction_values
+2025-02-27 10:46:10,369 - INFO - Processing depthcharts
+2025-02-27 10:46:10,377 - INFO - Calculating rankings for depthcharts
+2025-02-27 10:46:10,400 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:46:10,415 - INFO - Processed 619 hitters, max value: $84.3
+2025-02-27 10:46:10,415 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 10:46:10,415 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 10:46:10,417 - INFO - Rankings returned: 1455 rows
+2025-02-27 10:46:10,417 - INFO - Rankings processed: 1455 rows
+2025-02-27 10:46:10,418 - INFO - Added depthcharts to auction_values
+2025-02-27 10:46:10,418 - INFO - Processing oopsy
+2025-02-27 10:46:10,424 - INFO - Calculating rankings for oopsy
+2025-02-27 10:46:10,448 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:46:10,463 - INFO - Processed 619 hitters, max value: $90.1
+2025-02-27 10:46:10,463 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 10:46:10,463 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 10:46:10,464 - INFO - Rankings returned: 1455 rows
+2025-02-27 10:46:10,465 - INFO - Rankings processed: 1455 rows
+2025-02-27 10:46:10,465 - INFO - Added oopsy to auction_values
+2025-02-27 10:46:10,465 - INFO - Processing steamer
+2025-02-27 10:46:10,488 - INFO - Calculating rankings for steamer
+2025-02-27 10:46:10,545 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:46:10,562 - INFO - Processed 4145 hitters, max value: $95.4
+2025-02-27 10:46:10,562 - INFO - Processed 5214 pitchers, max value: $38.0
+2025-02-27 10:46:10,562 - INFO - Combining data - Hitters: 4145 rows, Pitchers: 5214 rows
+2025-02-27 10:46:10,566 - INFO - Rankings returned: 9359 rows
+2025-02-27 10:46:10,566 - INFO - Rankings processed: 9359 rows
+2025-02-27 10:46:10,566 - INFO - Added steamer to auction_values
+2025-02-27 10:46:10,566 - INFO - Input shape: (15250, 3)
+2025-02-27 10:46:10,568 - INFO - Unique names: 9201
+2025-02-27 10:46:10,568 - INFO - Unique systems: ['atc', 'depthcharts', 'oopsy', 'steamer', 'thebat']
+2025-02-27 10:46:11,293 - INFO - Using normalized weights: {'depthcharts': 0.05, 'oopsy': 0.05, 'steamer': 0.05, 'thebat': 0.2, 'atc': 0.65}
+2025-02-27 10:46:11,967 - INFO - Output saved to auction_values/all_auction_values.csv
+2025-02-27 10:46:11,967 - INFO - Total players: 9201
+2025-02-27 10:46:11,968 - INFO - Systems included: ['atc', 'depthcharts', 'oopsy', 'steamer', 'thebat']
+2025-02-27 10:50:56,698 - INFO - Processing 5 projection systems...
+2025-02-27 10:50:56,699 - INFO - Processing thebat
+2025-02-27 10:50:56,709 - INFO - Calculating rankings for thebat
+2025-02-27 10:50:56,731 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:50:56,746 - INFO - Processed 671 hitters, max value: $83.7
+2025-02-27 10:50:56,746 - INFO - Processed 801 pitchers, max value: $38.0
+2025-02-27 10:50:56,746 - INFO - Combining data - Hitters: 671 rows, Pitchers: 801 rows
+2025-02-27 10:50:56,747 - INFO - Rankings returned: 1472 rows
+2025-02-27 10:50:56,747 - INFO - Rankings processed: 1472 rows
+2025-02-27 10:50:56,747 - INFO - Added thebat to auction_values
+2025-02-27 10:50:56,747 - INFO - Processing atc
+2025-02-27 10:50:56,751 - INFO - Calculating rankings for atc
+2025-02-27 10:50:56,771 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:50:56,782 - INFO - Processed 625 hitters, max value: $81.9
+2025-02-27 10:50:56,782 - INFO - Processed 884 pitchers, max value: $38.0
+2025-02-27 10:50:56,782 - INFO - Combining data - Hitters: 625 rows, Pitchers: 884 rows
+2025-02-27 10:50:56,783 - INFO - Rankings returned: 1509 rows
+2025-02-27 10:50:56,783 - INFO - Rankings processed: 1509 rows
+2025-02-27 10:50:56,783 - INFO - Added atc to auction_values
+2025-02-27 10:50:56,783 - INFO - Processing depthcharts
+2025-02-27 10:50:56,787 - INFO - Calculating rankings for depthcharts
+2025-02-27 10:50:56,805 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:50:56,816 - INFO - Processed 619 hitters, max value: $84.3
+2025-02-27 10:50:56,816 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 10:50:56,816 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 10:50:56,817 - INFO - Rankings returned: 1455 rows
+2025-02-27 10:50:56,817 - INFO - Rankings processed: 1455 rows
+2025-02-27 10:50:56,817 - INFO - Added depthcharts to auction_values
+2025-02-27 10:50:56,817 - INFO - Processing oopsy
+2025-02-27 10:50:56,821 - INFO - Calculating rankings for oopsy
+2025-02-27 10:50:56,838 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:50:56,848 - INFO - Processed 619 hitters, max value: $90.1
+2025-02-27 10:50:56,848 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 10:50:56,848 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 10:50:56,849 - INFO - Rankings returned: 1455 rows
+2025-02-27 10:50:56,849 - INFO - Rankings processed: 1455 rows
+2025-02-27 10:50:56,850 - INFO - Added oopsy to auction_values
+2025-02-27 10:50:56,850 - INFO - Processing steamer
+2025-02-27 10:50:56,871 - INFO - Calculating rankings for steamer
+2025-02-27 10:50:56,927 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:50:56,943 - INFO - Processed 4145 hitters, max value: $95.4
+2025-02-27 10:50:56,943 - INFO - Processed 5214 pitchers, max value: $38.0
+2025-02-27 10:50:56,944 - INFO - Combining data - Hitters: 4145 rows, Pitchers: 5214 rows
+2025-02-27 10:50:56,947 - INFO - Rankings returned: 9359 rows
+2025-02-27 10:50:56,947 - INFO - Rankings processed: 9359 rows
+2025-02-27 10:50:56,948 - INFO - Added steamer to auction_values
+2025-02-27 10:50:56,948 - INFO - Input shape: (15250, 3)
+2025-02-27 10:50:56,950 - INFO - Unique names: 9201
+2025-02-27 10:50:56,950 - INFO - Unique systems: ['atc', 'depthcharts', 'oopsy', 'steamer', 'thebat']
+2025-02-27 10:50:56,965 - INFO - Using normalized weights: {'depthcharts': 0.05, 'oopsy': 0.05, 'steamer': 0.05, 'thebat': 0.2, 'atc': 0.65}
+2025-02-27 10:50:57,003 - INFO - Output saved to auction_values/all_auction_values.csv
+2025-02-27 10:50:57,003 - INFO - Total players: 9201
+2025-02-27 10:50:57,003 - INFO - Systems included: ['atc', 'depthcharts', 'oopsy', 'steamer', 'thebat']
+2025-02-27 10:51:53,294 - INFO - Processing 5 projection systems...
+2025-02-27 10:51:53,295 - INFO - Processing thebat
+2025-02-27 10:51:53,304 - INFO - Calculating rankings for thebat
+2025-02-27 10:51:53,323 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:51:53,338 - INFO - Processed 671 hitters, max value: $83.7
+2025-02-27 10:51:53,339 - INFO - Processed 801 pitchers, max value: $38.0
+2025-02-27 10:51:53,339 - INFO - Combining data - Hitters: 671 rows, Pitchers: 801 rows
+2025-02-27 10:51:53,340 - INFO - Rankings returned: 1472 rows
+2025-02-27 10:51:53,340 - INFO - Rankings processed: 1472 rows
+2025-02-27 10:51:53,340 - INFO - Added thebat to auction_values
+2025-02-27 10:51:53,340 - INFO - Processing atc
+2025-02-27 10:51:53,345 - INFO - Calculating rankings for atc
+2025-02-27 10:51:53,366 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:51:53,376 - INFO - Processed 625 hitters, max value: $81.9
+2025-02-27 10:51:53,376 - INFO - Processed 884 pitchers, max value: $38.0
+2025-02-27 10:51:53,376 - INFO - Combining data - Hitters: 625 rows, Pitchers: 884 rows
+2025-02-27 10:51:53,377 - INFO - Rankings returned: 1509 rows
+2025-02-27 10:51:53,378 - INFO - Rankings processed: 1509 rows
+2025-02-27 10:51:53,378 - INFO - Added atc to auction_values
+2025-02-27 10:51:53,378 - INFO - Processing depthcharts
+2025-02-27 10:51:53,382 - INFO - Calculating rankings for depthcharts
+2025-02-27 10:51:53,398 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:51:53,409 - INFO - Processed 619 hitters, max value: $84.3
+2025-02-27 10:51:53,409 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 10:51:53,409 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 10:51:53,410 - INFO - Rankings returned: 1455 rows
+2025-02-27 10:51:53,410 - INFO - Rankings processed: 1455 rows
+2025-02-27 10:51:53,410 - INFO - Added depthcharts to auction_values
+2025-02-27 10:51:53,410 - INFO - Processing oopsy
+2025-02-27 10:51:53,414 - INFO - Calculating rankings for oopsy
+2025-02-27 10:51:53,431 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:51:53,441 - INFO - Processed 619 hitters, max value: $90.1
+2025-02-27 10:51:53,441 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 10:51:53,441 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 10:51:53,442 - INFO - Rankings returned: 1455 rows
+2025-02-27 10:51:53,442 - INFO - Rankings processed: 1455 rows
+2025-02-27 10:51:53,442 - INFO - Added oopsy to auction_values
+2025-02-27 10:51:53,442 - INFO - Processing steamer
+2025-02-27 10:51:53,464 - INFO - Calculating rankings for steamer
+2025-02-27 10:51:53,524 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 10:51:53,541 - INFO - Processed 4145 hitters, max value: $95.4
+2025-02-27 10:51:53,541 - INFO - Processed 5214 pitchers, max value: $38.0
+2025-02-27 10:51:53,542 - INFO - Combining data - Hitters: 4145 rows, Pitchers: 5214 rows
+2025-02-27 10:51:53,545 - INFO - Rankings returned: 9359 rows
+2025-02-27 10:51:53,545 - INFO - Rankings processed: 9359 rows
+2025-02-27 10:51:53,545 - INFO - Added steamer to auction_values
+2025-02-27 10:51:53,546 - INFO - Input shape: (15250, 3)
+2025-02-27 10:51:53,548 - INFO - Unique names: 9201
+2025-02-27 10:51:53,548 - INFO - Unique systems: ['atc', 'depthcharts', 'oopsy', 'steamer', 'thebat']
+2025-02-27 10:51:53,562 - INFO - Using normalized weights: {'depthcharts': 0.05, 'oopsy': 0.05, 'steamer': 0.05, 'thebat': 0.2, 'atc': 0.65}
+2025-02-27 10:51:53,601 - INFO - Output saved to auction_values/all_auction_values.csv
+2025-02-27 10:51:53,601 - INFO - Total players: 9201
+2025-02-27 10:51:53,601 - INFO - Systems included: ['atc', 'depthcharts', 'oopsy', 'steamer', 'thebat']
+2025-02-27 11:06:07,292 - INFO - Processing 5 projection systems...
+2025-02-27 11:06:07,292 - INFO - Processing thebat
+2025-02-27 11:06:07,301 - INFO - Calculating rankings for thebat
+2025-02-27 11:06:07,324 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:07,337 - INFO - Processed 671 hitters, max value: $83.7
+2025-02-27 11:06:07,337 - INFO - Processed 801 pitchers, max value: $38.0
+2025-02-27 11:06:07,338 - INFO - Combining data - Hitters: 671 rows, Pitchers: 801 rows
+2025-02-27 11:06:07,339 - INFO - Rankings processed: 1472 rows
+2025-02-27 11:06:07,339 - INFO - Added thebat to auction_values
+2025-02-27 11:06:07,339 - INFO - Processing atc
+2025-02-27 11:06:07,343 - INFO - Calculating rankings for atc
+2025-02-27 11:06:07,366 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:07,377 - INFO - Processed 625 hitters, max value: $81.9
+2025-02-27 11:06:07,377 - INFO - Processed 884 pitchers, max value: $38.0
+2025-02-27 11:06:07,377 - INFO - Combining data - Hitters: 625 rows, Pitchers: 884 rows
+2025-02-27 11:06:07,379 - INFO - Rankings processed: 1509 rows
+2025-02-27 11:06:07,379 - INFO - Added atc to auction_values
+2025-02-27 11:06:07,379 - INFO - Processing depthcharts
+2025-02-27 11:06:07,383 - INFO - Calculating rankings for depthcharts
+2025-02-27 11:06:07,400 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:07,412 - INFO - Processed 619 hitters, max value: $84.3
+2025-02-27 11:06:07,412 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 11:06:07,412 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 11:06:07,413 - INFO - Rankings processed: 1455 rows
+2025-02-27 11:06:07,413 - INFO - Added depthcharts to auction_values
+2025-02-27 11:06:07,413 - INFO - Processing oopsy
+2025-02-27 11:06:07,417 - INFO - Calculating rankings for oopsy
+2025-02-27 11:06:07,433 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:07,444 - INFO - Processed 619 hitters, max value: $90.1
+2025-02-27 11:06:07,444 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 11:06:07,444 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 11:06:07,445 - INFO - Rankings processed: 1455 rows
+2025-02-27 11:06:07,445 - INFO - Added oopsy to auction_values
+2025-02-27 11:06:07,445 - INFO - Processing steamer
+2025-02-27 11:06:07,470 - INFO - Calculating rankings for steamer
+2025-02-27 11:06:07,531 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:07,548 - INFO - Processed 4145 hitters, max value: $95.4
+2025-02-27 11:06:07,548 - INFO - Processed 5214 pitchers, max value: $38.0
+2025-02-27 11:06:07,549 - INFO - Combining data - Hitters: 4145 rows, Pitchers: 5214 rows
+2025-02-27 11:06:07,552 - INFO - Rankings processed: 9359 rows
+2025-02-27 11:06:07,553 - INFO - Added steamer to auction_values
+2025-02-27 11:06:07,553 - INFO - Processing 4 ranking files...
+2025-02-27 11:06:07,553 - INFO - Processing sarris rankings file
+2025-02-27 11:06:07,553 - ERROR - Error processing ranking file projections/sarris_rankings.csv: name 'RankingsZScore' is not defined
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/calculate_all.py", line 137, in _process_rankings_files
+    calculator = RankingsZScore(
+                 ^^^^^^^^^^^^^^
+NameError: name 'RankingsZScore' is not defined
+2025-02-27 11:06:07,554 - INFO - Processing pitcherlist rankings file
+2025-02-27 11:06:07,554 - ERROR - Error processing ranking file projections/pitcherlist_rankings.csv: name 'RankingsZScore' is not defined
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/calculate_all.py", line 137, in _process_rankings_files
+    calculator = RankingsZScore(
+                 ^^^^^^^^^^^^^^
+NameError: name 'RankingsZScore' is not defined
+2025-02-27 11:06:07,554 - INFO - Processing ibw rankings file
+2025-02-27 11:06:07,554 - ERROR - Error processing ranking file projections/ibw_rankings.csv: name 'RankingsZScore' is not defined
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/calculate_all.py", line 137, in _process_rankings_files
+    calculator = RankingsZScore(
+                 ^^^^^^^^^^^^^^
+NameError: name 'RankingsZScore' is not defined
+2025-02-27 11:06:07,554 - INFO - Processing sporer rankings file
+2025-02-27 11:06:07,554 - ERROR - Error processing ranking file projections/sporer_rankings.csv: name 'RankingsZScore' is not defined
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/calculate_all.py", line 137, in _process_rankings_files
+    calculator = RankingsZScore(
+                 ^^^^^^^^^^^^^^
+NameError: name 'RankingsZScore' is not defined
+2025-02-27 11:06:07,555 - INFO - Input shape: (15250, 3)
+2025-02-27 11:06:07,563 - INFO - Unique names: 9201
+2025-02-27 11:06:07,563 - INFO - Unique systems: ['atc', 'depthcharts', 'oopsy', 'steamer', 'thebat']
+2025-02-27 11:06:07,661 - INFO - Using normalized weights: {'depthcharts': 0.05, 'oopsy': 0.05, 'steamer': 0.05, 'thebat': 0.425, 'atc': 0.425}
+2025-02-27 11:06:07,722 - INFO - Output saved to auction_values/all_auction_values.csv
+2025-02-27 11:06:07,722 - INFO - Total players: 9201
+2025-02-27 11:06:07,722 - INFO - Systems included: ['atc', 'depthcharts', 'oopsy', 'steamer', 'thebat']
+2025-02-27 11:06:27,030 - INFO - Processing 5 projection systems...
+2025-02-27 11:06:27,031 - INFO - Processing thebat
+2025-02-27 11:06:27,040 - INFO - Calculating rankings for thebat
+2025-02-27 11:06:27,067 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:27,087 - INFO - Processed 671 hitters, max value: $83.7
+2025-02-27 11:06:27,088 - INFO - Processed 801 pitchers, max value: $38.0
+2025-02-27 11:06:27,088 - INFO - Combining data - Hitters: 671 rows, Pitchers: 801 rows
+2025-02-27 11:06:27,089 - INFO - Rankings processed: 1472 rows
+2025-02-27 11:06:27,089 - INFO - Added thebat to auction_values
+2025-02-27 11:06:27,089 - INFO - Processing atc
+2025-02-27 11:06:27,094 - INFO - Calculating rankings for atc
+2025-02-27 11:06:27,117 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:27,132 - INFO - Processed 625 hitters, max value: $81.9
+2025-02-27 11:06:27,132 - INFO - Processed 884 pitchers, max value: $38.0
+2025-02-27 11:06:27,132 - INFO - Combining data - Hitters: 625 rows, Pitchers: 884 rows
+2025-02-27 11:06:27,133 - INFO - Rankings processed: 1509 rows
+2025-02-27 11:06:27,133 - INFO - Added atc to auction_values
+2025-02-27 11:06:27,133 - INFO - Processing depthcharts
+2025-02-27 11:06:27,139 - INFO - Calculating rankings for depthcharts
+2025-02-27 11:06:27,160 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:27,173 - INFO - Processed 619 hitters, max value: $84.3
+2025-02-27 11:06:27,173 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 11:06:27,174 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 11:06:27,175 - INFO - Rankings processed: 1455 rows
+2025-02-27 11:06:27,176 - INFO - Added depthcharts to auction_values
+2025-02-27 11:06:27,176 - INFO - Processing oopsy
+2025-02-27 11:06:27,180 - INFO - Calculating rankings for oopsy
+2025-02-27 11:06:27,199 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:27,212 - INFO - Processed 619 hitters, max value: $90.1
+2025-02-27 11:06:27,212 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 11:06:27,212 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 11:06:27,214 - INFO - Rankings processed: 1455 rows
+2025-02-27 11:06:27,214 - INFO - Added oopsy to auction_values
+2025-02-27 11:06:27,214 - INFO - Processing steamer
+2025-02-27 11:06:27,244 - INFO - Calculating rankings for steamer
+2025-02-27 11:06:27,315 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:27,337 - INFO - Processed 4145 hitters, max value: $95.4
+2025-02-27 11:06:27,337 - INFO - Processed 5214 pitchers, max value: $38.0
+2025-02-27 11:06:27,337 - INFO - Combining data - Hitters: 4145 rows, Pitchers: 5214 rows
+2025-02-27 11:06:27,341 - INFO - Rankings processed: 9359 rows
+2025-02-27 11:06:27,342 - INFO - Added steamer to auction_values
+2025-02-27 11:06:27,342 - INFO - Processing 4 ranking files...
+2025-02-27 11:06:27,342 - INFO - Processing sarris rankings file
+2025-02-27 11:06:27,342 - INFO - Processing rankings from projections/sarris_rankings.csv
+2025-02-27 11:06:27,343 - WARNING - No position column found - player type differentiation disabled
+2025-02-27 11:06:27,344 - INFO - Loaded 191 players from rankings
+2025-02-27 11:06:27,345 - INFO - Generated values for 96 players
+2025-02-27 11:06:27,346 - INFO - Value range: $1.0 to $23.8
+2025-02-27 11:06:27,346 - INFO - Top valued player: Paul Skenes ($23.8)
+2025-02-27 11:06:27,346 - INFO - Added sarris_rank to auction_values with 96 players
+2025-02-27 11:06:27,346 - INFO - Processing pitcherlist rankings file
+2025-02-27 11:06:27,346 - INFO - Processing rankings from projections/pitcherlist_rankings.csv
+2025-02-27 11:06:27,348 - WARNING - No position column found - player type differentiation disabled
+2025-02-27 11:06:27,348 - INFO - Loaded 100 players from rankings
+2025-02-27 11:06:27,350 - INFO - Generated values for 96 players
+2025-02-27 11:06:27,350 - INFO - Value range: $1.0 to $23.8
+2025-02-27 11:06:27,350 - INFO - Top valued player: Tarik Skubal ($23.8)
+2025-02-27 11:06:27,350 - INFO - Added pitcherlist_rank to auction_values with 96 players
+2025-02-27 11:06:27,350 - INFO - Processing ibw rankings file
+2025-02-27 11:06:27,350 - INFO - Processing rankings from projections/ibw_rankings.csv
+2025-02-27 11:06:27,351 - WARNING - No position column found - player type differentiation disabled
+2025-02-27 11:06:27,352 - INFO - Loaded 441 players from rankings
+2025-02-27 11:06:27,354 - INFO - Generated values for 96 players
+2025-02-27 11:06:27,354 - INFO - Value range: $1.0 to $23.8
+2025-02-27 11:06:27,354 - INFO - Top valued player: Shohei Ohtani ($23.8)
+2025-02-27 11:06:27,354 - INFO - Added ibw_rank to auction_values with 96 players
+2025-02-27 11:06:27,354 - INFO - Processing sporer rankings file
+2025-02-27 11:06:27,354 - INFO - Processing rankings from projections/sporer_rankings.csv
+2025-02-27 11:06:27,355 - WARNING - No position column found - player type differentiation disabled
+2025-02-27 11:06:27,356 - INFO - Loaded 200 players from rankings
+2025-02-27 11:06:27,358 - INFO - Generated values for 96 players
+2025-02-27 11:06:27,358 - INFO - Value range: $1.0 to $23.8
+2025-02-27 11:06:27,358 - INFO - Top valued player: Tarik Skubal ($23.8)
+2025-02-27 11:06:27,359 - INFO - Added sporer_rank to auction_values with 96 players
+2025-02-27 11:06:27,359 - INFO - Input shape: (15634, 3)
+2025-02-27 11:06:27,361 - INFO - Unique names: 9209
+2025-02-27 11:06:27,362 - INFO - Unique systems: ['atc', 'depthcharts', 'ibw_rank', 'oopsy', 'pitcherlist_rank', 'sarris_rank', 'sporer_rank', 'steamer', 'thebat']
+2025-02-27 11:06:27,379 - INFO - Using normalized weights: {'depthcharts': 0.02631578947368421, 'oopsy': 0.05263157894736842, 'steamer': 0.02631578947368421, 'thebat': 0.42105263157894735, 'atc': 0.42105263157894735, 'sarris_rank': 0.02631578947368421, 'sporer_rank': 0.02631578947368421}
+2025-02-27 11:06:27,438 - INFO - Output saved to auction_values/all_auction_values.csv
+2025-02-27 11:06:27,438 - INFO - Total players: 9209
+2025-02-27 11:06:27,438 - INFO - Systems included: ['atc', 'depthcharts', 'ibw_rank', 'oopsy', 'pitcherlist_rank', 'sarris_rank', 'sporer_rank', 'steamer', 'thebat']
+2025-02-27 11:06:53,606 - INFO - Processing 5 projection systems...
+2025-02-27 11:06:53,606 - INFO - Processing thebat
+2025-02-27 11:06:53,614 - INFO - Calculating rankings for thebat
+2025-02-27 11:06:53,637 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:53,650 - INFO - Processed 671 hitters, max value: $83.7
+2025-02-27 11:06:53,650 - INFO - Processed 801 pitchers, max value: $38.0
+2025-02-27 11:06:53,650 - INFO - Combining data - Hitters: 671 rows, Pitchers: 801 rows
+2025-02-27 11:06:53,651 - INFO - Rankings processed: 1472 rows
+2025-02-27 11:06:53,651 - INFO - Added thebat to auction_values
+2025-02-27 11:06:53,651 - INFO - Processing atc
+2025-02-27 11:06:53,656 - INFO - Calculating rankings for atc
+2025-02-27 11:06:53,676 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:53,686 - INFO - Processed 625 hitters, max value: $81.9
+2025-02-27 11:06:53,686 - INFO - Processed 884 pitchers, max value: $38.0
+2025-02-27 11:06:53,686 - INFO - Combining data - Hitters: 625 rows, Pitchers: 884 rows
+2025-02-27 11:06:53,687 - INFO - Rankings processed: 1509 rows
+2025-02-27 11:06:53,687 - INFO - Added atc to auction_values
+2025-02-27 11:06:53,687 - INFO - Processing depthcharts
+2025-02-27 11:06:53,691 - INFO - Calculating rankings for depthcharts
+2025-02-27 11:06:53,707 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:53,717 - INFO - Processed 619 hitters, max value: $84.3
+2025-02-27 11:06:53,717 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 11:06:53,718 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 11:06:53,718 - INFO - Rankings processed: 1455 rows
+2025-02-27 11:06:53,719 - INFO - Added depthcharts to auction_values
+2025-02-27 11:06:53,719 - INFO - Processing oopsy
+2025-02-27 11:06:53,722 - INFO - Calculating rankings for oopsy
+2025-02-27 11:06:53,738 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:53,748 - INFO - Processed 619 hitters, max value: $90.1
+2025-02-27 11:06:53,748 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 11:06:53,748 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 11:06:53,749 - INFO - Rankings processed: 1455 rows
+2025-02-27 11:06:53,750 - INFO - Added oopsy to auction_values
+2025-02-27 11:06:53,750 - INFO - Processing steamer
+2025-02-27 11:06:53,768 - INFO - Calculating rankings for steamer
+2025-02-27 11:06:53,829 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:06:53,845 - INFO - Processed 4145 hitters, max value: $95.4
+2025-02-27 11:06:53,845 - INFO - Processed 5214 pitchers, max value: $38.0
+2025-02-27 11:06:53,846 - INFO - Combining data - Hitters: 4145 rows, Pitchers: 5214 rows
+2025-02-27 11:06:53,849 - INFO - Rankings processed: 9359 rows
+2025-02-27 11:06:53,850 - INFO - Added steamer to auction_values
+2025-02-27 11:06:53,850 - INFO - Processing 4 ranking files...
+2025-02-27 11:06:53,850 - INFO - Processing sarris rankings file
+2025-02-27 11:06:53,850 - INFO - Processing rankings from projections/sarris_rankings.csv
+2025-02-27 11:06:53,851 - WARNING - No position column found - player type differentiation disabled
+2025-02-27 11:06:53,852 - INFO - Loaded 191 players from rankings
+2025-02-27 11:06:53,854 - INFO - Generated values for 96 players
+2025-02-27 11:06:53,854 - INFO - Value range: $1.0 to $23.8
+2025-02-27 11:06:53,854 - INFO - Top valued player: Paul Skenes ($23.8)
+2025-02-27 11:06:53,854 - INFO - Added sarris_rank to auction_values with 96 players
+2025-02-27 11:06:53,854 - INFO - Processing pitcherlist rankings file
+2025-02-27 11:06:53,854 - INFO - Processing rankings from projections/pitcherlist_rankings.csv
+2025-02-27 11:06:53,855 - WARNING - No position column found - player type differentiation disabled
+2025-02-27 11:06:53,855 - INFO - Loaded 100 players from rankings
+2025-02-27 11:06:53,857 - INFO - Generated values for 96 players
+2025-02-27 11:06:53,857 - INFO - Value range: $1.0 to $23.8
+2025-02-27 11:06:53,857 - INFO - Top valued player: Tarik Skubal ($23.8)
+2025-02-27 11:06:53,858 - INFO - Added pitcherlist_rank to auction_values with 96 players
+2025-02-27 11:06:53,858 - INFO - Processing ibw rankings file
+2025-02-27 11:06:53,858 - INFO - Processing rankings from projections/ibw_rankings.csv
+2025-02-27 11:06:53,858 - WARNING - No position column found - player type differentiation disabled
+2025-02-27 11:06:53,858 - INFO - Loaded 441 players from rankings
+2025-02-27 11:06:53,860 - INFO - Generated values for 96 players
+2025-02-27 11:06:53,860 - INFO - Value range: $1.0 to $23.8
+2025-02-27 11:06:53,860 - INFO - Top valued player: Shohei Ohtani ($23.8)
+2025-02-27 11:06:53,861 - INFO - Added ibw_rank to auction_values with 96 players
+2025-02-27 11:06:53,861 - INFO - Processing sporer rankings file
+2025-02-27 11:06:53,861 - INFO - Processing rankings from projections/sporer_rankings.csv
+2025-02-27 11:06:53,862 - WARNING - No position column found - player type differentiation disabled
+2025-02-27 11:06:53,862 - INFO - Loaded 200 players from rankings
+2025-02-27 11:06:53,864 - INFO - Generated values for 96 players
+2025-02-27 11:06:53,864 - INFO - Value range: $1.0 to $23.8
+2025-02-27 11:06:53,864 - INFO - Top valued player: Tarik Skubal ($23.8)
+2025-02-27 11:06:53,864 - INFO - Added sporer_rank to auction_values with 96 players
+2025-02-27 11:06:53,864 - INFO - Input shape: (15634, 3)
+2025-02-27 11:06:53,866 - INFO - Unique names: 9209
+2025-02-27 11:06:53,866 - INFO - Unique systems: ['atc', 'depthcharts', 'ibw_rank', 'oopsy', 'pitcherlist_rank', 'sarris_rank', 'sporer_rank', 'steamer', 'thebat']
+2025-02-27 11:06:53,882 - INFO - Using normalized weights: {'depthcharts': 0.02631578947368421, 'oopsy': 0.05263157894736842, 'steamer': 0.02631578947368421, 'thebat': 0.42105263157894735, 'atc': 0.42105263157894735, 'sarris_rank': 0.02631578947368421, 'sporer_rank': 0.02631578947368421}
+2025-02-27 11:06:53,944 - INFO - Output saved to auction_values/all_auction_values.csv
+2025-02-27 11:06:53,944 - INFO - Total players: 9209
+2025-02-27 11:06:53,944 - INFO - Systems included: ['atc', 'depthcharts', 'ibw_rank', 'oopsy', 'pitcherlist_rank', 'sarris_rank', 'sporer_rank', 'steamer', 'thebat']
+2025-02-27 11:10:19,756 - INFO - Processing 5 projection systems...
+2025-02-27 11:10:19,757 - INFO - Processing thebat
+2025-02-27 11:10:19,765 - INFO - Calculating rankings for thebat
+2025-02-27 11:10:19,789 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:10:19,803 - INFO - Processed 671 hitters, max value: $83.7
+2025-02-27 11:10:19,803 - INFO - Processed 801 pitchers, max value: $38.0
+2025-02-27 11:10:19,803 - INFO - Combining data - Hitters: 671 rows, Pitchers: 801 rows
+2025-02-27 11:10:19,804 - INFO - Rankings processed: 1472 rows
+2025-02-27 11:10:19,805 - INFO - Added thebat to auction_values
+2025-02-27 11:10:19,805 - INFO - Processing atc
+2025-02-27 11:10:19,809 - INFO - Calculating rankings for atc
+2025-02-27 11:10:19,831 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:10:19,843 - INFO - Processed 625 hitters, max value: $81.9
+2025-02-27 11:10:19,850 - INFO - Processed 884 pitchers, max value: $38.0
+2025-02-27 11:10:19,852 - INFO - Combining data - Hitters: 625 rows, Pitchers: 884 rows
+2025-02-27 11:10:19,853 - INFO - Rankings processed: 1509 rows
+2025-02-27 11:10:19,854 - INFO - Added atc to auction_values
+2025-02-27 11:10:19,854 - INFO - Processing depthcharts
+2025-02-27 11:10:19,859 - INFO - Calculating rankings for depthcharts
+2025-02-27 11:10:19,877 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:10:19,888 - INFO - Processed 619 hitters, max value: $84.3
+2025-02-27 11:10:19,889 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 11:10:19,889 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 11:10:19,890 - INFO - Rankings processed: 1455 rows
+2025-02-27 11:10:19,890 - INFO - Added depthcharts to auction_values
+2025-02-27 11:10:19,890 - INFO - Processing oopsy
+2025-02-27 11:10:19,895 - INFO - Calculating rankings for oopsy
+2025-02-27 11:10:19,913 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:10:19,923 - INFO - Processed 619 hitters, max value: $90.1
+2025-02-27 11:10:19,924 - INFO - Processed 836 pitchers, max value: $38.0
+2025-02-27 11:10:19,924 - INFO - Combining data - Hitters: 619 rows, Pitchers: 836 rows
+2025-02-27 11:10:19,925 - INFO - Rankings processed: 1455 rows
+2025-02-27 11:10:19,925 - INFO - Added oopsy to auction_values
+2025-02-27 11:10:19,925 - INFO - Processing steamer
+2025-02-27 11:10:19,947 - INFO - Calculating rankings for steamer
+2025-02-27 11:10:20,004 - WARNING - Keeper Ronald Acuna Jr not found in player data
+2025-02-27 11:10:20,020 - INFO - Processed 4145 hitters, max value: $95.4
+2025-02-27 11:10:20,021 - INFO - Processed 5214 pitchers, max value: $38.0
+2025-02-27 11:10:20,022 - INFO - Combining data - Hitters: 4145 rows, Pitchers: 5214 rows
+2025-02-27 11:10:20,026 - INFO - Rankings processed: 9359 rows
+2025-02-27 11:10:20,027 - INFO - Added steamer to auction_values
+2025-02-27 11:10:20,027 - INFO - Processing 4 ranking files...
+2025-02-27 11:10:20,027 - INFO - Processing sarris rankings file
+2025-02-27 11:10:20,027 - INFO - Processing rankings from projections/sarris_rankings.csv
+2025-02-27 11:10:20,028 - WARNING - No position column found - player type differentiation disabled
+2025-02-27 11:10:20,028 - INFO - Loaded 191 players from rankings
+2025-02-27 11:10:20,031 - INFO - Generated values for 96 players
+2025-02-27 11:10:20,031 - INFO - Value range: $1.0 to $23.8
+2025-02-27 11:10:20,031 - INFO - Top valued player: Paul Skenes ($23.8)
+2025-02-27 11:10:20,031 - INFO - Added sarris_rank to auction_values with 96 players
+2025-02-27 11:10:20,031 - INFO - Processing pitcherlist rankings file
+2025-02-27 11:10:20,031 - INFO - Processing rankings from projections/pitcherlist_rankings.csv
+2025-02-27 11:10:20,032 - WARNING - No position column found - player type differentiation disabled
+2025-02-27 11:10:20,032 - INFO - Loaded 100 players from rankings
+2025-02-27 11:10:20,034 - INFO - Generated values for 96 players
+2025-02-27 11:10:20,034 - INFO - Value range: $1.0 to $23.8
+2025-02-27 11:10:20,034 - INFO - Top valued player: Tarik Skubal ($23.8)
+2025-02-27 11:10:20,034 - INFO - Added pitcherlist_rank to auction_values with 96 players
+2025-02-27 11:10:20,034 - INFO - Processing ibw rankings file
+2025-02-27 11:10:20,034 - INFO - Processing rankings from projections/ibw_rankings.csv
+2025-02-27 11:10:20,035 - WARNING - No position column found - player type differentiation disabled
+2025-02-27 11:10:20,035 - INFO - Loaded 441 players from rankings
+2025-02-27 11:10:20,037 - INFO - Generated values for 96 players
+2025-02-27 11:10:20,037 - INFO - Value range: $1.0 to $23.8
+2025-02-27 11:10:20,038 - INFO - Top valued player: Shohei Ohtani ($23.8)
+2025-02-27 11:10:20,038 - INFO - Added ibw_rank to auction_values with 96 players
+2025-02-27 11:10:20,038 - INFO - Processing sporer rankings file
+2025-02-27 11:10:20,038 - INFO - Processing rankings from projections/sporer_rankings.csv
+2025-02-27 11:10:20,039 - WARNING - No position column found - player type differentiation disabled
+2025-02-27 11:10:20,039 - INFO - Loaded 200 players from rankings
+2025-02-27 11:10:20,041 - INFO - Generated values for 96 players
+2025-02-27 11:10:20,041 - INFO - Value range: $1.0 to $23.8
+2025-02-27 11:10:20,041 - INFO - Top valued player: Tarik Skubal ($23.8)
+2025-02-27 11:10:20,041 - INFO - Added sporer_rank to auction_values with 96 players
+2025-02-27 11:10:20,041 - INFO - Input shape: (15634, 3)
+2025-02-27 11:10:20,043 - INFO - Unique names: 9209
+2025-02-27 11:10:20,043 - INFO - Unique systems: ['atc', 'depthcharts', 'ibw_rank', 'oopsy', 'pitcherlist_rank', 'sarris_rank', 'sporer_rank', 'steamer', 'thebat']
+2025-02-27 11:10:20,061 - INFO - Calculating weighted averages with systems: ['depthcharts', 'oopsy', 'steamer', 'thebat', 'atc', 'sarris_rank', 'sporer_rank']
+2025-02-27 11:10:21,299 - INFO - System coverage (non-zero values): {'depthcharts': 1451, 'oopsy': 1451, 'steamer': 9197, 'thebat': 1469, 'atc': 1505, 'sarris_rank': 96, 'sporer_rank': 96}
+2025-02-27 11:10:21,357 - INFO - Output saved to auction_values/all_auction_values.csv
+2025-02-27 11:10:21,357 - INFO - Total players: 9209
+2025-02-27 11:10:21,358 - INFO - Systems included: ['atc', 'depthcharts', 'ibw_rank', 'oopsy', 'pitcherlist_rank', 'sarris_rank', 'sporer_rank', 'steamer', 'thebat']
