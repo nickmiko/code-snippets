@@ -11,14 +11,7 @@ import os
 def get_projection_weights() -> Dict[str, float]:
     """Factory function for projection system weights"""
     return {
-        'depthcharts': 0.025, 
-        'oopsy': 0.05, 
-        'steamer': 0.025, 
-        'thebat': 0.4, 
-        'atc': 0.4,
-        'pitcherlisting_rank': 0.05,
-        'sarris_rank': 0.025,
-        'sporer_rank': 0.025
+
     }
 
 @dataclass
