@@ -196,6 +196,40 @@ print("Updated plugins line in ~/.zshrc.")
 PY
 }
 
+ensure_local_bin_path() {
+  local target_dir="$HOME/.local/bin"
+  local profile="$HOME/.zprofile"
+  local export_line='export PATH="$HOME/.local/bin:$PATH"'
+
+  mkdir -p "$target_dir"
+
+  if [[ ":$PATH:" != *":$target_dir:"* ]]; then
+    export PATH="$target_dir:$PATH"
+    echo "Temporarily added $target_dir to PATH for this session."
+  fi
+
+  if [ ! -f "$profile" ]; then
+    echo "Creating $profile to add PATH update..."
+    {
+      echo "# Created by setup.sh on $(date +%Y-%m-%d)"
+      echo "$export_line"
+    } > "$profile"
+    return
+  fi
+
+  if grep -Fq "$target_dir" "$profile"; then
+    echo "$target_dir already referenced in $profile."
+    return
+  fi
+
+  echo "Adding $target_dir to PATH in $profile..."
+  {
+    echo ""
+    echo "# Added by setup.sh on $(date +%Y-%m-%d)"
+    echo "$export_line"
+  } >> "$profile"
+}
+
 bootstrap_python_environment() {
   if ! command -v pyenv >/dev/null 2>&1; then
     echo "pyenv not available; skipping Python environment bootstrap."
@@ -333,6 +367,7 @@ fi
 install_brew_formulas
 install_brew_casks
 bootstrap_python_environment
+ensure_local_bin_path
 install_pipx_tools
 ensure_zsh_plugins
 
