@@ -53,19 +53,97 @@ install_brew_casks() {
   local casks=(
     iterm2
     rectangle
-    docker
-    tableplus
     visual-studio-code
   )
 
   for cask in "${casks[@]}"; do
-    if ! brew list --cask "$cask" >/dev/null 2>&1; then
-      echo "Installing $cask..."
-      brew install --cask "$cask"
-    else
+    if brew list --cask "$cask" >/dev/null 2>&1; then
       echo "$cask already installed."
+      continue
     fi
+
+    if existing_app_path=$(cask_existing_app "$cask"); then
+      echo "$cask application already present at $existing_app_path. Skipping Homebrew install."
+      continue
+    fi
+
+    echo "Installing $cask..."
+    brew install --cask "$cask"
   done
+}
+
+cask_existing_app() {
+  local cask_name="$1"
+  local app_targets
+
+  if ! app_targets=$(CASK_NAME="$cask_name" python3 <<'PY'
+import json
+import os
+import subprocess
+import sys
+
+cask = os.environ["CASK_NAME"]
+
+try:
+    output = subprocess.check_output([
+        "brew",
+        "info",
+        "--cask",
+        "--json=v2",
+        cask,
+    ], stderr=subprocess.DEVNULL)
+except subprocess.CalledProcessError:
+    sys.exit(1)
+
+try:
+    data = json.loads(output)
+except json.JSONDecodeError:
+    sys.exit(1)
+
+casks = data.get("casks", [])
+if not casks:
+    sys.exit(1)
+
+targets = []
+for artifact in casks[0].get("artifacts", []):
+    if isinstance(artifact, str):
+        if artifact.endswith(".app"):
+            targets.append(artifact)
+    elif isinstance(artifact, dict):
+        app_value = artifact.get("app")
+        if isinstance(app_value, str) and app_value.endswith(".app"):
+            targets.append(app_value)
+        elif isinstance(app_value, list):
+            targets.extend([
+                item for item in app_value
+                if isinstance(item, str) and item.endswith(".app")
+            ])
+
+if not targets:
+    sys.exit(1)
+
+print("\n".join(targets))
+PY
+  ); then
+    return 1
+  fi
+
+  if [ -z "$app_targets" ]; then
+    return 1
+  fi
+
+  while IFS= read -r app_bundle; do
+    [ -z "$app_bundle" ] && continue
+    local full_path
+    for full_path in "/Applications/$app_bundle" "$HOME/Applications/$app_bundle"; do
+      if [ -d "$full_path" ]; then
+        printf '%s\n' "$full_path"
+        return 0
+      fi
+    done
+  done <<< "$app_targets"
+
+  return 1
 }
 
 ensure_zsh_plugins() {
