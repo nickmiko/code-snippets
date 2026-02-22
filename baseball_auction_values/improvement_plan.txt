@@ -1,0 +1,21 @@
+Improvement Plan for Fantasy Baseball Auction Tool
+Date: 2026-01-21
+
+1. Efficiency
+- Optimize keeper handling in zscore.calculate_auction_values to avoid repeated DataFrame concatenations.
+- Consider more efficient CSV IO options and explicit dtypes when scaling up data size.
+- Review Streamlit app IO so player edits do not require unnecessary full-file writes.
+
+2. Accuracy / Modeling
+- Introduce position-specific (C, MI, CI, OF, SP, RP) replacement levels instead of pooled hitter/pitcher replacement.
+- Make category weights and hitter/pitcher budget split configurable via an external config file.
+- Explore more explicit modeling of auction inflation driven by underpriced keepers.
+
+3. New Insights / Outputs
+- Normalize per-system dollar outputs before combining into a weighted average, so systems are comparable.
+- Add cross-system dispersion metrics (e.g., standard deviation of dollar values) to flag volatile players.
+- Surface value-above-replacement and positional rank in outputs and the Streamlit UI for better draft decisions.
+
+Notes:
+- Start with efficiency improvements that do not change behavior, then layer in modeling and output changes.
+- After each significant change, regenerate all_auction_values.csv and spot-check a few players for sanity.
