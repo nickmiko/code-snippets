@@ -15,13 +15,14 @@ The core logic involves:
 
 ## Usage
 
-To run the script, execute the following command in your terminal from the root directory of the project:
+To run the script, first change into the `baseball_auction_values/` directory and then execute:
 
 ```bash
-python baseball_auction_values/create_auction_values.py
+cd baseball_auction_values
+python create_auction_values.py
 ```
 
-Alternatively, if you are inside the `baseball_auction_values/` directory, you can use:
+Once you are inside the `baseball_auction_values/` directory, you can also run the script directly:
 
 ```bash
 python create_auction_values.py
