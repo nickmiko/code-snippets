@@ -39,18 +39,43 @@ if search_term:
         
         # Display player data
         st.subheader(selected_player)
-        
-        # Format as columns
+
+        # Highlight projection summary metrics when available
+        weighted_col = 'projection_weighted_average'
+        std_col = 'projection_std'
+        rank_col = 'rank'
+        var_col = 'value_above_replacement'
+        summary_cols = {weighted_col, std_col, rank_col, var_col}
+
+        if any(col in player_data.index for col in summary_cols):
+            st.markdown("### Projection Summary")
+            cols = st.columns(4)
+            if weighted_col in player_data.index:
+                cols[0].metric("Weighted Avg $", f"{player_data[weighted_col]:.2f}")
+            if std_col in player_data.index:
+                cols[1].metric("Cross-System Std $", f"{player_data[std_col]:.2f}")
+            if rank_col in player_data.index:
+                try:
+                    cols[2].metric("Primary Rank", f"{int(player_data[rank_col])}")
+                except (ValueError, TypeError):
+                    cols[2].metric("Primary Rank", str(player_data[rank_col]))
+            if var_col in player_data.index:
+                try:
+                    cols[3].metric("Value Above Repl", f"{float(player_data[var_col]):.2f}")
+                except (ValueError, TypeError):
+                    cols[3].metric("Value Above Repl", str(player_data[var_col]))
+
+        # Format remaining fields as columns
         col1, col2 = st.columns(2)
         
         with col1:
             for idx, (key, value) in enumerate(player_data.items()):
-                if idx % 2 == 0 and key != 'Name':
+                if idx % 2 == 0 and key not in {'Name'} | summary_cols:
                     st.write(f"**{key}**: {value}")
         
         with col2:
             for idx, (key, value) in enumerate(player_data.items()):
-                if idx % 2 == 1 and key != 'Name':
+                if idx % 2 == 1 and key not in {'Name'} | summary_cols:
                     st.write(f"**{key}**: {value}")
         
         # Draft value input
@@ -63,13 +88,21 @@ if search_term:
                 if draft_value.strip():
                     float(draft_value)  # Check if it's a valid number
                 
-                # Update dataframe
+                # Update dataframe only when the value has actually changed
                 idx = df[df['Name'] == selected_player].index[0]
-                df.loc[idx, 'draft_value'] = draft_value
+                new_value = draft_value.strip()
+                current_value = ''
+                if 'draft_value' in df.columns:
+                    current_value = str(df.loc[idx, 'draft_value'])
                 
-                # Save back to CSV
-                df.to_csv(csv_file_path, index=False)
-                st.success(f"Draft value for {selected_player} saved successfully!")
+                if current_value == new_value:
+                    st.info("Draft value unchanged; no write needed.")
+                else:
+                    df.loc[idx, 'draft_value'] = new_value
+                    
+                    # Save back to CSV
+                    df.to_csv(csv_file_path, index=False)
+                    st.success(f"Draft value for {selected_player} saved successfully!")
             except ValueError:
                 st.error("Draft value must be a number")
             except Exception as e:

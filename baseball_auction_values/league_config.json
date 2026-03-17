@@ -1,0 +1,22 @@
+{
+  "BUDGET": 260,
+  "ROSTER_SIZE": 20,
+  "NUM_TEAMS": 12,
+  "HITTER_BUDGET_PCT": 0.675,
+  "HITTER_ROSTER_PCT": 0.5,
+  "HITTER_WEIGHTS": {
+    "HR": 1.0,
+    "R": 1.0,
+    "RBI": 1.0,
+    "SB": 0.75,
+    "OBP": 1.25
+  },
+  "PITCHER_WEIGHTS": {
+    "QS": 1.0,
+    "SV": 0.75,
+    "HLD": 1.0,
+    "K": 1.25,
+    "ERA": 1.0,
+    "WHIP": 1.0
+  }
+}

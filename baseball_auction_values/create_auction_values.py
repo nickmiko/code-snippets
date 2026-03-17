@@ -2,18 +2,18 @@ import zscore
 from pathlib import Path
 import pandas as pd
 from typing import List, Tuple, Dict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from rankings_zscore import RankingsZScore
 
 @dataclass
 class ProjectionConfig:
-    PROJECTION_WEIGHTS: Dict[str, float] = {
+    PROJECTION_WEIGHTS: Dict[str, float] = field(default_factory=lambda: {
         'depthcharts': 0.05, 
         'oopsy': 0.05, 
         'steamer': 0.05, 
         'thebat': 0.2, 
         'atc': 0.65
-    }
+    })
     DEFAULT_BUDGET: int = 35
     DEFAULT_ROSTER_SIZE: int = 10
     IBW_BUDGET: int = 60
@@ -61,8 +61,24 @@ class CalculateAllProjections:
         available_systems = weights.index.intersection(df.columns)
         
         if not available_systems.empty:
+            # Normalize each system's dollar values to a common total before weighting
+            system_totals = {sys: pd.to_numeric(df[sys], errors='coerce').fillna(0).sum() for sys in available_systems}
+            positive_totals = [v for v in system_totals.values() if v > 0]
+            target_total = sum(positive_totals) / len(positive_totals) if positive_totals else None
+
+            scaled = {}
+            for sys in available_systems:
+                col = pd.to_numeric(df[sys], errors='coerce').fillna(0)
+                total = system_totals.get(sys, 0.0)
+                if target_total is not None and total > 0:
+                    scaled[sys] = col * (target_total / total)
+                else:
+                    scaled[sys] = col
+
+            scaled_df = pd.DataFrame(scaled, index=df.index)
+
             normalized_weights = weights[available_systems] / weights[available_systems].sum()
-            df['projection_weighted_average'] = df[available_systems].mul(normalized_weights).sum(axis=1)
+            df['projection_weighted_average'] = scaled_df[available_systems].mul(normalized_weights).sum(axis=1)
             
         return df
 
@@ -89,6 +105,11 @@ class CalculateAllProjections:
 
         # Calculate weighted averages
         pivot_values = self.calculate_weighted_average(pivot_values)
+        
+        # Add cross-system variability metric for additional insight
+        system_cols = [c for c in pivot_values.columns if c in self.config.PROJECTION_WEIGHTS]
+        if system_cols:
+            pivot_values['projection_std'] = pivot_values[system_cols].std(axis=1, ddof=0)
         
         # Sort by weighted average
         if 'projection_weighted_average' in pivot_values.columns:

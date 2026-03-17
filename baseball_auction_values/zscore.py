@@ -3,6 +3,7 @@ import numpy as np
 from pathlib import Path
 from typing import Dict, Tuple, Optional
 import logging
+import json
 from dataclasses import dataclass, field
 
 def get_hitter_weights() -> Dict[str, float]:
@@ -28,7 +29,7 @@ class PlayerRankings:
         self.pitcher_input_file = Path(pitcher_input_file)
         self.keeper_file = Path(keeper_file)
         self.output_file = Path(output_file)
-        self.settings = LeagueSettings()
+        self.settings = self._load_settings()
         self._setup_logging()
 
     def _setup_logging(self) -> None:
@@ -37,14 +38,52 @@ class PlayerRankings:
             format='%(asctime)s - %(levelname)s - %(message)s'
         )
 
+    def _load_settings(self) -> LeagueSettings:
+        """Load league settings, optionally overriding defaults from league_config.json."""
+        settings = LeagueSettings()
+        config_path = Path(__file__).with_name('league_config.json')
+
+        if config_path.exists():
+            try:
+                with config_path.open() as f:
+                    data = json.load(f)
+
+                # Simple scalar overrides
+                for field_name in ['BUDGET', 'ROSTER_SIZE', 'NUM_TEAMS', 'HITTER_BUDGET_PCT', 'HITTER_ROSTER_PCT']:
+                    if field_name in data:
+                        setattr(settings, field_name, data[field_name])
+
+                # Dictionary overrides
+                for field_name in ['HITTER_WEIGHTS', 'PITCHER_WEIGHTS']:
+                    if field_name in data and isinstance(data[field_name], dict):
+                        setattr(settings, field_name, data[field_name])
+            except Exception as e:
+                logging.warning(f"Failed to load league_config.json: {e}. Using default settings.")
+        else:
+            logging.info("league_config.json not found; using default league settings.")
+
+        return settings
+
     def read_data(self, input_file: Path) -> pd.DataFrame:
         """Read CSV data with optimized settings and column name normalization"""
         try:
-            df = pd.read_csv(
-                input_file,
-                low_memory=False,
-                dtype={'Name': str}
-            )
+            read_kwargs = {
+                'low_memory': False,
+                'dtype': {'Name': str},
+            }
+
+            # Prefer the pyarrow engine when available for faster CSV reads
+            try:
+                import pyarrow  # type: ignore  # noqa: F401
+                read_kwargs['engine'] = 'pyarrow'
+                # pyarrow engine does not support low_memory or memory_map
+                read_kwargs.pop('low_memory', None)
+                read_kwargs.pop('memory_map', None)
+            except ImportError:
+                # Fallback to default engine with memory mapping for large files
+                read_kwargs['memory_map'] = True
+
+            df = pd.read_csv(input_file, **read_kwargs)
             
             # Normalize column names for keepers file
             if input_file.name == 'keepers.csv':
@@ -143,12 +182,58 @@ class PlayerRankings:
         
         # Use vectorized calculation for replacement level
         num_rostered = min(roster_spots, len(df))
-        replacement_level = df.iloc[num_rostered-1]['total_z'] if num_rostered > 0 else 0
-        
-        # Vectorized calculation of value above replacement
-        df['value_above_replacement'] = np.maximum(df['total_z'] - replacement_level, 0)
+
+        # If a Position column exists, estimate position-specific replacement levels
+        if 'Position' in df.columns and num_rostered > 0:
+            # Derive a primary position from the Position field (handles things like "1B/OF")
+            primary_pos = df['Position'].astype(str).str.split('[,/ ]').str[0]
+            df['_primary_pos'] = primary_pos
+
+            # Allocate roster spots across positions proportional to player supply
+            pos_counts = primary_pos.value_counts()
+            pos_shares = pos_counts / pos_counts.sum()
+            raw_spots = (pos_shares * num_rostered).round().astype(int)
+            # Ensure at least one spot per position that appears
+            raw_spots[raw_spots == 0] = 1
+            # Fix rounding so total matches num_rostered
+            diff = num_rostered - int(raw_spots.sum())
+            if diff != 0:
+                # Adjust the largest positions up/down until the total matches
+                order = raw_spots.sort_values(ascending=(diff < 0)).index.tolist()
+                i = 0
+                while diff != 0 and i < len(order):
+                    pos = order[i]
+                    new_val = raw_spots[pos] + (1 if diff > 0 else -1)
+                    if new_val >= 1:
+                        raw_spots[pos] = new_val
+                        diff += -1 if diff > 0 else 1
+                    i = (i + 1) % len(order)
+
+            # Compute replacement level per position
+            replacement_by_pos = {}
+            for pos, spots in raw_spots.items():
+                pos_mask = df['_primary_pos'] == pos
+                pos_df = df[pos_mask]
+                if spots > len(pos_df):
+                    spots = len(pos_df)
+                if spots > 0:
+                    replacement_by_pos[pos] = pos_df.iloc[spots - 1]['total_z']
+                else:
+                    replacement_by_pos[pos] = 0
+
+            df['value_above_replacement'] = np.maximum(
+                df['total_z'] - df['_primary_pos'].map(replacement_by_pos).fillna(0),
+                0,
+            )
+        else:
+            replacement_level = df.iloc[num_rostered - 1]['total_z'] if num_rostered > 0 else 0
+            # Vectorized calculation of value above replacement
+            df['value_above_replacement'] = np.maximum(df['total_z'] - replacement_level, 0)
         
         # More accurate dollar value calculation that handles edge cases
+        # Drop helper column if created
+        if '_primary_pos' in df.columns:
+            df.drop(columns=['_primary_pos'], inplace=True)
         total_var = df['value_above_replacement'].sum()
         min_value = 1.0  # Minimum player value
         
@@ -163,7 +248,79 @@ class PlayerRankings:
             df['dollar_value'] = min_value
         
         # Return only required columns to save memory
-        return df[['Name', 'Name_norm', 'dollar_value', 'rank']].copy()
+        return df[['Name', 'Name_norm', 'dollar_value', 'rank', 'value_above_replacement']].copy()
+
+    def estimate_inflation(self, hitters_df: pd.DataFrame, pitchers_df: pd.DataFrame, keeper_df: Optional[pd.DataFrame]) -> Optional[float]:
+        """Estimate auction inflation factor driven by underpriced keepers.
+
+        This is used only for logging/diagnostics and does not change player values.
+        """
+        if keeper_df is None or keeper_df.empty:
+            return None
+
+        # Work on copies to avoid mutating caller data
+        hitters = hitters_df.copy()
+        pitchers = pitchers_df.copy()
+        hitters['Name_norm'] = hitters['Name'].str.lower()
+        pitchers['Name_norm'] = pitchers['Name'].str.lower()
+
+        keepers = keeper_df.copy()
+        if 'Name_norm' not in keepers.columns:
+            keepers['Name_norm'] = keepers['Name'].str.lower()
+
+        # Use a dedicated keeper price column
+        price_source = None
+        if 'keeper_price' in keepers.columns:
+            price_source = 'keeper_price'
+        elif 'dollar_value' in keepers.columns:
+            price_source = 'dollar_value'
+        if price_source is None:
+            return None
+
+        keepers['keeper_price'] = pd.to_numeric(keepers[price_source], errors='coerce').fillna(0)
+
+        total_budget = float(self.settings.BUDGET * self.settings.NUM_TEAMS)
+
+        # Baseline roster sizes (ignoring keepers for this estimate)
+        hitter_roster_size = int(self.settings.ROSTER_SIZE * self.settings.HITTER_ROSTER_PCT)
+        pitcher_roster_size = self.settings.ROSTER_SIZE - hitter_roster_size
+        total_hitters = hitter_roster_size * self.settings.NUM_TEAMS
+        total_pitchers = pitcher_roster_size * self.settings.NUM_TEAMS
+
+        # Baseline budgets per side
+        hitter_budget = total_budget * self.settings.HITTER_BUDGET_PCT
+        pitcher_budget = total_budget * (1 - self.settings.HITTER_BUDGET_PCT)
+
+        baseline_hitters = self.process_player_group(hitters, total_hitters, hitter_budget)
+        baseline_pitchers = self.process_player_group(pitchers, total_pitchers, pitcher_budget)
+
+        if baseline_hitters.empty and baseline_pitchers.empty:
+            return None
+
+        all_players = pd.concat([baseline_hitters, baseline_pitchers], ignore_index=True)
+        total_value = pd.to_numeric(all_players['dollar_value'], errors='coerce').fillna(0).sum()
+
+        # Match keepers to their baseline market values
+        keeper_values = all_players.merge(
+            keepers[['Name_norm', 'keeper_price']],
+            on='Name_norm',
+            how='inner',
+        )
+
+        if keeper_values.empty:
+            return None
+
+        keeper_market_value = pd.to_numeric(keeper_values['dollar_value'], errors='coerce').fillna(0).sum()
+        keeper_cost = pd.to_numeric(keeper_values['keeper_price'], errors='coerce').fillna(0).sum()
+
+        # Money and value remaining in the draft pool
+        money_remaining = total_budget - keeper_cost
+        value_remaining = total_value - keeper_market_value
+
+        if money_remaining <= 0 or value_remaining <= 0:
+            return None
+
+        return float(money_remaining / value_remaining)
 
 # Improved keeper handling in calculate_auction_values
     def calculate_auction_values(self, hitters_df: pd.DataFrame, pitchers_df: pd.DataFrame, 
@@ -172,6 +329,16 @@ class PlayerRankings:
         # Normalize names consistently with vectorized operations
         hitters_df = hitters_df.copy()
         pitchers_df = pitchers_df.copy()
+
+        # Estimate inflation factor from keepers and apply to dollar values
+        inflation_factor: Optional[float] = None
+        try:
+            if keeper_df is not None and not keeper_df.empty:
+                inflation_factor = self.estimate_inflation(hitters_df, pitchers_df, keeper_df)
+                if inflation_factor is not None:
+                    logging.info(f"Estimated keeper inflation factor: {inflation_factor:.3f}")
+        except Exception as e:
+            logging.warning(f"Failed to estimate inflation factor: {e}")
         
         # One-time normalization
         hitters_df['Name_norm'] = hitters_df['Name'].str.lower()
@@ -201,11 +368,14 @@ class PlayerRankings:
                 
             # Safely convert to numeric
             keeper_df['dollar_value'] = pd.to_numeric(keeper_df['dollar_value'], errors='coerce').fillna(0)
-            keeper_budget = keeper_df['dollar_value'].sum()
-            
+
             # Use efficient lookup with sets for better performance
             hitter_names = set(hitters_df['Name_norm'])
             pitcher_names = set(pitchers_df['Name_norm'])
+            
+            # Collect keeper rows and assign positions without repeated concatenation
+            keeper_hitter_rows = []
+            keeper_pitcher_rows = []
             
             # Process keepers with proper position assignment
             for _, keeper in keeper_df.iterrows():
@@ -223,12 +393,24 @@ class PlayerRankings:
                 # Add to appropriate position group
                 if name_norm in hitter_names:
                     keeper_row['Position'] = 'H'
-                    keeper_hitters = pd.concat([keeper_hitters, keeper_row])
+                    keeper_hitter_rows.append(keeper_row)
                 elif name_norm in pitcher_names:
                     keeper_row['Position'] = 'P'
-                    keeper_pitchers = pd.concat([keeper_pitchers, keeper_row])
+                    keeper_pitcher_rows.append(keeper_row)
                 else:
                     logging.warning(f"Keeper {keeper['Name']} not found in player data")
+
+            # Only count matched keepers in the budget so unmatched entries don't skew values
+            matched_keeper_costs = [
+                rows['dollar_value'].values[0]
+                for rows in keeper_hitter_rows + keeper_pitcher_rows
+            ]
+            keeper_budget = sum(matched_keeper_costs)
+            
+            if keeper_hitter_rows:
+                keeper_hitters = pd.concat([keeper_hitters] + keeper_hitter_rows, ignore_index=True)
+            if keeper_pitcher_rows:
+                keeper_pitchers = pd.concat([keeper_pitchers] + keeper_pitcher_rows, ignore_index=True)
             
             # Remove keepers efficiently (use Series.isin with the set)
             keeper_names = set(keeper_df['Name_norm'])
@@ -249,7 +431,28 @@ class PlayerRankings:
         # Process players
         hitter_values = self.process_player_group(hitters_df, total_hitters, hitter_budget)
         pitcher_values = self.process_player_group(pitchers_df, total_pitchers, pitcher_budget)
-        
+
+        # Preserve base dollar values and apply optional keeper inflation
+        for df, budget, label in [
+            (hitter_values, hitter_budget, 'hitters'),
+            (pitcher_values, pitcher_budget, 'pitchers'),
+        ]:
+            if not df.empty:
+                df['dollar_value_base'] = df['dollar_value']
+                if inflation_factor is not None and inflation_factor > 0:
+                    base = pd.to_numeric(df['dollar_value_base'], errors='coerce').fillna(0)
+                    # Apply inflation only above the $1 floor
+                    variable = (base - 1).clip(lower=0)
+                    inflated = variable * inflation_factor + 1
+                    total_inflated = inflated.sum()
+                    if total_inflated > 0 and budget > 0:
+                        scale = budget / total_inflated
+                        df['dollar_value'] = (inflated * scale).round(1)
+                        logging.info(
+                            f"Applied keeper inflation to {label}: factor={inflation_factor:.3f}, "
+                            f"base_sum={base.sum():.1f}, inflated_sum={df['dollar_value'].sum():.1f}"
+                        )
+
         # Ensure consistent columns
         required_cols = ['Name', 'Name_norm', 'dollar_value']
         for df in [hitter_values, pitcher_values]:
@@ -283,7 +486,7 @@ class PlayerRankings:
         logging.info(f"Combining data - Hitters: {len(hitters_df)} rows, Pitchers: {len(pitchers_df)} rows")
         
         # Only keep necessary columns
-        required_cols = ['Name', 'Name_norm', 'dollar_value', 'Position', 'is_keeper']
+        required_cols = ['Name', 'Name_norm', 'dollar_value', 'dollar_value_base', 'rank', 'value_above_replacement', 'Position', 'is_keeper']
         
         # Use DataFrame.loc for efficient column selection
         hitters = hitters_df.loc[:, [col for col in required_cols if col in hitters_df.columns]]
@@ -360,8 +563,18 @@ class PlayerRankings:
                 logging.error("Combined results are empty")
                 return pd.DataFrame(columns=['Name', 'dollar_value'])
                 
-            # Return well-formed output
-            return combined_results[['Name', 'dollar_value']]
+            # Return well-formed output with additional context when available
+            cols = [
+                'Name',
+                'Position',
+                'is_keeper',
+                'dollar_value',
+                'dollar_value_base',
+                'rank',
+                'value_above_replacement',
+            ]
+            existing_cols = [c for c in cols if c in combined_results.columns]
+            return combined_results[existing_cols]
             
         except pd.errors.EmptyDataError:
             logging.error("Empty data file encountered")
