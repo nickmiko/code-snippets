@@ -29,8 +29,8 @@ class PlayerRankings:
         self.pitcher_input_file = Path(pitcher_input_file)
         self.keeper_file = Path(keeper_file)
         self.output_file = Path(output_file)
-        self.settings = self._load_settings()
         self._setup_logging()
+        self.settings = self._load_settings()
 
     def _setup_logging(self) -> None:
         logging.basicConfig(
@@ -198,16 +198,25 @@ class PlayerRankings:
             # Fix rounding so total matches num_rostered
             diff = num_rostered - int(raw_spots.sum())
             if diff != 0:
-                # Adjust the largest positions up/down until the total matches
+                # Adjust the largest positions up/down until the total matches.
+                # Sort ascending when removing spots (so we shrink the smallest first)
+                # and descending when adding (so we grow the largest first).
                 order = raw_spots.sort_values(ascending=(diff < 0)).index.tolist()
+                max_attempts = abs(diff) * len(order) + 1  # at most one full cycle per unit of diff
+                attempts = 0
                 i = 0
-                while diff != 0 and i < len(order):
+                while diff != 0:
+                    if attempts >= max_attempts or i >= len(order):
+                        # Cannot satisfy the constraint without going below the minimum;
+                        # accept the remaining discrepancy.
+                        break
                     pos = order[i]
                     new_val = raw_spots[pos] + (1 if diff > 0 else -1)
                     if new_val >= 1:
                         raw_spots[pos] = new_val
                         diff += -1 if diff > 0 else 1
-                    i = (i + 1) % len(order)
+                    i += 1
+                    attempts += 1
 
             # Compute replacement level per position
             replacement_by_pos = {}
@@ -253,7 +262,11 @@ class PlayerRankings:
     def estimate_inflation(self, hitters_df: pd.DataFrame, pitchers_df: pd.DataFrame, keeper_df: Optional[pd.DataFrame]) -> Optional[float]:
         """Estimate auction inflation factor driven by underpriced keepers.
 
-        This is used only for logging/diagnostics and does not change player values.
+        Returns a multiplier that is later applied to dollar values in
+        ``calculate_auction_values`` (stored in ``dollar_value``) while the
+        pre-inflation values are preserved in ``dollar_value_base``.
+        Returns ``None`` when inflation cannot be estimated (e.g. no keepers
+        found in the player pool).
         """
         if keeper_df is None or keeper_df.empty:
             return None
