@@ -330,7 +330,7 @@ class PlayerRankings:
         hitters_df = hitters_df.copy()
         pitchers_df = pitchers_df.copy()
 
-        # Estimate inflation factor from keepers (for logging/diagnostics only)
+        # Estimate inflation factor from keepers and apply to dollar values
         inflation_factor: Optional[float] = None
         try:
             if keeper_df is not None and not keeper_df.empty:
@@ -368,8 +368,7 @@ class PlayerRankings:
                 
             # Safely convert to numeric
             keeper_df['dollar_value'] = pd.to_numeric(keeper_df['dollar_value'], errors='coerce').fillna(0)
-            keeper_budget = keeper_df['dollar_value'].sum()
-            
+
             # Use efficient lookup with sets for better performance
             hitter_names = set(hitters_df['Name_norm'])
             pitcher_names = set(pitchers_df['Name_norm'])
@@ -400,6 +399,13 @@ class PlayerRankings:
                     keeper_pitcher_rows.append(keeper_row)
                 else:
                     logging.warning(f"Keeper {keeper['Name']} not found in player data")
+
+            # Only count matched keepers in the budget so unmatched entries don't skew values
+            matched_keeper_costs = [
+                rows['dollar_value'].values[0]
+                for rows in keeper_hitter_rows + keeper_pitcher_rows
+            ]
+            keeper_budget = sum(matched_keeper_costs)
             
             if keeper_hitter_rows:
                 keeper_hitters = pd.concat([keeper_hitters] + keeper_hitter_rows, ignore_index=True)
