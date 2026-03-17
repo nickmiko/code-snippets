@@ -18,19 +18,40 @@ The core logic involves:
 To run the script, execute the following command in your terminal from the root directory of the project:
 
 ```bash
+python baseball_auction_values/create_auction_values.py
+```
+
+Alternatively, if you are inside the `baseball_auction_values/` directory, you can use:
+
+```bash
 python create_auction_values.py
+```
+
+If you are using `uv`, you can run the pre-configured script from inside `baseball_auction_values/`:
+
+```bash
+uv run create-values
 ```
 
 ## Dependencies
 
-The script relies on the following Python libraries:
+The project dependencies are declared in `baseball_auction_values/pyproject.toml`:
 
-*   `pandas`
+*   `pandas>=2.0`
+*   `numpy>=1.24`
+*   `streamlit>=1.30`
+*   `pyarrow>=14.0`
 
-You can install it using pip:
+The recommended way to install dependencies is via [`uv`](https://github.com/astral-sh/uv). From inside the `baseball_auction_values/` directory:
 
 ```bash
-pip install pandas
+uv sync
+```
+
+Alternatively, you can install with pip:
+
+```bash
+pip install pandas numpy streamlit pyarrow
 ```
 
 The script also uses the following local modules, which must be present in the same directory:
@@ -46,7 +67,7 @@ The script expects the following files and directories to be in place:
 *   `projections/`: This directory should contain the raw projection data as CSV files. For each projection system, there should be two files: one for hitters and one for pitchers. The files should be named in the format `<system>_hitter.csv` and `<system>_pitcher.csv`.
     *   Example: `projections/atc_hitter.csv`, `projections/atc_pitcher.csv`
 
-*   `keepers.csv`: This file should contain a list of players who are designated as "keepers" and will be excluded from the auction value calculations. The file should have a 'Player' column with player names.
+*   `keepers.csv`: This file should contain a list of players who are designated as "keepers" and will be excluded from the auction value calculations. The file should have a `Name` column with player names and a `dollar_value` column with the keeper cost.
 
 ### Output Files
 
