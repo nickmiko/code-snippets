@@ -68,7 +68,11 @@ The script expects the following files and directories to be in place:
 *   `projections/`: This directory should contain the raw projection data as CSV files. For each projection system, there should be two files: one for hitters and one for pitchers. The files should be named in the format `<system>_hitter.csv` and `<system>_pitcher.csv`.
     *   Example: `projections/atc_hitter.csv`, `projections/atc_pitcher.csv`
 
-*   `keepers.csv`: This file should contain a list of players who are designated as "keepers" and will be excluded from the auction value calculations. The file should have a `Name` column with player names and a `dollar_value` column with the keeper cost.
+*   `keepers.csv`: This file should contain a list of players designated as "keepers" who will be excluded from the auction value calculations. The file should have a `Name` column with player names and a `dollar_value` column with the keeper cost. This file is **not** tracked in the repository (it contains private league data). Copy `keepers.example.csv` to `keepers.csv` and fill in your own keeper data:
+
+    ```bash
+    cp keepers.example.csv keepers.csv
+    ```
 
 ### Output Files
 
