@@ -160,6 +160,23 @@ append_unique_line() {
   fi
 }
 
+verify_checksum() {
+  local file="$1"
+  local expected_sha256="$2"
+  local label="${3:-installer}"
+  local actual_sha256
+  actual_sha256=$(sha256sum "$file" | awk '{print $1}')
+  if [[ "$actual_sha256" != "$expected_sha256" ]]; then
+    echo "❌ SHA-256 mismatch for $label" >&2
+    echo "   expected: $expected_sha256" >&2
+    echo "   actual:   $actual_sha256" >&2
+    echo "   The remote script may have changed. Review the new script before updating the expected checksum." >&2
+    rm -f "$file"
+    return 1
+  fi
+  [[ "$VERBOSE" -eq 1 ]] && log "✔ Checksum verified for $label"
+}
+
 detect_os() {
   case "$(uname -s)" in
     Darwin)
@@ -490,9 +507,12 @@ install_oh_my_zsh_and_plugins() {
     log "Oh My Zsh already installed."
   else
     log "Installing Oh My Zsh..."
-    local omz_installer
+    # Pinned to master branch. SHA-256 must be updated when the installer script changes.
+    # To update: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sha256sum
+    local omz_installer omz_sha256="95118b50d062198597e2b73d3a57b609fd95ca68cdc86faf4460d955f0172b61"
     omz_installer=$(mktemp)
     retry 2 3 curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -o "$omz_installer"
+    verify_checksum "$omz_installer" "$omz_sha256" "Oh My Zsh installer"
     chmod +x "$omz_installer"
     "$omz_installer" --unattended
     rm -f "$omz_installer"
@@ -594,9 +614,12 @@ EOF
 
   # Fresh install path
   log "Installing pyenv..."
-  local pyenv_installer
+  # Pinned to pyenv-installer master branch. SHA-256 must be updated when the installer script changes.
+  # To update: curl -fsSL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | sha256sum
+  local pyenv_installer pyenv_sha256="4b0adf623a6205727163eb98610b6c5e63f23b99183948b874d867cd9b30ef13"
   pyenv_installer=$(mktemp)
-  retry 2 3 curl -fsSL https://pyenv.run -o "$pyenv_installer"
+  retry 2 3 curl -fsSL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer -o "$pyenv_installer"
+  verify_checksum "$pyenv_installer" "$pyenv_sha256" "pyenv installer"
   bash "$pyenv_installer"
   rm -f "$pyenv_installer"
 
@@ -719,9 +742,12 @@ setup_homebrew() {
     log "Homebrew already installed."
   else
     log "Installing Homebrew..."
-    local brew_installer
+    # Pinned to Homebrew install HEAD. SHA-256 must be updated when the installer script changes.
+    # To update: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | sha256sum
+    local brew_installer brew_sha256="99287f194a8b3c9e6b0203a11a5fa54518be57209343e6bb954dec4635796d9d"
     brew_installer=$(mktemp)
     retry 2 3 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh -o "$brew_installer"
+    verify_checksum "$brew_installer" "$brew_sha256" "Homebrew installer"
     chmod +x "$brew_installer"
     /bin/bash "$brew_installer"
     rm -f "$brew_installer"
