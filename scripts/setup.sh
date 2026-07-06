@@ -229,7 +229,7 @@ download_file_secure() {
   local url="$1"
   local destination="$2"
 
-  retry "$DOWNLOAD_RETRY_ATTEMPTS" "$RETRY_DELAY_SECONDS" curl \
+  if retry "$DOWNLOAD_RETRY_ATTEMPTS" "$RETRY_DELAY_SECONDS" curl \
     --fail \
     --silent \
     --show-error \
@@ -239,9 +239,22 @@ download_file_secure() {
     --connect-timeout 15 \
     --max-time "$DOWNLOAD_TIMEOUT_SECONDS" \
     "$url" \
-    -o "$destination"
+    -o "$destination"; then
+    return 0
+  fi
+
+  warn "Failed to download $url after retries."
+  return 1
 }
 
+# Install a git repository at a pinned commit.
+# Args:
+#   1) repo_url    Source repository URL
+#   2) target_dir  Destination directory
+#   3) commit_sha  Exact commit SHA to fetch and checkout
+#   4) label       Optional display name for logging
+# Returns:
+#   0 on success, non-zero on failure.
 install_pinned_git_repo() {
   local repo_url="$1"
   local target_dir="$2"
@@ -254,7 +267,7 @@ install_pinned_git_repo() {
     if [[ -z "$current_sha" ]]; then
       warn "Could not determine current commit for $label; forcing re-fetch."
     fi
-    if [[ "$current_sha" == "$commit_sha" ]]; then
+    if [[ -n "$current_sha" && "$current_sha" == "$commit_sha" ]]; then
       [[ "$VERBOSE" -eq 1 ]] && log "$label already at pinned commit."
       return 0
     fi
@@ -268,7 +281,10 @@ install_pinned_git_repo() {
   else
     log "Installing $label..."
     mkdir -p "$target_dir"
-    git -C "$target_dir" init -q
+    if ! git -C "$target_dir" init -q; then
+      warn "Failed to initialize git repo for $label at $target_dir."
+      return 1
+    fi
     git -C "$target_dir" remote add origin "$repo_url"
   fi
 
