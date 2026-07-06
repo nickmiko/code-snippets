@@ -1,0 +1,465 @@
+2025-02-25 10:31:13,739 - INFO - Loaded oopsy_hitter.csv: 619 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:31:13,739 - INFO - Loaded depthcharts_hitter.csv: 619 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:31:13,739 - INFO - Loaded thebat_hitter.csv: 671 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:31:13,739 - INFO - Loaded atc_hitter.csv: 625 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:31:13,743 - INFO - Loaded oopsy_pitcher.csv: 836 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:31:13,744 - INFO - Loaded depthcharts_pitcher.csv: 836 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:31:13,744 - INFO - Loaded thebat_pitcher.csv: 801 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:31:13,746 - INFO - Loaded atc_pitcher.csv: 884 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:31:13,747 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:31:13,747 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:31:13,747 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:31:13,748 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:31:13,748 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:31:13,748 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:31:13,749 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:31:13,750 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:31:13,751 - INFO - Processing 21 keepers
+2025-02-25 10:31:13,751 - INFO - Processing 21 keepers
+2025-02-25 10:31:13,752 - INFO - Processing 21 keepers
+2025-02-25 10:31:13,752 - INFO - Total keeper cost: $264.00
+2025-02-25 10:31:13,752 - INFO - Total keeper cost: $264.00
+2025-02-25 10:31:13,752 - INFO - Total keeper cost: $264.00
+2025-02-25 10:31:13,752 - INFO - Processing 21 keepers
+2025-02-25 10:31:13,753 - INFO - Total keeper cost: $264.00
+2025-02-25 10:31:13,758 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:31:13,758 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:31:13,759 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:31:13,758 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:31:13,786 - INFO - Loaded steamer_hitter.csv: 4145 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:31:13,804 - INFO - Loaded steamer_pitcher.csv: 5214 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:31:13,805 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:31:13,805 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:31:13,807 - INFO - Processing 21 keepers
+2025-02-25 10:31:13,807 - INFO - Total keeper cost: $264.00
+2025-02-25 10:31:13,808 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:34:33,046 - INFO - Loaded depthcharts_hitter.csv: 619 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:34:33,046 - INFO - Loaded thebat_hitter.csv: 671 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:34:33,046 - INFO - Loaded atc_hitter.csv: 625 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:34:33,048 - INFO - Loaded oopsy_hitter.csv: 619 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:34:33,052 - INFO - Loaded thebat_pitcher.csv: 801 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:34:33,053 - INFO - Loaded depthcharts_pitcher.csv: 836 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:34:33,054 - INFO - Loaded atc_pitcher.csv: 884 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:34:33,055 - INFO - Loaded oopsy_pitcher.csv: 836 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:34:33,056 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:34:33,056 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:34:33,056 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:34:33,056 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:34:33,056 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:34:33,056 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:34:33,056 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:34:33,057 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:34:33,060 - INFO - Processing 21 keepers
+2025-02-25 10:34:33,060 - INFO - Processing 21 keepers
+2025-02-25 10:34:33,060 - INFO - Processing 21 keepers
+2025-02-25 10:34:33,060 - INFO - Total keeper cost: $264.00
+2025-02-25 10:34:33,061 - INFO - Total keeper cost: $264.00
+2025-02-25 10:34:33,061 - INFO - Processing 21 keepers
+2025-02-25 10:34:33,061 - INFO - Total keeper cost: $264.00
+2025-02-25 10:34:33,062 - INFO - Total keeper cost: $264.00
+2025-02-25 10:34:33,065 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:34:33,065 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:34:33,065 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:34:33,065 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:34:33,091 - INFO - Loaded steamer_hitter.csv: 4145 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:34:33,113 - INFO - Loaded steamer_pitcher.csv: 5214 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:34:33,114 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:34:33,114 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:34:33,116 - INFO - Processing 21 keepers
+2025-02-25 10:34:33,117 - INFO - Total keeper cost: $264.00
+2025-02-25 10:34:33,118 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:34:40,791 - INFO - Loaded thebat_hitter.csv: 671 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:34:40,817 - INFO - Loaded thebat_pitcher.csv: 801 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:34:40,826 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:34:40,832 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:34:40,837 - INFO - Processing 21 keepers
+2025-02-25 10:34:40,840 - INFO - Total keeper cost: $264.00
+2025-02-25 10:34:40,864 - INFO - Loaded atc_hitter.csv: 625 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:34:40,845 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:34:40,881 - INFO - Loaded depthcharts_hitter.csv: 619 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:34:40,883 - INFO - Loaded atc_pitcher.csv: 884 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:34:40,885 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:34:40,886 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:34:40,893 - INFO - Loaded depthcharts_pitcher.csv: 836 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:34:40,897 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:34:40,898 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:34:40,900 - INFO - Processing 21 keepers
+2025-02-25 10:34:40,903 - INFO - Total keeper cost: $264.00
+2025-02-25 10:34:40,906 - INFO - Processing 21 keepers
+2025-02-25 10:34:40,906 - INFO - Total keeper cost: $264.00
+2025-02-25 10:34:40,910 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:34:40,916 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:34:40,938 - INFO - Loaded oopsy_hitter.csv: 619 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:34:40,958 - INFO - Loaded oopsy_pitcher.csv: 836 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:34:40,961 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:34:40,962 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:34:40,967 - INFO - Processing 21 keepers
+2025-02-25 10:34:40,969 - INFO - Loaded steamer_hitter.csv: 4145 rows, columns: ['Name', 'HR', 'R', 'RBI', 'SB', 'OBP']
+2025-02-25 10:34:40,968 - INFO - Total keeper cost: $264.00
+2025-02-25 10:34:40,975 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'
+2025-02-25 10:34:41,004 - INFO - Loaded steamer_pitcher.csv: 5214 rows, columns: ['Name', 'QS', 'ERA', 'SV', 'HLD', 'R', 'HR', 'WHIP']
+2025-02-25 10:34:41,007 - INFO - Loaded keepers.csv: 21 rows, columns: ['Name', 'dollar_value']
+2025-02-25 10:34:41,007 - INFO - Loaded keepers.csv dollar_value stats: min=4.00, max=38.00, mean=12.57
+2025-02-25 10:34:41,016 - INFO - Processing 21 keepers
+2025-02-25 10:34:41,017 - INFO - Total keeper cost: $264.00
+2025-02-25 10:34:41,026 - ERROR - Error in processing: 'dollar_value_keeper'
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'dollar_value_keeper'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 465, in run
+    final_hitters, final_pitchers = self.calculate_auction_values(hitters_df, pitchers_df, keepers_df)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/zscore.py", line 306, in calculate_auction_values
+    hitter_keepers['dollar_value'] = hitter_keepers['dollar_value_keeper']
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/nick/Documents/Documents - Miko Mac Mini/GitHub/code-snippets/baseball_auction_values/venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'dollar_value_keeper'

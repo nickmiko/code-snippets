@@ -1,0 +1,9 @@
+markdown
+weasyprint
+pdfkit
+Pygments
+
+# Notes:
+# - On macOS you'll likely need system libraries for WeasyPrint (cairo, pango, gdk-pixbuf, libffi).
+#   Install via: brew install cairo pango gdk-pixbuf libffi
+# - wkhtmltopdf is required for pdfkit fallback: brew install wkhtmltopdf
