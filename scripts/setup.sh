@@ -290,7 +290,9 @@ install_apt_packages() {
 
   # On Debian, 'fd' is installed as 'fdfind'. Create/update a symlink.
   if command -v fdfind >/dev/null 2>&1; then
-    if [[ ! -L /usr/local/bin/fd || "$(readlink /usr/local/bin/fd 2>/dev/null || true)" != "$(command -v fdfind)" ]]; then
+    if [[ -e /usr/local/bin/fd && ! -L /usr/local/bin/fd ]]; then
+      warn "/usr/local/bin/fd exists and is not a symlink; skipping fd -> fdfind symlink to avoid overwriting it."
+    elif [[ ! -L /usr/local/bin/fd || "$(readlink /usr/local/bin/fd 2>/dev/null || true)" != "$(command -v fdfind)" ]]; then
       log "Ensuring symlink for fd -> fdfind..."
       sudo mkdir -p /usr/local/bin
       sudo ln -sf "$(command -v fdfind)" /usr/local/bin/fd
@@ -832,9 +834,13 @@ main() {
     log "Skipping zsh setup (--skip-zsh)."
   fi
 
-  install_pyenv_if_missing
-  ensure_pyenv_shell_init
-  bootstrap_python_environment
+  if [[ "$SKIP_PYTHON" -eq 0 ]]; then
+    install_pyenv_if_missing
+    ensure_pyenv_shell_init
+    bootstrap_python_environment
+  else
+    log "Skipping Python/pyenv setup (--skip-python)."
+  fi
 
   ensure_local_bin_path
   install_pipx_tools
