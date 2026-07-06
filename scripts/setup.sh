@@ -290,8 +290,8 @@ install_apt_packages() {
 
   # On Debian, 'fd' is installed as 'fdfind'. Create/update a symlink.
   if command -v fdfind >/dev/null 2>&1; then
-    if [[ -e /usr/local/bin/fd && ! -L /usr/local/bin/fd ]]; then
-      warn "/usr/local/bin/fd exists and is not a symlink; skipping fd -> fdfind symlink to avoid overwriting it."
+    if [[ -f /usr/local/bin/fd && ! -L /usr/local/bin/fd ]]; then
+      warn "/usr/local/bin/fd exists as a regular file (not a symlink); skipping fd -> fdfind symlink to avoid overwriting it."
     elif [[ ! -L /usr/local/bin/fd || "$(readlink /usr/local/bin/fd 2>/dev/null || true)" != "$(command -v fdfind)" ]]; then
       log "Ensuring symlink for fd -> fdfind..."
       sudo mkdir -p /usr/local/bin
