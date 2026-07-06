@@ -9,7 +9,9 @@ TEMP_FILES=()
 cleanup_temp_files() {
   local file
   for file in "${TEMP_FILES[@]:-}"; do
-    [[ -n "$file" && -f "$file" ]] && rm -f "$file"
+    if [[ -n "$file" && -f "$file" ]]; then
+      rm -f "$file"
+    fi
   done
 }
 
@@ -242,6 +244,9 @@ install_pinned_git_repo() {
       return 0
     fi
     log "Updating $label to pinned commit..."
+    if ! git -C "$target_dir" remote get-url origin >/dev/null 2>&1; then
+      git -C "$target_dir" remote add origin "$repo_url"
+    fi
   elif [[ -e "$target_dir" ]]; then
     warn "$target_dir exists but is not a git repository; skipping $label install."
     return 1
