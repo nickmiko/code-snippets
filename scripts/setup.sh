@@ -165,7 +165,15 @@ verify_checksum() {
   local expected_sha256="$2"
   local label="${3:-installer}"
   local actual_sha256
-  actual_sha256=$(sha256sum "$file" | awk '{print $1}')
+  if command -v sha256sum >/dev/null 2>&1; then
+    actual_sha256=$(sha256sum "$file" | awk '{print $1}')
+  elif command -v shasum >/dev/null 2>&1; then
+    actual_sha256=$(shasum -a 256 "$file" | awk '{print $1}')
+  else
+    echo "❌ No SHA-256 utility found; cannot verify checksum for $label." >&2
+    rm -f "$file"
+    return 1
+  fi
   if [[ "$actual_sha256" != "$expected_sha256" ]]; then
     echo "❌ SHA-256 mismatch for $label" >&2
     echo "   expected: $expected_sha256" >&2
@@ -498,8 +506,12 @@ install_brew_casks() {
     fi
 
     log "Installing $cask..."
-    retry 2 3 brew install --cask "$cask"
+    if ! retry 2 3 brew install --cask "$cask"; then
+      warn "Failed to install cask $cask after retries."
+      _cask_failed=1
+    fi
   done
+  return "${_cask_failed:-0}"
 }
 
 install_oh_my_zsh_and_plugins() {
