@@ -188,6 +188,7 @@ verify_checksum() {
     return 1
   fi
   [[ "$VERBOSE" -eq 1 ]] && log "✔ Checksum verified for $label"
+  return 0
 }
 
 detect_os() {
