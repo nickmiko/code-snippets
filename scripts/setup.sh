@@ -494,6 +494,7 @@ install_brew_formulas() {
 install_brew_casks() {
   log "Installing Homebrew casks..."
   local cask
+  local _cask_failed=0
   for cask in "${brew_casks[@]}"; do
     if brew list --cask "$cask" >/dev/null 2>&1; then
       [[ "$VERBOSE" -eq 1 ]] && log "$cask already installed."
@@ -511,7 +512,7 @@ install_brew_casks() {
       _cask_failed=1
     fi
   done
-  return "${_cask_failed:-0}"
+  return "$_cask_failed"
 }
 
 install_oh_my_zsh_and_plugins() {
