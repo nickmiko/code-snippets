@@ -260,8 +260,12 @@ install_pinned_git_repo() {
     git -C "$target_dir" remote add origin "$repo_url"
   fi
 
-  retry 2 3 git -C "$target_dir" fetch --depth 1 origin "$commit_sha"
-  if ! git -C "$target_dir" checkout --detach FETCH_HEAD >/dev/null; then
+  # retry attempts=2, delay_seconds=3 for transient network failures.
+  if ! retry 2 3 git -C "$target_dir" fetch --depth 1 origin "$commit_sha"; then
+    warn "Failed to fetch pinned commit $commit_sha for $label."
+    return 1
+  fi
+  if ! git -C "$target_dir" checkout --detach FETCH_HEAD; then
     warn "Failed to check out pinned commit for $label."
     return 1
   fi
