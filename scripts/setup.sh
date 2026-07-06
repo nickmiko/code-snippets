@@ -689,7 +689,6 @@ bootstrap_python_environment() {
   fi
 
   pyenv global "$PYENV_ENV_NAME"
-  pyenv shell "$PYENV_ENV_NAME"
   pyenv rehash
 
   log "Upgrading pip tooling..."
