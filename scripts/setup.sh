@@ -8,9 +8,15 @@ TEMP_FILES=()
 
 cleanup_temp_files() {
   local file
+  local tmp_root="${TMPDIR:-/tmp}"
+  [[ "$tmp_root" != */ ]] && tmp_root="${tmp_root}/"
   for file in "${TEMP_FILES[@]:-}"; do
     if [[ -n "$file" && -f "$file" ]]; then
-      rm -f "$file"
+      if [[ "$file" == "$tmp_root"* || "$file" == "/tmp/"* ]]; then
+        rm -f "$file"
+      else
+        warn "Skipping cleanup for non-temporary path: $file"
+      fi
     fi
   done
 }
@@ -30,6 +36,9 @@ SKIP_PYTHON=0
 SKIP_ZSH=0
 ONLY_PACKAGES=0
 VERBOSE=0
+DOWNLOAD_RETRY_ATTEMPTS=2
+RETRY_DELAY_SECONDS=3
+DOWNLOAD_TIMEOUT_SECONDS=120
 
 OS_TYPE=""
 ZSH_AUTOSUGGESTIONS_COMMIT="1d85c692615a25fe2293bdd44b34c217d5d2bf04"
@@ -208,7 +217,10 @@ verify_checksum() {
 
 create_temp_file() {
   local temp_file
-  temp_file="$(mktemp)"
+  if ! temp_file="$(mktemp)"; then
+    warn "Failed to create temporary file."
+    return 1
+  fi
   TEMP_FILES+=("$temp_file")
   printf '%s\n' "$temp_file"
 }
@@ -217,7 +229,7 @@ download_file_secure() {
   local url="$1"
   local destination="$2"
 
-  retry 2 3 curl \
+  retry "$DOWNLOAD_RETRY_ATTEMPTS" "$RETRY_DELAY_SECONDS" curl \
     --fail \
     --silent \
     --show-error \
@@ -225,7 +237,7 @@ download_file_secure() {
     --proto '=https' \
     --tlsv1.2 \
     --connect-timeout 15 \
-    --max-time 120 \
+    --max-time "$DOWNLOAD_TIMEOUT_SECONDS" \
     "$url" \
     -o "$destination"
 }
@@ -260,8 +272,7 @@ install_pinned_git_repo() {
     git -C "$target_dir" remote add origin "$repo_url"
   fi
 
-  # retry attempts=2, delay_seconds=3 for transient network failures.
-  if ! retry 2 3 git -C "$target_dir" fetch --depth 1 origin "$commit_sha"; then
+  if ! retry "$DOWNLOAD_RETRY_ATTEMPTS" "$RETRY_DELAY_SECONDS" git -C "$target_dir" fetch --depth 1 origin "$commit_sha"; then
     warn "Failed to fetch pinned commit $commit_sha for $label."
     return 1
   fi
