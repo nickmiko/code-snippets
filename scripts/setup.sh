@@ -527,13 +527,13 @@ install_oh_my_zsh_and_plugins() {
     log "Oh My Zsh already installed."
   else
     log "Installing Oh My Zsh..."
-    # Pinned to master branch. If the checksum fails after an upstream update:
-    #   1. Review the diff at https://github.com/ohmyzsh/ohmyzsh/commits/master/tools/install.sh
+    # Pinned to commit 51e98fadc9d09b0504ce6964e4008c53e9ac1cbb. To intentionally upgrade:
+    #   1. Review newer changes at https://github.com/ohmyzsh/ohmyzsh/commits/master/tools/install.sh
     #   2. Confirm the changes are legitimate before trusting the new script.
     #   3. Update the SHA-256 below: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sha256sum
     local omz_installer omz_sha256="95118b50d062198597e2b73d3a57b609fd95ca68cdc86faf4460d955f0172b61"
     omz_installer=$(mktemp)
-    retry 2 3 curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -o "$omz_installer"
+    retry 2 3 curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/51e98fadc9d09b0504ce6964e4008c53e9ac1cbb/tools/install.sh -o "$omz_installer"
     verify_checksum "$omz_installer" "$omz_sha256" "Oh My Zsh installer"
     chmod +x "$omz_installer"
     "$omz_installer" --unattended
@@ -636,13 +636,13 @@ EOF
 
   # Fresh install path
   log "Installing pyenv..."
-  # Pinned to pyenv-installer master branch. If the checksum fails after an upstream update:
-  #   1. Review the diff at https://github.com/pyenv/pyenv-installer/commits/master/bin/pyenv-installer
+  # Pinned to commit 63a9e6a216796aeba2535a3bac8e79ba5d95166d. To intentionally upgrade:
+  #   1. Review newer changes at https://github.com/pyenv/pyenv-installer/commits/master/bin/pyenv-installer
   #   2. Confirm the changes are legitimate before trusting the new script.
   #   3. Update the SHA-256 below: curl -fsSL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | sha256sum
   local pyenv_installer pyenv_sha256="4b0adf623a6205727163eb98610b6c5e63f23b99183948b874d867cd9b30ef13"
   pyenv_installer=$(mktemp)
-  retry 2 3 curl -fsSL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer -o "$pyenv_installer"
+  retry 2 3 curl -fsSL https://raw.githubusercontent.com/pyenv/pyenv-installer/63a9e6a216796aeba2535a3bac8e79ba5d95166d/bin/pyenv-installer -o "$pyenv_installer"
   verify_checksum "$pyenv_installer" "$pyenv_sha256" "pyenv installer"
   bash "$pyenv_installer"
   rm -f "$pyenv_installer"
@@ -688,6 +688,7 @@ bootstrap_python_environment() {
     log "pyenv virtualenv $PYENV_ENV_NAME already exists."
   fi
 
+  pyenv global "$PYENV_ENV_NAME"
   pyenv shell "$PYENV_ENV_NAME"
   pyenv rehash
 
@@ -766,13 +767,13 @@ setup_homebrew() {
     log "Homebrew already installed."
   else
     log "Installing Homebrew..."
-    # Pinned to Homebrew install HEAD. If the checksum fails after an upstream update:
-    #   1. Review the diff at https://github.com/Homebrew/install/commits/HEAD/install.sh
+    # Pinned to commit 16be749c00897e40ecbf09e21f7f258706961b7b. To intentionally upgrade:
+    #   1. Review newer changes at https://github.com/Homebrew/install/commits/main/install.sh
     #   2. Confirm the changes are legitimate before trusting the new script.
     #   3. Update the SHA-256 below: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | sha256sum
     local brew_installer brew_sha256="99287f194a8b3c9e6b0203a11a5fa54518be57209343e6bb954dec4635796d9d"
     brew_installer=$(mktemp)
-    retry 2 3 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh -o "$brew_installer"
+    retry 2 3 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/16be749c00897e40ecbf09e21f7f258706961b7b/install.sh -o "$brew_installer"
     verify_checksum "$brew_installer" "$brew_sha256" "Homebrew installer"
     chmod +x "$brew_installer"
     /bin/bash "$brew_installer"
