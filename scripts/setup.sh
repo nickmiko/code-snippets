@@ -586,7 +586,12 @@ install_oh_my_zsh_and_plugins() {
     log "Oh My Zsh already installed."
   else
     log "Installing Oh My Zsh..."
-    retry 2 3 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    local omz_installer
+    omz_installer=$(mktemp)
+    retry 2 3 curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -o "$omz_installer"
+    chmod +x "$omz_installer"
+    "$omz_installer" --unattended
+    rm -f "$omz_installer"
   fi
 
   local zsh_custom="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
@@ -594,12 +599,12 @@ install_oh_my_zsh_and_plugins() {
 
   if [[ ! -d "$zsh_custom/plugins/zsh-autosuggestions" ]]; then
     log "Installing zsh-autosuggestions..."
-    retry 2 3 git clone https://github.com/zsh-users/zsh-autosuggestions "$zsh_custom/plugins/zsh-autosuggestions"
+    retry 2 3 git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions "$zsh_custom/plugins/zsh-autosuggestions"
   fi
 
   if [[ ! -d "$zsh_custom/plugins/zsh-syntax-highlighting" ]]; then
     log "Installing zsh-syntax-highlighting..."
-    retry 2 3 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$zsh_custom/plugins/zsh-syntax-highlighting"
+    retry 2 3 git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git "$zsh_custom/plugins/zsh-syntax-highlighting"
   fi
 }
 
@@ -676,10 +681,8 @@ install_pyenv_if_missing() {
     warn "Attempting to use existing installation..."
 
     if [[ -x "$PYENV_ROOT/bin/pyenv" ]]; then
-      if command -v pyenv >/dev/null 2>&1; then
-        log "Found existing pyenv at $PYENV_ROOT."
-        return
-      fi
+      log "Found existing pyenv at $PYENV_ROOT."
+      return
     fi
 
     cat >&2 <<EOF
@@ -694,7 +697,11 @@ EOF
 
   # Fresh install path
   log "Installing pyenv..."
-  retry 2 3 bash -c 'curl -fsSL https://pyenv.run | bash'
+  local pyenv_installer
+  pyenv_installer=$(mktemp)
+  retry 2 3 curl -fsSL https://pyenv.run -o "$pyenv_installer"
+  bash "$pyenv_installer"
+  rm -f "$pyenv_installer"
 
   # Ensure current shell can see pyenv immediately
   export PATH="$PYENV_ROOT/bin:$PATH"
@@ -918,7 +925,12 @@ setup_homebrew() {
     log "Homebrew already installed."
   else
     log "Installing Homebrew..."
-    retry 2 3 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    local brew_installer
+    brew_installer=$(mktemp)
+    retry 2 3 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh -o "$brew_installer"
+    chmod +x "$brew_installer"
+    /bin/bash "$brew_installer"
+    rm -f "$brew_installer"
   fi
 
   # Load brew shellenv for current session and future shells.
