@@ -225,7 +225,7 @@ download_file_secure() {
     --proto '=https' \
     --tlsv1.2 \
     --connect-timeout 15 \
-    --max-time 300 \
+    --max-time 120 \
     "$url" \
     -o "$destination"
 }
@@ -239,6 +239,9 @@ install_pinned_git_repo() {
 
   if [[ -d "$target_dir/.git" ]]; then
     current_sha="$(git -C "$target_dir" rev-parse HEAD 2>/dev/null || true)"
+    if [[ -z "$current_sha" ]]; then
+      warn "Could not determine current commit for $label; forcing re-fetch."
+    fi
     if [[ "$current_sha" == "$commit_sha" ]]; then
       [[ "$VERBOSE" -eq 1 ]] && log "$label already at pinned commit."
       return 0
@@ -258,7 +261,10 @@ install_pinned_git_repo() {
   fi
 
   retry 2 3 git -C "$target_dir" fetch --depth 1 origin "$commit_sha"
-  git -C "$target_dir" checkout --detach FETCH_HEAD >/dev/null 2>&1
+  if ! git -C "$target_dir" checkout --detach FETCH_HEAD >/dev/null; then
+    warn "Failed to check out pinned commit for $label."
+    return 1
+  fi
 }
 
 detect_os() {
