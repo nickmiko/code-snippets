@@ -141,9 +141,14 @@ retry() {
   local attempts="$1"; shift
   local delay="$1"; shift
   local n=1
-  until "$@"; do
+
+  while true; do
+    if "$@"; then
+      return 0
+    fi
+    local status=$?
     if (( n >= attempts )); then
-      return 1
+      return "$status"
     fi
     warn "Command failed (attempt $n/$attempts). Retrying in $delay s..."
     sleep "$delay"
