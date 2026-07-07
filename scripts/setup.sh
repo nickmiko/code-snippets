@@ -16,7 +16,6 @@ cleanup_temp_files() {
       else
         warn "Skipping cleanup for non-temporary path: $file"
       fi
-    fi
   done
 }
 
