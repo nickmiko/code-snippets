@@ -271,8 +271,13 @@ install_pinned_git_repo() {
       return 0
     fi
     log "Updating $label to pinned commit..."
-    if ! git -C "$target_dir" remote get-url origin >/dev/null 2>&1; then
+    local origin_url=""
+    origin_url="$(git -C "$target_dir" remote get-url origin 2>/dev/null || true)"
+    if [[ -z "$origin_url" ]]; then
       git -C "$target_dir" remote add origin "$repo_url"
+    elif [[ "$origin_url" != "$repo_url" ]]; then
+      warn "$label origin URL mismatch ($origin_url); resetting to $repo_url"
+      git -C "$target_dir" remote set-url origin "$repo_url"
     fi
   elif [[ -e "$target_dir" ]]; then
     warn "$target_dir exists but is not a git repository; skipping $label install."
