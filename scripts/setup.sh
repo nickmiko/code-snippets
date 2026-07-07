@@ -4,6 +4,24 @@ set -Eeuo pipefail
 
 trap 'echo "❌ Error on line $LINENO: $BASH_COMMAND" >&2' ERR
 
+TEMP_FILES=()
+
+cleanup_temp_files() {
+  local file
+  local tmp_root="${TMPDIR:-/tmp}"
+  [[ "$tmp_root" != */ ]] && tmp_root="${tmp_root}/"
+  for file in "${TEMP_FILES[@]:-}"; do
+    if [[ -n "$file" && -f "$file" ]]; then
+        rm -f -- "$file"
+      else
+        warn "Skipping cleanup for non-temporary path: $file"
+      fi
+    fi
+  done
+}
+
+trap cleanup_temp_files EXIT
+
 # -----------------------------
 # Defaults / configuration
 # -----------------------------
@@ -17,8 +35,13 @@ SKIP_PYTHON=0
 SKIP_ZSH=0
 ONLY_PACKAGES=0
 VERBOSE=0
+DOWNLOAD_RETRY_ATTEMPTS=2
+RETRY_DELAY_SECONDS=3
+DOWNLOAD_TIMEOUT_SECONDS=120
 
 OS_TYPE=""
+ZSH_AUTOSUGGESTIONS_COMMIT="1d85c692615a25fe2293bdd44b34c217d5d2bf04"
+ZSH_SYNTAX_HIGHLIGHTING_COMMIT="85919cd1ffa7d2d5412f6d3fe437ebdbeeec4fc5"
 
 brew_formulas=(
   git
@@ -189,6 +212,93 @@ verify_checksum() {
   fi
   [[ "$VERBOSE" -eq 1 ]] && log "✔ Checksum verified for $label"
   return 0
+}
+
+create_temp_file() {
+  local temp_file
+  if ! temp_file="$(mktemp "${TMPDIR:-/tmp}/setup.XXXXXXXXXX")"; then
+    warn "Failed to create temporary file."
+    return 1
+  fi
+  TEMP_FILES+=("$temp_file")
+  printf '%s\n' "$temp_file"
+}
+
+download_file_secure() {
+  local url="$1"
+  local destination="$2"
+
+  if retry "$DOWNLOAD_RETRY_ATTEMPTS" "$RETRY_DELAY_SECONDS" curl \
+    --fail \
+    --silent \
+    --show-error \
+    --location \
+    --proto '=https' \
+    --tlsv1.2 \
+    --connect-timeout 15 \
+    --max-time "$DOWNLOAD_TIMEOUT_SECONDS" \
+    "$url" \
+    -o "$destination"; then
+    return 0
+  fi
+
+  warn "Failed to download $url after retries."
+  return 1
+}
+
+# Install a git repository at a pinned commit.
+# Args:
+#   1) repo_url    Source repository URL
+#   2) target_dir  Destination directory
+#   3) commit_sha  Exact commit SHA to fetch and checkout
+#   4) label       Optional display name for logging
+# Returns:
+#   0 on success, non-zero on failure.
+install_pinned_git_repo() {
+  local repo_url="$1"
+  local target_dir="$2"
+  local commit_sha="$3"
+  local label="${4:-repository}"
+  local current_sha=""
+
+  if [[ -d "$target_dir/.git" ]]; then
+    current_sha="$(git -C "$target_dir" rev-parse HEAD 2>/dev/null || true)"
+    if [[ -z "$current_sha" ]]; then
+      warn "Could not determine current commit for $label; forcing re-fetch."
+    fi
+    if [[ -n "$current_sha" && "$current_sha" == "$commit_sha" ]]; then
+      [[ "$VERBOSE" -eq 1 ]] && log "$label already at pinned commit."
+      return 0
+    fi
+    log "Updating $label to pinned commit..."
+    local origin_url=""
+    origin_url="$(git -C "$target_dir" remote get-url origin 2>/dev/null || true)"
+    if [[ -z "$origin_url" ]]; then
+      git -C "$target_dir" remote add origin "$repo_url"
+    elif [[ "$origin_url" != "$repo_url" ]]; then
+      warn "$label origin URL mismatch ($origin_url); resetting to $repo_url"
+      git -C "$target_dir" remote set-url origin "$repo_url"
+    fi
+  elif [[ -e "$target_dir" ]]; then
+    warn "$target_dir exists but is not a git repository; skipping $label install (continuing)."
+    return 0
+    log "Installing $label..."
+    mkdir -p "$target_dir"
+    if ! git -C "$target_dir" init -q; then
+      warn "Failed to initialize git repo for $label at $target_dir."
+      return 1
+    fi
+    git -C "$target_dir" remote add origin "$repo_url"
+  fi
+
+  if ! retry "$DOWNLOAD_RETRY_ATTEMPTS" "$RETRY_DELAY_SECONDS" git -C "$target_dir" fetch --depth 1 origin "$commit_sha"; then
+    warn "Failed to fetch pinned commit $commit_sha for $label."
+    return 1
+  fi
+  if ! git -C "$target_dir" checkout --force --detach FETCH_HEAD; then
+    warn "Failed to check out pinned commit for $label."
+    return 1
+  fi
 }
 
 detect_os() {
@@ -533,26 +643,31 @@ install_oh_my_zsh_and_plugins() {
     #   2. Confirm the changes are legitimate before trusting the new script.
     #   3. Update the SHA-256 below: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sha256sum
     local omz_installer omz_sha256="95118b50d062198597e2b73d3a57b609fd95ca68cdc86faf4460d955f0172b61"
-    omz_installer=$(mktemp)
-    retry 2 3 curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/51e98fadc9d09b0504ce6964e4008c53e9ac1cbb/tools/install.sh -o "$omz_installer"
+    omz_installer=$(create_temp_file)
+    download_file_secure "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/51e98fadc9d09b0504ce6964e4008c53e9ac1cbb/tools/install.sh" "$omz_installer"
     verify_checksum "$omz_installer" "$omz_sha256" "Oh My Zsh installer"
     chmod +x "$omz_installer"
     "$omz_installer" --unattended
-    rm -f "$omz_installer"
   fi
 
   local zsh_custom="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
   mkdir -p "$zsh_custom/plugins"
 
-  if [[ ! -d "$zsh_custom/plugins/zsh-autosuggestions" ]]; then
-    log "Installing zsh-autosuggestions..."
-    retry 2 3 git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions "$zsh_custom/plugins/zsh-autosuggestions"
-  fi
+  # Pinned to commit 1d85c692615a25fe2293bdd44b34c217d5d2bf04.
+  # To intentionally upgrade, review upstream changes and update ZSH_AUTOSUGGESTIONS_COMMIT.
+  install_pinned_git_repo \
+    "https://github.com/zsh-users/zsh-autosuggestions.git" \
+    "$zsh_custom/plugins/zsh-autosuggestions" \
+    "$ZSH_AUTOSUGGESTIONS_COMMIT" \
+    "zsh-autosuggestions"
 
-  if [[ ! -d "$zsh_custom/plugins/zsh-syntax-highlighting" ]]; then
-    log "Installing zsh-syntax-highlighting..."
-    retry 2 3 git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git "$zsh_custom/plugins/zsh-syntax-highlighting"
-  fi
+  # Pinned to commit 85919cd1ffa7d2d5412f6d3fe437ebdbeeec4fc5.
+  # To intentionally upgrade, review upstream changes and update ZSH_SYNTAX_HIGHLIGHTING_COMMIT.
+  install_pinned_git_repo \
+    "https://github.com/zsh-users/zsh-syntax-highlighting.git" \
+    "$zsh_custom/plugins/zsh-syntax-highlighting" \
+    "$ZSH_SYNTAX_HIGHLIGHTING_COMMIT" \
+    "zsh-syntax-highlighting"
 }
 
 ensure_zsh_plugins() {
@@ -642,11 +757,10 @@ EOF
   #   2. Confirm the changes are legitimate before trusting the new script.
   #   3. Update the SHA-256 below: curl -fsSL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | sha256sum
   local pyenv_installer pyenv_sha256="4b0adf623a6205727163eb98610b6c5e63f23b99183948b874d867cd9b30ef13"
-  pyenv_installer=$(mktemp)
-  retry 2 3 curl -fsSL https://raw.githubusercontent.com/pyenv/pyenv-installer/63a9e6a216796aeba2535a3bac8e79ba5d95166d/bin/pyenv-installer -o "$pyenv_installer"
+  pyenv_installer=$(create_temp_file)
+  download_file_secure "https://raw.githubusercontent.com/pyenv/pyenv-installer/63a9e6a216796aeba2535a3bac8e79ba5d95166d/bin/pyenv-installer" "$pyenv_installer"
   verify_checksum "$pyenv_installer" "$pyenv_sha256" "pyenv installer"
   bash "$pyenv_installer"
-  rm -f "$pyenv_installer"
 
   # Ensure current shell can see pyenv immediately
   export PATH="$PYENV_ROOT/bin:$PATH"
@@ -772,12 +886,11 @@ setup_homebrew() {
     #   2. Confirm the changes are legitimate before trusting the new script.
     #   3. Update the SHA-256 below: curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | sha256sum
     local brew_installer brew_sha256="99287f194a8b3c9e6b0203a11a5fa54518be57209343e6bb954dec4635796d9d"
-    brew_installer=$(mktemp)
-    retry 2 3 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/16be749c00897e40ecbf09e21f7f258706961b7b/install.sh -o "$brew_installer"
+    brew_installer=$(create_temp_file)
+    download_file_secure "https://raw.githubusercontent.com/Homebrew/install/16be749c00897e40ecbf09e21f7f258706961b7b/install.sh" "$brew_installer"
     verify_checksum "$brew_installer" "$brew_sha256" "Homebrew installer"
     chmod +x "$brew_installer"
     /bin/bash "$brew_installer"
-    rm -f "$brew_installer"
   fi
 
   # Load brew shellenv for current session and future shells.
