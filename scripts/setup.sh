@@ -216,7 +216,7 @@ verify_checksum() {
 
 create_temp_file() {
   local temp_file
-  if ! temp_file="$(mktemp)"; then
+  if ! temp_file="$(mktemp "${TMPDIR:-/tmp}/setup.XXXXXXXXXX")"; then
     warn "Failed to create temporary file."
     return 1
   fi
@@ -296,7 +296,7 @@ install_pinned_git_repo() {
     warn "Failed to fetch pinned commit $commit_sha for $label."
     return 1
   fi
-  if ! git -C "$target_dir" checkout --detach FETCH_HEAD; then
+  if ! git -C "$target_dir" checkout --force --detach FETCH_HEAD; then
     warn "Failed to check out pinned commit for $label."
     return 1
   fi
