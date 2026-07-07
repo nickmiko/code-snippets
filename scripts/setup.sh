@@ -262,13 +262,11 @@ install_pinned_git_repo() {
 
   if [[ -d "$target_dir/.git" ]]; then
     current_sha="$(git -C "$target_dir" rev-parse HEAD 2>/dev/null || true)"
-    if [[ -z "$current_sha" ]]; then
-      warn "Could not determine current commit for $label; forcing re-fetch."
-    fi
     if [[ -n "$current_sha" && "$current_sha" == "$commit_sha" ]]; then
       [[ "$VERBOSE" -eq 1 ]] && log "$label already at pinned commit."
       return 0
     fi
+
     log "Updating $label to pinned commit..."
     local origin_url=""
     origin_url="$(git -C "$target_dir" remote get-url origin 2>/dev/null || true)"
@@ -278,9 +276,12 @@ install_pinned_git_repo() {
       warn "$label origin URL mismatch ($origin_url); resetting to $repo_url"
       git -C "$target_dir" remote set-url origin "$repo_url"
     fi
+
   elif [[ -e "$target_dir" ]]; then
     warn "$target_dir exists but is not a git repository; skipping $label install (continuing)."
     return 0
+
+  else
     log "Installing $label..."
     mkdir -p "$target_dir"
     if ! git -C "$target_dir" init -q; then
@@ -290,14 +291,18 @@ install_pinned_git_repo() {
     git -C "$target_dir" remote add origin "$repo_url"
   fi
 
-  if ! retry "$DOWNLOAD_RETRY_ATTEMPTS" "$RETRY_DELAY_SECONDS" git -C "$target_dir" fetch --depth 1 origin "$commit_sha"; then
+  if ! retry "$DOWNLOAD_RETRY_ATTEMPTS" "$RETRY_DELAY_SECONDS" \
+      git -C "$target_dir" fetch --depth 1 origin "$commit_sha"; then
     warn "Failed to fetch pinned commit $commit_sha for $label."
     return 1
   fi
+
   if ! git -C "$target_dir" checkout --force --detach FETCH_HEAD; then
     warn "Failed to check out pinned commit for $label."
     return 1
   fi
+
+  return 0
 }
 
 detect_os() {
