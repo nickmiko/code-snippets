@@ -280,9 +280,8 @@ install_pinned_git_repo() {
       git -C "$target_dir" remote set-url origin "$repo_url"
     fi
   elif [[ -e "$target_dir" ]]; then
-    warn "$target_dir exists but is not a git repository; skipping $label install."
-    return 1
-  else
+    warn "$target_dir exists but is not a git repository; skipping $label install (continuing)."
+    return 0
     log "Installing $label..."
     mkdir -p "$target_dir"
     if ! git -C "$target_dir" init -q; then
