@@ -262,6 +262,9 @@ install_pinned_git_repo() {
 
   if [[ -d "$target_dir/.git" ]]; then
     current_sha="$(git -C "$target_dir" rev-parse HEAD 2>/dev/null || true)"
+    if [[ -z "$current_sha" ]]; then
+      warn "Could not determine current commit for $label; forcing re-fetch."
+    fi
     if [[ -n "$current_sha" && "$current_sha" == "$commit_sha" ]]; then
       [[ "$VERBOSE" -eq 1 ]] && log "$label already at pinned commit."
       return 0
@@ -292,7 +295,7 @@ install_pinned_git_repo() {
   fi
 
   if ! retry "$DOWNLOAD_RETRY_ATTEMPTS" "$RETRY_DELAY_SECONDS" \
-      git -C "$target_dir" fetch --depth 1 origin "$commit_sha"; then
+    git -C "$target_dir" fetch --depth 1 origin "$commit_sha"; then
     warn "Failed to fetch pinned commit $commit_sha for $label."
     return 1
   fi
