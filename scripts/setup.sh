@@ -12,8 +12,7 @@ cleanup_temp_files() {
   [[ "$tmp_root" != */ ]] && tmp_root="${tmp_root}/"
   for file in "${TEMP_FILES[@]:-}"; do
     if [[ -n "$file" && -f "$file" ]]; then
-      if [[ "$file" == "$tmp_root"* || "$file" == "/tmp/"* ]]; then
-        rm -f "$file"
+        rm -f -- "$file"
       else
         warn "Skipping cleanup for non-temporary path: $file"
       fi
