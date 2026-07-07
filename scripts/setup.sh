@@ -10,7 +10,7 @@ cleanup_temp_files() {
   local file
   local tmp_root="${TMPDIR:-/tmp}"
   [[ "$tmp_root" != */ ]] && tmp_root="${tmp_root}/"
-  for file in "${TEMP_FILES[@]:-}"; do
+  for file in "${TEMP_FILES[@]}"; do
     if [[ -n "$file" && -f "$file" ]]; then
         rm -f -- "$file"
       else
