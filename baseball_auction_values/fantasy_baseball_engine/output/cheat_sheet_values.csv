@@ -1,0 +1,1473 @@
+Tier,Pos_Tier,Primary_Pos,Name,Profile,Draft_Day_Inflation_Value,Target
+1,SP 1,SP,Tarik Skubal,WHIP Specialist,90.26,False
+1,SP 1,SP,Paul Skenes,ERA Specialist,78.84,False
+1,OF 1,OF,Aaron Judge,OBP Specialist,76.22,False
+1,OF 1,OF,Juan Soto,OBP Specialist,75.25,True
+1,SP 7,SP,Shohei Ohtani,OBP Specialist,74.21,False
+1,SP 1,SP,Garrett Crochet,ERA Specialist,67.35,False
+1,SP 2,SP,Bryan Woo,WHIP Specialist,56.16,False
+1,OF 2,OF,Ronald Acuña Jr.,OBP Specialist,50.65,False
+2,SP 2,SP,Cristopher Sánchez,ERA Specialist,49.45,False
+2,SP 2,SP,Chris Sale,WHIP Specialist,46.64,False
+2,SP 2,SP,Logan Gilbert,WHIP Specialist,45.78,False
+2,SP 2,SP,Logan Webb,ERA Specialist,45.62,False
+2,OF 2,OF,Kyle Tucker,OBP Specialist,44.81,False
+2,SP 2,SP,Yoshinobu Yamamoto,ERA Specialist,42.62,False
+2,3B 1,3B,José Ramírez,SB Specialist,42.61,True
+2,SP 2,SP,Max Fried,ERA Specialist,41.63,False
+2,SP 2,SP,Jacob deGrom,WHIP Specialist,41.28,False
+2,OF 3,OF,Fernando Tatis Jr.,OBP Specialist,39.0,False
+2,OF 3,OF,Kyle Schwarber,HR Specialist,38.7,False
+2,SP 3,SP,Hunter Brown,QS+W Specialist,37.74,False
+2,SS 2,SS,Bobby Witt Jr.,SB Specialist,36.13,True
+2,C 1,C,Cal Raleigh,HR Specialist,34.35,False
+3,SP 3,SP,George Kirby,WHIP Specialist,33.8,False
+2,OF 3,OF,Corbin Carroll,SB Specialist,33.79,False
+3,SP 3,SP,Joe Ryan,WHIP Specialist,33.63,False
+2,OF 3,OF,Julio Rodríguez,SB Specialist,33.61,False
+2,1B 1,1B,Vladimir Guerrero Jr.,OBP Specialist,33.59,True
+3,SP 3,SP,Jesús Luzardo,QS+W Specialist,33.53,False
+3,SP 3,SP,Cole Ragans,ERA Specialist,33.16,False
+3,SP 3,SP,Framber Valdez,QS+W Specialist,31.72,False
+3,2B 1,2B,Ketel Marte,OBP Specialist,30.23,False
+3,OF 4,OF,Yordan Alvarez,OBP Specialist,30.2,False
+3,SP 4,SP,Zack Wheeler,WHIP Specialist,29.7,False
+3,RP 1,RP,Mason Miller,SV+HLD Specialist,28.76,False
+3,3B 3,3B,Rafael Devers,OBP Specialist,28.67,False
+3,SS 2,SS,Elly De La Cruz,SB Specialist,28.2,False
+3,SS 2,SS,Gunnar Henderson,OBP Specialist,27.15,True
+4,SP 4,SP,Nathan Eovaldi,WHIP Specialist,26.48,False
+3,3B 3,3B,Jazz Chisholm Jr.,SB Specialist,25.5,False
+4,SP 4,SP,Nick Pivetta,WHIP Specialist,24.64,False
+3,OF 4,OF,Brent Rooker,HR Specialist,24.36,True
+4,OF 4,OF,Wyatt Langford,Balanced,24.13,False
+4,SP 4,SP,Sonny Gray,QS+W Specialist,24.07,False
+4,RP 2,RP,Cade Smith,SV+HLD Specialist,23.49,False
+4,SP 4,SP,Freddy Peralta,K Specialist,23.29,False
+4,3B 4,3B,Junior Caminero,HR Specialist,23.06,False
+4,RP 2,RP,Edwin Díaz,SV+HLD Specialist,22.84,False
+4,OF 4,OF,James Wood,OBP Specialist,22.84,False
+4,SP 4,SP,Brandon Woodruff,WHIP Specialist,22.45,False
+4,1B 2,1B,Bryce Harper,OBP Specialist,22.27,False
+4,SP 4,SP,Dylan Cease,K Specialist,22.05,True
+4,C 2,C,William Contreras,OBP Specialist,21.77,False
+4,SP 4,SP,Kevin Gausman,QS+W Specialist,21.32,False
+4,DH 3,DH,Marcell Ozuna,Balanced,20.68,False
+4,SS 3,SS,Mookie Betts,OBP Specialist,20.5,False
+4,SP 5,SP,Drew Rasmussen,WHIP Specialist,20.34,True
+4,SP 5,SP,Luis Castillo,QS+W Specialist,19.81,False
+4,OF 5,OF,Randy Arozarena,Balanced,19.61,False
+4,RP 2,RP,Jhoan Duran,SV+HLD Specialist,18.9,False
+4,OF 5,OF,Roman Anthony,OBP Specialist,18.25,False
+5,RP 3,RP,Andrés Muñoz,SV+HLD Specialist,17.9,False
+4,1B 3,1B,Freddie Freeman,OBP Specialist,17.43,False
+4,1B 3,1B,Nick Kurtz,HR Specialist,17.38,False
+4,OF 5,OF,Jackson Chourio,Balanced,16.99,False
+5,SP 5,SP,Ranger Suarez,QS+W Specialist,16.87,False
+4,2B 3,2B,Brice Turang,SB Specialist,16.86,False
+5,SP 5,SP,Shota Imanaga,WHIP Specialist,16.73,False
+5,C 3,C,Iván Herrera,OBP Specialist,16.44,True
+5,SP 5,SP,Blake Snell,ERA Specialist,16.23,False
+5,1B 4,1B,Pete Alonso,HR Specialist,16.22,False
+5,OF 5,OF,George Springer,Balanced,16.01,False
+5,C 4,C,Willson Contreras,Balanced,15.87,False
+5,SS 4,SS,Francisco Lindor,R Specialist,15.66,False
+5,2B 3,2B,Maikel Garcia,SB Specialist,15.58,False
+5,SP 5,SP,Michael King,K Specialist,15.51,True
+5,SP 5,SP,Kyle Bradish,WHIP Specialist,15.22,True
+5,RP 3,RP,Devin Williams,SV+HLD Specialist,15.14,False
+5,SP 5,SP,Chase Burns,WHIP Specialist,14.99,False
+5,3B 5,3B,Manny Machado,Balanced,14.82,False
+5,C 4,C,Will Smith,OBP Specialist,14.48,False
+5,RP 3,RP,Bryan Abreu,SV+HLD Specialist,14.18,False
+5,SP 5,SP,Ryan Pepiot,QS+W Specialist,14.05,False
+5,SP 5,SP,Tyler Glasnow,K Specialist,14.01,False
+5,SP 5,SP,Eury Pérez,WHIP Specialist,13.76,False
+5,SS 5,SS,Zach Neto,SB Specialist,13.69,True
+5,SP 5,SP,Matthew Boyd,QS+W Specialist,13.67,False
+5,RP 4,RP,Griffin Jax,SV+HLD Specialist,13.5,False
+5,SP 5,SP,Tanner Bibee,QS+W Specialist,13.37,False
+5,1B 4,1B,Matt Olson,HR Specialist,13.35,False
+5,OF 5,OF,Christian Yelich,Balanced,13.35,False
+5,OF 5,OF,Seiya Suzuki,Balanced,13.26,True
+5,3B 6,3B,Matt Chapman,Balanced,12.95,True
+5,SP 5,SP,Spencer Strider,K Specialist,12.85,False
+5,3B 6,3B,Alex Bregman,Balanced,12.73,False
+5,SS 5,SS,Geraldo Perdomo,OBP Specialist,12.33,False
+5,SP 5,SP,Emmet Sheehan,WHIP Specialist,12.25,False
+5,SS 5,SS,Trea Turner,SB Specialist,12.11,False
+5,2B 4,2B,Luke Keaschall,Balanced,12.04,False
+5,SP 5,SP,Nick Lodolo,K Specialist,11.56,False
+5,SP 6,SP,Nolan McLean,QS+W Specialist,11.46,False
+5,OF 6,OF,Riley Greene,HR Specialist,11.38,False
+5,OF 6,OF,Pete Crow-Armstrong,SB Specialist,11.36,False
+5,OF 6,OF,Ian Happ,Balanced,11.26,True
+5,RP 4,RP,David Bednar,SV+HLD Specialist,11.0,False
+5,SS 5,SS,Oneil Cruz,SB Specialist,10.94,False
+5,C 5,C,Shea Langeliers,HR Specialist,10.68,False
+5,RP 4,RP,Aroldis Chapman,SV+HLD Specialist,10.42,False
+5,OF 6,OF,Jarren Duran,Balanced,10.4,False
+5,3B 6,3B,Austin Riley,HR Specialist,10.33,False
+5,RP 4,RP,Abner Uribe,SV+HLD Specialist,10.26,False
+5,2B 4,2B,Jose Altuve,Balanced,10.25,False
+5,2B 4,2B,Gleyber Torres,Balanced,10.2,False
+5,OF 6,OF,Jakob Marsee,SB Specialist,10.13,False
+5,OF 6,OF,Taylor Ward,Balanced,9.92,False
+5,3B 6,3B,Eugenio Suárez,HR Specialist,9.27,False
+5,OF 6,OF,Byron Buxton,HR Specialist,9.0,True
+6,SP 6,SP,MacKenzie Gore,K Specialist,8.7,False
+6,SP 6,SP,Jack Flaherty,K Specialist,8.32,False
+6,2B 5,2B,Nico Hoerner,SB Specialist,8.1,False
+6,SS 6,SS,Corey Seager,OBP Specialist,7.93,True
+6,DH 6,DH,Joc Pederson,Balanced,7.91,False
+6,1B 6,1B,Cody Bellinger,Balanced,7.4,False
+6,SP 6,SP,Kris Bubic,Balanced,6.89,False
+6,SP 6,SP,José Soriano,QS+W Specialist,6.86,False
+6,1B 6,1B,Josh Naylor,Balanced,6.8,False
+6,SP 6,SP,Aaron Nola,QS+W Specialist,6.71,True
+6,OF 6,OF,Brandon Nimmo,Balanced,6.71,True
+6,SP 6,SP,Carlos Rodón,QS+W Specialist,6.69,False
+6,1B 6,1B,Michael Busch,HR Specialist,6.66,False
+6,C 5,C,Hunter Goodman,HR Specialist,6.65,False
+6,1B 6,1B,Yandy Díaz,OBP Specialist,6.29,False
+6,C 6,C,Drake Baldwin,Balanced,6.21,True
+6,RP 5,RP,Raisel Iglesias,SV+HLD Specialist,6.14,False
+6,SP 6,SP,Shane McClanahan,Balanced,5.76,False
+6,SP 6,SP,Merrill Kelly,QS+W Specialist,5.38,False
+6,OF 6,OF,Jackson Merrill,Balanced,5.23,False
+6,RP 6,RP,Jeff Hoffman,SV+HLD Specialist,5.2,False
+6,OF 6,OF,Steven Kwan,Balanced,5.08,False
+6,OF 6,OF,Kyle Stowers,Balanced,5.04,False
+6,OF 6,OF,Mike Trout,Balanced,4.59,True
+6,SP 6,SP,Zac Gallen,QS+W Specialist,4.31,True
+6,2B 6,2B,Bryson Stott,Balanced,4.27,False
+6,2B 6,2B,Xander Bogaerts,Balanced,4.26,False
+6,RP 6,RP,Jeremiah Estrada,SV+HLD Specialist,3.93,True
+6,RP 6,RP,Ryan Helsley,SV+HLD Specialist,3.7,False
+6,SP 6,SP,Gavin Williams,K Specialist,3.67,False
+6,RP 6,RP,Trevor Megill,SV+HLD Specialist,3.47,False
+6,C 6,C,Adley Rutschman,Balanced,3.43,False
+6,SP 6,SP,Sandy Alcantara,QS+W Specialist,3.35,True
+6,RP 6,RP,Garrett Cleavinger,SV+HLD Specialist,3.33,False
+6,RP 6,RP,Garrett Whitlock,SV+HLD Specialist,3.15,False
+6,SP 6,SP,Trey Yesavage,Balanced,2.65,False
+6,SP 6,SP,Joe Musgrove,Balanced,2.64,False
+6,SP 6,SP,Andrew Abbott,QS+W Specialist,2.53,False
+6,SS 6,SS,Willy Adames,Balanced,2.51,False
+6,RP 6,RP,Daniel Palencia,SV+HLD Specialist,2.5,False
+6,C 6,C,Salvador Perez,Balanced,2.39,False
+6,2B 6,2B,Willi Castro,Balanced,2.25,True
+6,SP 6,SP,Shane Baz,QS+W Specialist,2.18,False
+6,RP 6,RP,Josh Hader,SV+HLD Specialist,2.1,False
+6,SP 6,SP,Sean Manaea,Balanced,2.08,False
+6,2B 6,2B,Brendan Donovan,Balanced,1.73,False
+6,SP 6,SP,Edward Cabrera,Balanced,1.61,False
+6,RP 6,RP,Pete Fairbanks,SV+HLD Specialist,1.55,False
+6,C 6,C,Agustín Ramírez,Balanced,1.39,False
+6,RP 6,RP,Grant Taylor,SV+HLD Specialist,1.19,False
+6,RP 6,RP,Robert Suarez,SV+HLD Specialist,1.16,False
+6,1B 6,1B,Vinnie Pasquantino,RBI Specialist,1.13,False
+6,OF 6,OF,Teoscar Hernández,Balanced,1.03,False
+6,1B 6,1B,Sal Stewart,Balanced,1.0,True
+6,SS 6,SS,Konnor Griffin,Balanced,1.0,True
+6,SP 6,SP,Matthew Liberatore,Balanced,1.0,True
+6,C 6,C,Carter Jensen,Balanced,1.0,True
+6,SP 6,SP,Connelly Early,Balanced,1.0,True
+6,2B 6,2B,Marcelo Mayer,Balanced,1.0,True
+6,OF 6,OF,Zac Veen,Balanced,1.0,True
+6,2B 6,2B,JJ Wetherholt,Balanced,1.0,True
+6,SP 6,SP,Kodai Senga,Balanced,1.0,True
+6,SP 6,SP,Bubba Chandler,Balanced,1.0,True
+6,OF 6,OF,Luis Robert Jr.,SB Specialist,1.0,True
+6,SS 6,SS,Dansby Swanson,Balanced,1.0,True
+7,RP 7,RP,Bradgley Rodriguez,Balanced,0.0,False
+7,RP 7,RP,Julian Fernández,Balanced,0.0,False
+7,RP 7,RP,Yerry De los Santos,Balanced,0.0,False
+7,RP 7,RP,Liam Hendriks,Balanced,0.0,False
+7,RP 7,RP,Cody Laweryson,Balanced,0.0,False
+7,RP 7,RP,Steven Cruz,Balanced,0.0,False
+7,RP 7,RP,Trevor Williams,Balanced,0.0,False
+7,RP 7,RP,Yariel Rodríguez,Balanced,0.0,False
+7,DH 7,DH,Ryan Vilade,Balanced,0.0,False
+7,RP 7,RP,Justin Bruihl,Balanced,0.0,False
+7,RP 7,RP,Brady Basso,Balanced,0.0,False
+7,RP 7,RP,Austin Warren,Balanced,0.0,False
+7,RP 7,RP,José Buttó,Balanced,0.0,False
+7,RP 7,RP,Gregory Santos,Balanced,0.0,False
+7,SP 7,SP,McCade Brown,Balanced,0.0,False
+7,RP 7,RP,Zak Kent,Balanced,0.0,False
+7,RP 7,RP,Jacob Webb,Balanced,0.0,False
+7,SP 7,SP,Cal Quantrill,Balanced,0.0,False
+7,RP 7,RP,David Morgan,Balanced,0.0,False
+7,SP 7,SP,Mitch Farris,Balanced,0.0,False
+7,OF 7,OF,Michael Conforto,Balanced,0.0,False
+7,RP 7,RP,Justin Lawrence,Balanced,0.0,False
+7,RP 7,RP,Coleman Crow,Balanced,0.0,False
+7,RP 7,RP,Josh White,Balanced,0.0,False
+7,RP 7,RP,Kai-Wei Teng,Balanced,0.0,False
+7,RP 7,RP,Keider Montero,Balanced,0.0,False
+7,RP 7,RP,Ricky Tiedemann,Balanced,0.0,False
+7,RP 7,RP,Shane Drohan,Balanced,0.0,False
+7,RP 7,RP,Kyle Hurt,Balanced,0.0,False
+7,RP 7,RP,Dauri Moreta,Balanced,0.0,False
+7,RP 7,RP,Brandon Williamson,Balanced,0.0,False
+7,RP 7,RP,Gavin Stone,Balanced,0.0,False
+7,RP 7,RP,Manuel Rodríguez,Balanced,0.0,False
+7,RP 7,RP,Hayden Wesneski,Balanced,0.0,False
+7,SP 7,SP,Austin Gomber,Balanced,0.0,False
+7,SP 7,SP,Brandon Walter,Balanced,0.0,False
+7,OF 7,OF,Griffin Conine,Balanced,0.0,False
+7,RP 7,RP,Nick Raquet,Balanced,0.0,False
+7,DH 7,DH,TJ Rumfield,Balanced,0.0,False
+7,RP 7,RP,Brandon Eisert,Balanced,0.0,False
+7,RP 7,RP,Ryan Fernandez,Balanced,0.0,False
+7,RP 7,RP,Michael Darrell-Hicks,Balanced,0.0,False
+7,RP 7,RP,Chris Devenski,Balanced,0.0,False
+7,RP 7,RP,Daysbel Hernández,Balanced,0.0,False
+7,RP 7,RP,Sam Benschoter,Balanced,0.0,False
+7,RP 7,RP,Valente Bellozo,Balanced,0.0,False
+7,RP 7,RP,Luis Mey,Balanced,0.0,False
+7,RP 7,RP,Corbin Martin,Balanced,0.0,False
+7,RP 7,RP,Josh Ekness,Balanced,0.0,False
+7,RP 7,RP,Sam Bachman,Balanced,0.0,False
+7,RP 7,RP,Génesis Cabrera,Balanced,0.0,False
+7,RP 7,RP,Casey Legumina,Balanced,0.0,False
+7,RP 7,RP,Chad Green,Balanced,0.0,False
+7,RP 7,RP,Carson Palmquist,Balanced,0.0,False
+7,1B 7,1B,Wilmer Flores,Balanced,0.0,False
+7,RP 7,RP,Tanner Rainey,Balanced,0.0,False
+7,RP 7,RP,Julian Merryweather,Balanced,0.0,False
+7,RP 7,RP,Jake Eder,Balanced,0.0,False
+7,RP 7,RP,Dylan Coleman,Balanced,0.0,False
+7,RP 7,RP,Gavin Hollowell,Balanced,0.0,False
+7,SP 7,SP,Noah Schultz,Balanced,0.0,False
+7,RP 7,RP,Cole Sulser,Balanced,0.0,False
+7,SP 7,SP,Walker Buehler,Balanced,0.0,False
+7,RP 7,RP,DL Hall,Balanced,0.0,False
+7,RP 7,RP,Joe Jiménez,Balanced,0.0,False
+7,RP 7,RP,Brennan Bernardino,Balanced,0.0,False
+7,RP 7,RP,Mason Barnett,Balanced,0.0,False
+7,SP 7,SP,JR Ritchie,Balanced,0.0,False
+7,SP 7,SP,Ty Johnson,Balanced,0.0,False
+7,SP 7,SP,Jordan Montgomery,Balanced,0.0,False
+7,RP 7,RP,Lyon Richardson,Balanced,0.0,False
+7,RP 7,RP,Kutter Crawford,Balanced,0.0,False
+7,SP 7,SP,Patrick Corbin,Balanced,0.0,False
+7,RP 7,RP,Joel Hurtado,Balanced,0.0,False
+7,RP 7,RP,Joel Peguero,Balanced,0.0,False
+7,RP 7,RP,Cole Wilcox,Balanced,0.0,False
+7,RP 7,RP,William Kempner,Balanced,0.0,False
+7,RP 7,RP,Juan Burgos,Balanced,0.0,False
+7,SP 7,SP,Josiah Gray,Balanced,0.0,False
+7,RP 7,RP,Ryan Thompson,SV+HLD Specialist,0.0,False
+7,RP 7,RP,Jason Foley,Balanced,0.0,False
+7,RP 7,RP,Michael Tonkin,Balanced,0.0,False
+7,RP 7,RP,Phil Maton,SV+HLD Specialist,0.0,False
+7,RP 7,RP,Andrew Nardi,Balanced,0.0,False
+7,RP 7,RP,Jimmy Herget,Balanced,0.0,False
+7,RP 7,RP,A.J. Minter,Balanced,0.0,False
+7,RP 7,RP,Bryan Baker,Balanced,0.0,False
+7,RP 7,RP,Steven Okert,Balanced,0.0,False
+7,RP 7,RP,Tanner Banks,Balanced,0.0,False
+7,RP 7,RP,Drew Pomeranz,Balanced,0.0,False
+7,RP 7,RP,Graham Ashcraft,Balanced,0.0,False
+7,RP 7,RP,Braydon Fisher,Balanced,0.0,False
+7,RP 7,RP,Jared Koenig,Balanced,0.0,False
+7,RP 7,RP,Andrew Alvarez,Balanced,0.0,False
+7,RP 7,RP,Sam Hentges,Balanced,0.0,False
+7,RP 7,RP,Jaden Hill,Balanced,0.0,False
+7,RP 7,RP,Pierce Johnson,Balanced,0.0,False
+7,RP 7,RP,Evan Phillips,Balanced,0.0,False
+7,RP 7,RP,Brent Headrick,Balanced,0.0,False
+7,RP 7,RP,Connor Prielipp,Balanced,0.0,False
+7,RP 7,RP,Payton Tolle,Balanced,0.0,False
+7,RP 7,RP,Cole Sands,Balanced,0.0,False
+7,RP 7,RP,Jake Bird,Balanced,0.0,False
+7,RP 7,RP,Yohan Ramírez,Balanced,0.0,False
+7,SP 7,SP,Wade Miley,Balanced,0.0,False
+7,RP 7,RP,José Suarez,Balanced,0.0,False
+7,RP 7,RP,Mason Fluharty,Balanced,0.0,False
+7,RP 7,RP,Yaramil Hiraldo,Balanced,0.0,False
+7,RP 7,RP,Ronel Blanco,Balanced,0.0,False
+7,RP 7,RP,Blade Tidwell,Balanced,0.0,False
+7,RP 7,RP,Kendry Rojas,Balanced,0.0,False
+7,RP 7,RP,Sean Newcomb,Balanced,0.0,False
+7,RP 7,RP,Nick Mears,Balanced,0.0,False
+7,RP 7,RP,Emerson Hancock,Balanced,0.0,False
+7,RP 7,RP,DJ Herz,Balanced,0.0,False
+7,SP 7,SP,Kohl Drake,Balanced,0.0,False
+7,RP 7,RP,Luke Little,Balanced,0.0,False
+7,RP 7,RP,Osvaldo Bido,Balanced,0.0,False
+7,SP 7,SP,Jon Gray,Balanced,0.0,False
+7,RP 7,RP,Félix Bautista,Balanced,0.0,False
+7,RP 7,RP,Matt Festa,Balanced,0.0,False
+7,RP 7,RP,Ryan Brasier,Balanced,0.0,False
+7,RP 7,RP,Ryan Gusto,Balanced,0.0,False
+7,OF 7,OF,Grant McCray,Balanced,0.0,False
+7,SP 7,SP,River Ryan,Balanced,0.0,False
+7,RP 7,RP,Brenan Hanifee,Balanced,0.0,False
+7,RP 7,RP,Brock Burke,Balanced,0.0,False
+7,RP 7,RP,Kevin Kelly,Balanced,0.0,False
+7,SP 7,SP,Spencer Turnbull,Balanced,0.0,False
+7,RP 7,RP,Cade Povich,Balanced,0.0,False
+7,RP 7,RP,Tyler Alexander,Balanced,0.0,False
+7,SP 7,SP,Erick Fedde,Balanced,0.0,False
+7,RP 7,RP,Mason Montgomery,Balanced,0.0,False
+7,RP 7,RP,Yoendrys Gómez,Balanced,0.0,False
+7,SP 7,SP,Mitch Bratt,Balanced,0.0,False
+7,RP 7,RP,Evan Sisk,Balanced,0.0,False
+7,OF 7,OF,Matt Koperniak,Balanced,0.0,False
+7,SP 7,SP,Alek Manoah,Balanced,0.0,False
+7,RP 7,RP,Ian Hamilton,Balanced,0.0,False
+7,RP 7,RP,Anthony Bender,Balanced,0.0,False
+7,RP 7,RP,Cristian Mena,Balanced,0.0,False
+7,RP 7,RP,Colin Selby,Balanced,0.0,False
+7,RP 7,RP,Jakob Junis,Balanced,0.0,False
+7,RP 7,RP,Tim Herrin,Balanced,0.0,False
+7,SP 7,SP,Tanner Houck,Balanced,0.0,False
+7,RP 7,RP,Bryan Hudson,Balanced,0.0,False
+7,RP 7,RP,Jason Alexander,Balanced,0.0,False
+7,RP 7,RP,Eric Orze,Balanced,0.0,False
+7,RP 7,RP,Ryan Yarbrough,Balanced,0.0,False
+7,RP 7,RP,JT Brubaker,Balanced,0.0,False
+7,RP 7,RP,Justin Wilson,Balanced,0.0,False
+7,RP 7,RP,Pierson Ohl,Balanced,0.0,False
+7,RP 7,RP,Ty Madden,Balanced,0.0,False
+7,RP 7,RP,Cade Gibson,Balanced,0.0,False
+7,RP 7,RP,John King,Balanced,0.0,False
+7,SP 7,SP,Quinn Mathews,Balanced,0.0,False
+7,RP 7,RP,Andrew Chafin,Balanced,0.0,False
+7,RP 7,RP,Brock Stewart,Balanced,0.0,False
+7,RP 7,RP,Jordan Romano,Balanced,0.0,False
+7,RP 7,RP,Taylor Rashi,Balanced,0.0,False
+7,RP 7,RP,Tyler Ferguson,Balanced,0.0,False
+7,RP 7,RP,Alex Hoppe,Balanced,0.0,False
+7,SP 7,SP,Charlie Morton,Balanced,0.0,False
+7,C 7,C,Sebastián Rivero,Balanced,0.0,False
+7,RP 7,RP,Sawyer Gipson-Long,Balanced,0.0,False
+7,RP 7,RP,Erik Miller,Balanced,0.0,False
+7,SP 7,SP,José Urquidy,Balanced,0.0,False
+7,RP 7,RP,Matt Gage,Balanced,0.0,False
+7,RP 7,RP,Yimi García,Balanced,0.0,False
+7,RP 7,RP,Blake Treinen,Balanced,0.0,False
+7,RP 7,RP,Chase Silseth,Balanced,0.0,False
+7,RP 7,RP,Paul Blackburn,Balanced,0.0,False
+7,OF 7,OF,Nelson Velázquez,Balanced,0.0,False
+7,3B 7,3B,Paul DeJong,Balanced,0.0,False
+7,SP 7,SP,Tink Hence,Balanced,0.0,False
+7,RP 7,RP,Austin Peterson,Balanced,0.0,False
+7,3B 7,3B,Charlie Condon,Balanced,0.0,False
+7,SP 7,SP,Marcus Stroman,Balanced,0.0,False
+7,SS 7,SS,Nick Allen,Balanced,0.0,False
+7,RP 7,RP,Angel Zerpa,Balanced,0.0,False
+7,RP 7,RP,Mark Leiter Jr.,SV+HLD Specialist,0.0,False
+7,RP 7,RP,Danny Coulombe,Balanced,0.0,False
+7,RP 7,RP,Wandy Peralta,Balanced,0.0,False
+7,SP 7,SP,Griffin Canning,Balanced,0.0,False
+7,RP 7,RP,Caleb Thielbar,Balanced,0.0,False
+7,1B 7,1B,Rowdy Tellez,Balanced,0.0,False
+7,RP 7,RP,Aaron Bummer,Balanced,0.0,False
+7,SP 7,SP,Tomoyuki Sugano,Balanced,0.0,False
+7,RP 7,RP,Colin Rea,Balanced,0.0,False
+7,RP 7,RP,Stephen Kolek,Balanced,0.0,False
+7,SP 7,SP,Trevor McDonald,Balanced,0.0,False
+7,RP 7,RP,Justin Topa,Balanced,0.0,False
+7,SP 7,SP,Alex Cobb,Balanced,0.0,False
+7,SP 7,SP,Ryan Bergert,Balanced,0.0,False
+7,DH 7,DH,Junior Perez,Balanced,0.0,False
+7,RP 7,RP,Yennier Cano,Balanced,0.0,False
+7,SP 7,SP,Hayden Birdsong,Balanced,0.0,False
+7,SP 7,SP,Jonathan Cannon,Balanced,0.0,False
+7,SP 7,SP,Jake Irvin,Balanced,0.0,False
+7,1B 7,1B,Deyvison De Los Santos,Balanced,0.0,False
+7,RP 7,RP,Kody Funderburk,Balanced,0.0,False
+7,RP 7,RP,Chris Martin,SV+HLD Specialist,0.0,False
+7,3B 7,3B,Yoán Moncada,Balanced,0.0,False
+7,RP 7,RP,Brant Hurter,Balanced,0.0,False
+7,C 7,C,Yohel Pozo,Balanced,0.0,False
+7,OF 7,OF,Eloy Jiménez,Balanced,0.0,False
+7,SP 7,SP,Germán Márquez,Balanced,0.0,False
+7,SS 7,SS,Blaze Alexander,Balanced,0.0,False
+7,3B 7,3B,Brock Wilken,Balanced,0.0,False
+7,RP 7,RP,Michel Otañez,Balanced,0.0,False
+7,2B 7,2B,Garrett Hampson,Balanced,0.0,False
+7,2B 7,2B,Nicky Lopez,Balanced,0.0,False
+7,1B 7,1B,Christian Encarnacion-Strand,Balanced,0.0,False
+7,1B 7,1B,Jeimer Candelario,Balanced,0.0,False
+7,3B 7,3B,Tyler Wade,Balanced,0.0,False
+7,1B 7,1B,Dominic Smith,Balanced,0.0,False
+7,1B 7,1B,Michael Toglia,Balanced,0.0,False
+7,2B 7,2B,Adam Frazier,Balanced,0.0,False
+7,C 7,C,Garrett Stubbs,Balanced,0.0,False
+7,1B 7,1B,Jared Young,Balanced,0.0,False
+7,DH 7,DH,Petey Halpin,Balanced,0.0,False
+7,SP 7,SP,Tanner Gordon,Balanced,0.0,False
+7,RP 7,RP,Eduard Bazardo,Balanced,0.0,False
+7,RP 7,RP,Justin Martinez,Balanced,0.0,False
+7,RP 7,RP,Jovani Morán,Balanced,0.0,False
+7,RP 7,RP,Juan Mejia,Balanced,0.0,False
+7,RP 7,RP,Josh Sborz,Balanced,0.0,False
+7,DH 7,DH,Brice Matthews,Balanced,0.0,False
+7,RP 7,RP,Keaton Winn,Balanced,0.0,False
+7,RP 7,RP,Ben Joyce,Balanced,0.0,False
+7,RP 7,RP,Justin Slaten,Balanced,0.0,False
+7,RP 7,RP,Tobias Myers,Balanced,0.0,False
+7,OF 7,OF,John Rave,Balanced,0.0,False
+7,RP 7,RP,Erik Sabrowski,Balanced,0.0,False
+7,RP 7,RP,Brendon Little,Balanced,0.0,False
+7,1B 7,1B,Troy Johnston,Balanced,0.0,False
+7,3B 7,3B,Trey Lipscomb,Balanced,0.0,False
+7,SP 7,SP,Tyler Anderson,Balanced,0.0,False
+7,OF 7,OF,Luis Matos,Balanced,0.0,False
+7,RP 7,RP,Ryan Weiss,Balanced,0.0,False
+7,SP 7,SP,Chase Dollander,Balanced,0.0,False
+7,C 7,C,Matt Thaiss,Balanced,0.0,False
+7,RP 7,RP,Francis Peña,Balanced,0.0,False
+7,RP 7,RP,Jackson Rutledge,Balanced,0.0,False
+7,1B 7,1B,Jerar Encarnacion,Balanced,0.0,False
+7,RP 7,RP,Jorge Alcala,Balanced,0.0,False
+7,1B 7,1B,Justin Turner,Balanced,0.0,False
+7,RP 7,RP,Jesse Scholtens,Balanced,0.0,False
+7,RP 7,RP,Seth Martinez,Balanced,0.0,False
+7,RP 7,RP,Mike Clevinger,Balanced,0.0,False
+7,OF 7,OF,MJ Melendez,Balanced,0.0,False
+7,RP 7,RP,Drey Jameson,Balanced,0.0,False
+7,1B 7,1B,Tyler Black,Balanced,0.0,False
+7,RP 7,RP,Hunter Bigge,Balanced,0.0,False
+7,RP 7,RP,Grant Holman,Balanced,0.0,False
+7,RP 7,RP,J.P. France,Balanced,0.0,False
+7,RP 7,RP,Chayce McDermott,Balanced,0.0,False
+7,RP 7,RP,Shinnosuke Ogasawara,Balanced,0.0,False
+7,RP 7,RP,Guillo Zuñiga,Balanced,0.0,False
+7,RP 7,RP,Alex Carrillo,Balanced,0.0,False
+7,RP 7,RP,Emiliano Teodo,Balanced,0.0,False
+7,RP 7,RP,Tyler Mattison,Balanced,0.0,False
+7,RP 7,RP,Angel Chivilli,Balanced,0.0,False
+7,RP 7,RP,Peyton Pallette,Balanced,0.0,False
+7,RP 7,RP,Domingo Gonzalez,Balanced,0.0,False
+7,RP 7,RP,Lazaro Estrada,Balanced,0.0,False
+7,RP 7,RP,Michael Petersen,Balanced,0.0,False
+7,RP 7,RP,Connor Seabold,Balanced,0.0,False
+7,SP 7,SP,Casey Lawrence,Balanced,0.0,False
+7,RP 7,RP,Drew Smith,Balanced,0.0,False
+7,RP 7,RP,Walbert Urena,Balanced,0.0,False
+7,RP 7,RP,Beau Brieske,Balanced,0.0,False
+7,RP 7,RP,Andrew Walters,Balanced,0.0,False
+7,RP 7,RP,Cole Winn,Balanced,0.0,False
+7,RP 7,RP,Dylan Smith,Balanced,0.0,False
+7,RP 7,RP,Tyler Gilbert,Balanced,0.0,False
+7,RP 7,RP,Tate Kuehner,Balanced,0.0,False
+7,RP 7,RP,Tyson Neighbors,Balanced,0.0,False
+7,RP 7,RP,Tom Cosgrove,Balanced,0.0,False
+7,RP 7,RP,Joe La Sorsa,Balanced,0.0,False
+7,RP 7,RP,Luinder Avila,Balanced,0.0,False
+7,RP 7,RP,Jose A. Ferrer,SV+HLD Specialist,0.0,False
+7,RP 7,RP,John Schreiber,Balanced,0.0,False
+7,RP 7,RP,Tyler Kinley,Balanced,0.0,False
+7,1B 7,1B,Kris Bryant,Balanced,0.0,False
+7,RP 7,RP,Justin Wrobleski,Balanced,0.0,False
+7,SP 7,SP,Carson Whisenhunt,Balanced,0.0,False
+7,RP 7,RP,Jordan Wicks,Balanced,0.0,False
+7,RP 7,RP,Luis Medina,Balanced,0.0,False
+7,RP 7,RP,Caleb Ferguson,Balanced,0.0,False
+7,SP 7,SP,Gage Jump,Balanced,0.0,False
+7,RP 7,RP,A.J. Puk,Balanced,0.0,False
+7,RP 7,RP,Brusdar Graterol,Balanced,0.0,False
+7,RP 7,RP,Tristan Beck,Balanced,0.0,False
+7,RP 7,RP,Dylan Lee,Balanced,0.0,False
+7,SP 7,SP,Lance McCullers Jr.,Balanced,0.0,False
+7,SP 7,SP,Richard Fitts,Balanced,0.0,False
+7,RP 7,RP,Aaron Ashby,Balanced,0.0,False
+7,DH 7,DH,Blaine Crim,Balanced,0.0,False
+7,SP 7,SP,George Klassen,Balanced,0.0,False
+7,SP 7,SP,Martín Pérez,Balanced,0.0,False
+7,RP 7,RP,Duncan Davitt,Balanced,0.0,False
+7,RP 7,RP,Eric Cerantola,Balanced,0.0,False
+7,RP 7,RP,Shane Murphy,Balanced,0.0,False
+7,RP 7,RP,Josh Fleming,Balanced,0.0,False
+7,RP 7,RP,David Sandlin,Balanced,0.0,False
+7,RP 7,RP,Vince Velasquez,Balanced,0.0,False
+7,RP 7,RP,Hogan Harris,SV+HLD Specialist,0.0,False
+7,RP 7,RP,Gunnar Hoglund,Balanced,0.0,False
+7,RP 7,RP,Jake Bloss,Balanced,0.0,False
+7,RP 7,RP,Alek Jacob,Balanced,0.0,False
+7,RP 7,RP,Hoby Milner,Balanced,0.0,False
+7,RP 7,RP,Jake Miller,Balanced,0.0,False
+7,SP 7,SP,David Festa,Balanced,0.0,False
+7,RP 7,RP,Tommy Nance,Balanced,0.0,False
+7,RP 7,RP,Sam Moll,Balanced,0.0,False
+7,RP 7,RP,Mason Englert,Balanced,0.0,False
+7,RP 7,RP,Christian Scott,Balanced,0.0,False
+7,RP 7,RP,Clarke Schmidt,Balanced,0.0,False
+7,RP 7,RP,Andre Granillo,Balanced,0.0,False
+7,SP 7,SP,Trey Gibson,Balanced,0.0,False
+7,RP 7,RP,James McArthur,Balanced,0.0,False
+7,SP 7,SP,Ky Bush,Balanced,0.0,False
+7,RP 7,RP,Josh Staumont,Balanced,0.0,False
+7,RP 7,RP,Jorge López,Balanced,0.0,False
+7,RP 7,RP,Jose Franco,Balanced,0.0,False
+7,RP 7,RP,Angel Perdomo,Balanced,0.0,False
+7,RP 7,RP,Yunior Marte,Balanced,0.0,False
+7,RP 7,RP,A.J. Causey,Balanced,0.0,False
+7,RP 7,RP,Brandon Waddell,Balanced,0.0,False
+7,RP 7,RP,Jayden Murray,Balanced,0.0,False
+7,RP 7,RP,Kevin Herget,Balanced,0.0,False
+7,RP 7,RP,Bradley Blalock,Balanced,0.0,False
+7,RP 7,RP,Dale Stanavich,Balanced,0.0,False
+7,RP 7,RP,Carlos Vargas,Balanced,0.0,False
+7,RP 7,RP,Michael Kelly,Balanced,0.0,False
+7,RP 7,RP,Luis Peralta,Balanced,0.0,False
+7,RP 7,RP,Bailey Horn,Balanced,0.0,False
+7,RP 7,RP,Kendall Graveman,Balanced,0.0,False
+7,RP 7,RP,Rafael Montero,Balanced,0.0,False
+7,RP 7,RP,T.J. McFarland,Balanced,0.0,False
+7,RP 7,RP,James Karinchak,Balanced,0.0,False
+7,RP 7,RP,Matt Bowman,Balanced,0.0,False
+7,RP 7,RP,Ryan Loutos,Balanced,0.0,False
+7,RP 7,RP,Kyle Keller,Balanced,0.0,False
+7,RP 7,RP,Mike Vasil,Balanced,0.0,False
+7,RP 7,RP,Miguel Castro,Balanced,0.0,False
+7,RP 7,RP,Ken Waldichuk,Balanced,0.0,False
+7,RP 7,RP,Jack Neely,Balanced,0.0,False
+7,RP 7,RP,Anthony Molina,Balanced,0.0,False
+7,RP 7,RP,Connor Brogdon,Balanced,0.0,False
+7,RP 7,RP,Kaleb Ort,Balanced,0.0,False
+7,RP 7,RP,Blake Walston,Balanced,0.0,False
+7,RP 7,RP,Marc Church,Balanced,0.0,False
+7,RP 7,RP,Ty Adcock,Balanced,0.0,False
+7,RP 7,RP,Steven Wilson,Balanced,0.0,False
+7,RP 7,RP,Joey Estes,Balanced,0.0,False
+7,RP 7,RP,Joe Ross,Balanced,0.0,False
+7,RP 7,RP,Troy Taylor,Balanced,0.0,False
+7,RP 7,RP,Tejay Antone,Balanced,0.0,False
+7,RP 7,RP,Konnor Pilkington,Balanced,0.0,False
+7,RP 7,RP,Austin Love,Balanced,0.0,False
+7,RP 7,RP,Isaiah Campbell,Balanced,0.0,False
+7,RP 7,RP,Sammy Peralta,Balanced,0.0,False
+7,RP 7,RP,Antonio Senzatela,Balanced,0.0,False
+7,RP 7,RP,Alexander Alberto,Balanced,0.0,False
+7,RP 7,RP,Thomas Hatch,Balanced,0.0,False
+7,RP 7,RP,Luis Guerrero,Balanced,0.0,False
+7,RP 7,RP,Andry Lara,Balanced,0.0,False
+7,RP 7,RP,Eli Morgan,Balanced,0.0,False
+7,SP 7,SP,Tanner McDougal,Balanced,0.0,False
+7,RP 7,RP,Kyle Backhus,Balanced,0.0,False
+7,RP 7,RP,Orlando Ribalta,Balanced,0.0,False
+7,RP 7,RP,Riley Martin,Balanced,0.0,False
+7,RP 7,RP,Jedixson Paez,Balanced,0.0,False
+7,RP 7,RP,Carlos Hernández,Balanced,0.0,False
+7,RP 7,RP,Daison Acosta,Balanced,0.0,False
+7,RP 7,RP,Lou Trivino,Balanced,0.0,False
+7,RP 7,RP,Brycen Mautz,Balanced,0.0,False
+7,RP 7,RP,Henry Baez,Balanced,0.0,False
+7,RP 7,RP,Ryan Rolison,Balanced,0.0,False
+7,RP 7,RP,Roddery Muñoz,Balanced,0.0,False
+7,RP 7,RP,Gavin Collyer,Balanced,0.0,False
+7,RP 7,RP,Zach Brzykcy,Balanced,0.0,False
+7,RP 7,RP,Ryder Ryan,Balanced,0.0,False
+7,RP 7,RP,Hayden Durke,Balanced,0.0,False
+7,RP 7,RP,Ryan Harbin,Balanced,0.0,False
+7,RP 7,RP,Colin Poche,Balanced,0.0,False
+7,RP 7,RP,Enmanuel De Jesus,Balanced,0.0,False
+7,RP 7,RP,Andrew Hoffmann,Balanced,0.0,False
+7,RP 7,RP,Josh Simpson,Balanced,0.0,False
+7,RP 7,RP,Seth Johnson,Balanced,0.0,False
+7,RP 7,RP,Lucas Sims,Balanced,0.0,False
+7,RP 7,RP,Dan Altavilla,Balanced,0.0,False
+7,RP 7,RP,Ryan Zeferjahn,Balanced,0.0,False
+7,RP 7,RP,Yilber Díaz,Balanced,0.0,False
+7,RP 7,RP,Wikelman González,Balanced,0.0,False
+7,RP 7,RP,Rico Garcia,Balanced,0.0,False
+7,RP 7,RP,Cole Henry,SV+HLD Specialist,0.0,False
+7,RP 7,RP,Jayvien Sandridge,Balanced,0.0,False
+7,RP 7,RP,Zach Maxwell,Balanced,0.0,False
+7,RP 7,RP,Paul Gervase,Balanced,0.0,False
+7,SP 7,SP,Jean Cabrera,Balanced,0.0,False
+7,RP 7,RP,Brandan Bidois,Balanced,0.0,False
+7,RP 7,RP,Prelander Berroa,Balanced,0.0,False
+7,RP 7,RP,Scott Blewett,Balanced,0.0,False
+7,RP 7,RP,George Soriano,Balanced,0.0,False
+7,RP 7,RP,Cameron Foster,Balanced,0.0,False
+7,RP 7,RP,Cade Winquest,Balanced,0.0,False
+7,RP 7,RP,Logan Gillaspie,Balanced,0.0,False
+7,RP 7,RP,Eduarniel Núñez,Balanced,0.0,False
+7,RP 7,RP,Nick Hernandez,Balanced,0.0,False
+7,RP 7,RP,Blas Castaño,Balanced,0.0,False
+7,RP 7,RP,Carter Baumler,Balanced,0.0,False
+7,RP 7,RP,Triston McKenzie,Balanced,0.0,False
+7,RP 7,RP,Jairo Iriarte,Balanced,0.0,False
+7,RP 7,RP,Tayler Scott,Balanced,0.0,False
+7,RP 7,RP,Robinson Ortiz,Balanced,0.0,False
+7,RP 7,RP,Jackson Kowar,Balanced,0.0,False
+7,RP 7,RP,Danny Young,Balanced,0.0,False
+7,RP 7,RP,Zach McCambley,Balanced,0.0,False
+7,RP 7,RP,Nick Anderson,Balanced,0.0,False
+7,RP 7,RP,Ethan Roberts,Balanced,0.0,False
+7,RP 7,RP,Samy Natera Jr.,Balanced,0.0,False
+7,RP 7,RP,Tayler Saucedo,Balanced,0.0,False
+7,RP 7,RP,Bryce Jarvis,Balanced,0.0,False
+7,RP 7,RP,Garrett Acton,Balanced,0.0,False
+7,RP 7,RP,Jaden Woods,Balanced,0.0,False
+7,RP 7,RP,Logan VanWey,Balanced,0.0,False
+7,RP 7,RP,Rolddy Muñoz,Balanced,0.0,False
+7,RP 7,RP,Dom Hamel,Balanced,0.0,False
+7,RP 7,RP,Riley Cornelio,Balanced,0.0,False
+7,RP 7,RP,RJ Petit,Balanced,0.0,False
+7,RP 7,RP,Cam Sanders,Balanced,0.0,False
+7,RP 7,RP,Nate Pearson,Balanced,0.0,False
+7,RP 7,RP,Ryan Lambert,Balanced,0.0,False
+7,RP 7,RP,Michael Fulmer,Balanced,0.0,False
+7,RP 7,RP,Matt Pushard,Balanced,0.0,False
+7,RP 7,RP,Hayden Harris,Balanced,0.0,False
+7,RP 7,RP,Adam Macko,Balanced,0.0,False
+7,RP 7,RP,Paxton Schultz,Balanced,0.0,False
+7,RP 7,RP,Victor Mederos,Balanced,0.0,False
+7,SP 7,SP,Carson Spiers,Balanced,0.0,False
+7,RP 7,RP,Edgardo Henriquez,Balanced,0.0,False
+7,RP 7,RP,Tim Hill,Balanced,0.0,False
+7,RP 7,RP,Braden Nett,Balanced,0.0,False
+7,SP 7,SP,Nestor Cortes,Balanced,0.0,False
+7,SP 7,SP,Didier Fuentes,Balanced,0.0,False
+7,RP 7,RP,Welinton Herrera,Balanced,0.0,False
+7,RP 7,RP,Yuki Matsui,Balanced,0.0,False
+7,RP 7,RP,Easton McGee,Balanced,0.0,False
+7,RP 7,RP,Connor Phillips,Balanced,0.0,False
+7,RP 7,RP,Elvis Alvarado,Balanced,0.0,False
+7,RP 7,RP,Joel Payamps,Balanced,0.0,False
+7,RP 7,RP,Elmer Rodríguez,Balanced,0.0,False
+7,RP 7,RP,Jose Corniell,Balanced,0.0,False
+7,RP 7,RP,Brent Suter,Balanced,0.0,False
+7,RP 7,RP,Zach Pop,Balanced,0.0,False
+7,RP 7,RP,Randy Dobnak,Balanced,0.0,False
+7,RP 7,RP,Scott McGough,Balanced,0.0,False
+7,RP 7,RP,Vinny Nittoli,Balanced,0.0,False
+7,RP 7,RP,Carson Seymour,Balanced,0.0,False
+7,RP 7,RP,Angel Bastardo,Balanced,0.0,False
+7,RP 7,RP,Hunter Stratton,Balanced,0.0,False
+7,RP 7,RP,Jake Bennett,Balanced,0.0,False
+7,RP 7,RP,Richard Lovelady,Balanced,0.0,False
+7,RP 7,RP,Travis Adams,Balanced,0.0,False
+7,RP 7,RP,Doug Nikhazy,Balanced,0.0,False
+7,RP 7,RP,Pedro Avila,Balanced,0.0,False
+7,RP 7,RP,Enyel De Los Santos,Balanced,0.0,False
+7,RP 7,RP,John Brebbia,Balanced,0.0,False
+7,RP 7,RP,Chase Petty,Balanced,0.0,False
+7,SP 7,SP,Pete Hansen,Balanced,0.0,False
+7,RP 7,RP,Kervin Castro,Balanced,0.0,False
+7,RP 7,RP,Gus Varland,Balanced,0.0,False
+7,RP 7,RP,Dylan Ross,Balanced,0.0,False
+7,SP 7,SP,Matt Waldron,Balanced,0.0,False
+7,RP 7,RP,Grant Anderson,Balanced,0.0,False
+7,RP 7,RP,Franco Aleman,Balanced,0.0,False
+7,RP 7,RP,John Klein,Balanced,0.0,False
+7,RP 7,RP,Chris Roycroft,Balanced,0.0,False
+7,RP 7,RP,Spencer Miles,Balanced,0.0,False
+7,SP 7,SP,Ryan Webb,Balanced,0.0,False
+7,RP 7,RP,Isaac Mattson,Balanced,0.0,False
+7,RP 7,RP,Chase Lee,Balanced,0.0,False
+7,RP 7,RP,Colton Gordon,Balanced,0.0,False
+7,RP 7,RP,Peter Lambert,Balanced,0.0,False
+7,RP 7,RP,Keegan Thompson,Balanced,0.0,False
+7,RP 7,RP,Taylor Clarke,Balanced,0.0,False
+7,RP 7,RP,Tommy Kahnle,Balanced,0.0,False
+7,RP 7,RP,Luke Jackson,Balanced,0.0,False
+7,SP 7,SP,Brody Hopkins,Balanced,0.0,False
+7,RP 7,RP,Collin Snider,Balanced,0.0,False
+7,RP 7,RP,Jeff Criswell,Balanced,0.0,False
+7,RP 7,RP,Max Lazar,Balanced,0.0,False
+7,RP 7,RP,Will Klein,Balanced,0.0,False
+7,RP 7,RP,Luis Perales,Balanced,0.0,False
+7,RP 7,RP,Jose Espada,Balanced,0.0,False
+7,RP 7,RP,Ronan Kopp,Balanced,0.0,False
+7,RP 7,RP,Lake Bachar,Balanced,0.0,False
+7,RP 7,RP,Tyler Samaniego,Balanced,0.0,False
+7,RP 7,RP,Joey Gerber,Balanced,0.0,False
+7,RP 7,RP,Colin Holderman,Balanced,0.0,False
+7,SP 7,SP,Dane Dunning,Balanced,0.0,False
+7,RP 7,RP,Alex Lange,Balanced,0.0,False
+7,RP 7,RP,Jonathan Loáisiga,Balanced,0.0,False
+7,RP 7,RP,Porter Hodge,Balanced,0.0,False
+7,RP 7,RP,Trevor Stephan,Balanced,0.0,False
+7,RP 7,RP,Dylan Dodd,Balanced,0.0,False
+7,RP 7,RP,Jordan Hicks,Balanced,0.0,False
+7,RP 7,RP,Anthony Nunez,Balanced,0.0,False
+7,RP 7,RP,Justin Hagenman,Balanced,0.0,False
+7,RP 7,RP,Reiver Sanmartin,Balanced,0.0,False
+7,RP 7,RP,Andrew Morris,Balanced,0.0,False
+7,RP 7,RP,Ron Marinaccio,Balanced,0.0,False
+7,SP 7,SP,Caden Dana,Balanced,0.0,False
+7,RP 7,RP,Zack Kelly,Balanced,0.0,False
+7,RP 7,RP,Sean Guenther,Balanced,0.0,False
+7,SP 7,SP,Tony Gonsolin,Balanced,0.0,False
+7,RP 7,RP,Anthony Banda,Balanced,0.0,False
+7,SP 7,SP,Kyle Wright,Balanced,0.0,False
+7,RP 7,RP,Dax Fulton,Balanced,0.0,False
+7,RP 7,RP,Kolby Allard,Balanced,0.0,False
+7,SP 7,SP,Jackson Jobe,Balanced,0.0,False
+7,SP 7,SP,Jared Lyons,Balanced,0.0,False
+7,RP 7,RP,Keegan Akin,Balanced,0.0,False
+7,RP 7,RP,Huascar Brazobán,Balanced,0.0,False
+7,RP 7,RP,Greg Weissert,Balanced,0.0,False
+7,SP 7,SP,Drew Thorpe,Balanced,0.0,False
+7,RP 7,RP,Javier Assad,Balanced,0.0,False
+7,RP 7,RP,Spencer Bivens,Balanced,0.0,False
+7,RP 7,RP,Gordon Graceffo,Balanced,0.0,False
+7,RP 7,RP,Grant Wolfram,Balanced,0.0,False
+7,RP 7,RP,Jalen Beeks,Balanced,0.0,False
+7,RP 7,RP,PJ Poulin,Balanced,0.0,False
+7,RP 7,RP,Cooper Criswell,Balanced,0.0,False
+7,RP 7,RP,Scott Barlow,Balanced,0.0,False
+7,RP 7,RP,Ryne Stanek,Balanced,0.0,False
+7,RP 7,RP,Dietrich Enns,Balanced,0.0,False
+7,RP 7,RP,Calvin Faucher,Balanced,0.0,False
+7,RP 7,RP,Ryan Johnson,Balanced,0.0,False
+7,RP 7,RP,Philip Abner,Balanced,0.0,False
+7,RP 7,RP,Mitchell Parker,Balanced,0.0,False
+7,RP 7,RP,Jack Perkins,Balanced,0.0,False
+7,RP 7,RP,Trent Thornton,Balanced,0.0,False
+7,RP 7,RP,Jack Kochanowicz,Balanced,0.0,False
+7,RP 7,RP,Craig Kimbrel,Balanced,0.0,False
+7,RP 7,RP,Sauryn Lao,Balanced,0.0,False
+7,RP 7,RP,Brandyn Garcia,Balanced,0.0,False
+7,3B 7,3B,Bryan Ramos,Balanced,0.0,False
+7,RP 7,RP,Thomas Harrington,Balanced,0.0,False
+7,RP 7,RP,Julian Aguiar,Balanced,0.0,False
+7,RP 7,RP,Ryan Borucki,Balanced,0.0,False
+7,RP 7,RP,Daniel Lynch IV,Balanced,0.0,False
+7,2B 7,2B,Edouard Julien,Balanced,0.0,False
+7,RP 7,RP,Tyler Phillips,Balanced,0.0,False
+7,RP 7,RP,Craig Yoho,Balanced,0.0,False
+7,RP 7,RP,Marco Raya,Balanced,0.0,False
+7,SP 7,SP,Marco Gonzales,Balanced,0.0,False
+7,RP 7,RP,Caleb Kilian,Balanced,0.0,False
+7,RP 7,RP,Wilber Dotel,Balanced,0.0,False
+7,RP 7,RP,Albert Suárez,Balanced,0.0,False
+7,RP 7,RP,Joey Lucchesi,Balanced,0.0,False
+7,RP 7,RP,Brandon Young,Balanced,0.0,False
+7,RP 7,RP,Jhony Brito,Balanced,0.0,False
+7,RP 7,RP,Gabriel Hughes,Balanced,0.0,False
+7,RP 7,RP,Kade Strowd,Balanced,0.0,False
+7,SP 7,SP,Sam Aldegheri,Balanced,0.0,False
+7,RP 7,RP,Mason Black,Balanced,0.0,False
+7,RP 7,RP,Héctor Neris,Balanced,0.0,False
+7,RP 7,RP,Garrett Hawkins,Balanced,0.0,False
+7,SP 7,SP,Joe Elbis,Balanced,0.0,False
+7,RP 7,RP,Drew Sommers,Balanced,0.0,False
+7,RP 7,RP,Alan Rangel,Balanced,0.0,False
+7,SS 7,SS,Taylor Walls,Balanced,0.0,False
+7,C 7,C,Rafael Marchán,Balanced,0.0,False
+7,2B 7,2B,José Fermín,Balanced,0.0,False
+7,3B 7,3B,Matt Vierling,Balanced,0.0,False
+7,OF 7,OF,Tyler Freeman,Balanced,0.0,False
+7,OF 7,OF,Rob Refsnyder,Balanced,0.0,False
+7,OF 7,OF,Emmanuel Rodriguez,Balanced,0.0,False
+7,C 7,C,Drew Millas,Balanced,0.0,False
+7,2B 7,2B,Andy Ibáñez,Balanced,0.0,False
+7,RP 7,RP,Ben Kudrna,Balanced,0.0,False
+7,RP 7,RP,Chase Shugart,Balanced,0.0,False
+7,RP 7,RP,Jhancarlos Lara,Balanced,0.0,False
+7,RP 7,RP,Jackson Wolf,Balanced,0.0,False
+7,RP 7,RP,Derek Law,Balanced,0.0,False
+7,RP 7,RP,AJ Smith-Shawver,Balanced,0.0,False
+7,RP 7,RP,Luis Curvelo,Balanced,0.0,False
+7,RP 7,RP,Nick Sandlin,Balanced,0.0,False
+7,RP 7,RP,Ben Casparius,Balanced,0.0,False
+7,RP 7,RP,Joe Rock,Balanced,0.0,False
+7,SP 7,SP,Hagen Smith,Balanced,0.0,False
+7,RP 7,RP,Jonathan Pintaro,Balanced,0.0,False
+7,RP 7,RP,Yosver Zulueta,Balanced,0.0,False
+7,SP 7,SP,Cole Irvin,Balanced,0.0,False
+7,RP 7,RP,Chen Zhong-Ao Zhuang,Balanced,0.0,False
+7,RP 7,RP,Tucker Davidson,Balanced,0.0,False
+7,RP 7,RP,Scott Alexander,Balanced,0.0,False
+7,RP 7,RP,Daniel Robert,Balanced,0.0,False
+7,SP 7,SP,Yoniel Curet,Balanced,0.0,False
+7,RP 7,RP,Kyle Hart,Balanced,0.0,False
+7,OF 7,OF,Kevin Alcántara,Balanced,0.0,False
+7,OF 7,OF,Alan Roden,Balanced,0.0,False
+7,2B 7,2B,Thomas Saggese,Balanced,0.0,False
+7,RP 7,RP,Cionel Pérez,Balanced,0.0,False
+7,RP 7,RP,Bryan Hoeing,Balanced,0.0,False
+7,RP 7,RP,Juan Morillo,Balanced,0.0,False
+7,RP 7,RP,Seth Halvorsen,Balanced,0.0,False
+7,RP 7,RP,Jonathan Bowlan,Balanced,0.0,False
+7,RP 7,RP,Ryan Watson,Balanced,0.0,False
+7,SP 7,SP,Tyler Uberstine,Balanced,0.0,False
+7,RP 7,RP,Miguel Ullola,Balanced,0.0,False
+7,RP 7,RP,Bailey Falter,Balanced,0.0,False
+7,RP 7,RP,Jhonathan Díaz,Balanced,0.0,False
+7,RP 7,RP,Peyton Gray,Balanced,0.0,False
+7,2B 7,2B,Orelvis Martinez,Balanced,0.0,False
+7,RP 7,RP,Tim Mayza,Balanced,0.0,False
+7,RP 7,RP,Kyle Nicolas,Balanced,0.0,False
+7,RP 7,RP,Adbert Alzolay,Balanced,0.0,False
+7,RP 7,RP,AJ Blubaugh,Balanced,0.0,False
+7,RP 7,RP,Rob Zastryzny,Balanced,0.0,False
+7,RP 7,RP,Cody Bradford,Balanced,0.0,False
+7,RP 7,RP,Landon Knack,Balanced,0.0,False
+7,1B 7,1B,Graham Pauley,Balanced,0.0,False
+7,SP 7,SP,Sean Sullivan,Balanced,0.0,False
+7,OF 7,OF,Blake Perkins,Balanced,0.0,False
+7,1B 7,1B,Luke Raley,Balanced,0.0,False
+7,DH 7,DH,Jimmy Crooks,Balanced,0.0,False
+7,DH 7,DH,Ryan Waldschmidt,Balanced,0.0,False
+7,C 7,C,Hunter Feduccia,Balanced,0.0,False
+7,RP 7,RP,Nick Burdi,Balanced,0.0,False
+7,RP 7,RP,Evan Reifert,Balanced,0.0,False
+7,RP 7,RP,Chris Murphy,Balanced,0.0,False
+7,RP 7,RP,Griff McGarry,Balanced,0.0,False
+7,RP 7,RP,Nolan Hoffman,Balanced,0.0,False
+7,RP 7,RP,Scott Effross,Balanced,0.0,False
+7,RP 7,RP,Michael Kopech,Balanced,0.0,False
+7,RP 7,RP,Shawn Dubin,Balanced,0.0,False
+7,OF 7,OF,Jake Fraley,Balanced,0.0,False
+7,SP 7,SP,Bryse Wilson,Balanced,0.0,False
+7,RP 7,RP,Brendan Beck,Balanced,0.0,False
+7,OF 7,OF,Pedro León,Balanced,0.0,False
+7,2B 7,2B,Enmanuel Valdez,Balanced,0.0,False
+7,OF 7,OF,Jarred Kelenic,Balanced,0.0,False
+7,SP 7,SP,José Berríos,Balanced,0.0,False
+7,2B 7,2B,Luisangel Acuña,Balanced,0.0,False
+7,C 7,C,Edgar Quero,Balanced,0.0,False
+7,SP 7,SP,Lucas Giolito,Balanced,0.0,False
+7,SP 7,SP,Nick Martinez,Balanced,0.0,False
+7,OF 7,OF,Jordan Walker,Balanced,0.0,False
+7,OF 7,OF,Andrew Benintendi,Balanced,0.0,False
+7,RP 7,RP,Justin Sterner,SV+HLD Specialist,0.0,False
+7,SP 7,SP,Luis Severino,QS+W Specialist,0.0,False
+7,RP 7,RP,Kevin Ginkel,SV+HLD Specialist,0.0,False
+7,OF 7,OF,Tyler O'Neill,Balanced,0.0,False
+7,OF 7,OF,Austin Hays,Balanced,0.0,False
+7,RP 7,RP,Taylor Rogers,SV+HLD Specialist,0.0,False
+7,RP 7,RP,Tanner Scott,SV+HLD Specialist,0.0,False
+7,RP 7,RP,Tyler Rogers,SV+HLD Specialist,0.0,False
+7,C 7,C,Bo Naylor,Balanced,0.0,False
+7,OF 7,OF,Cam Smith,Balanced,0.0,False
+7,SP 7,SP,Jacob Lopez,Balanced,0.0,False
+7,RP 7,RP,Eric Lauer,Balanced,0.0,False
+7,OF 7,OF,Brandon Marsh,Balanced,0.0,False
+7,RP 7,RP,Jason Adam,SV+HLD Specialist,0.0,False
+7,1B 7,1B,Josh Bell,Balanced,0.0,False
+7,1B 7,1B,Gavin Sheets,Balanced,0.0,False
+7,1B 7,1B,Coby Mayo,Balanced,0.0,False
+7,RP 7,RP,Tony Santillan,SV+HLD Specialist,0.0,False
+7,SP 7,SP,Jared Jones,Balanced,0.0,False
+7,RP 7,RP,Jordan Leasure,SV+HLD Specialist,0.0,False
+7,3B 7,3B,Connor Norby,Balanced,0.0,False
+7,SP 7,SP,Spencer Arrighetti,Balanced,0.0,False
+7,2B 7,2B,Nolan Gorman,Balanced,0.0,False
+7,OF 7,OF,Lars Nootbaar,Balanced,0.0,False
+7,2B 7,2B,Hyeseong Kim,Balanced,0.0,False
+7,C 7,C,Harry Ford,Balanced,0.0,False
+7,SP 7,SP,Zack Littell,Balanced,0.0,False
+7,RP 7,RP,Victor Vodnik,SV+HLD Specialist,0.0,False
+7,1B 7,1B,Spencer Horwitz,Balanced,0.0,False
+7,SP 7,SP,Mick Abel,Balanced,0.0,False
+7,OF 7,OF,Jake Mangum,Balanced,0.0,False
+7,OF 7,OF,Dominic Canzone,Balanced,0.0,False
+7,OF 7,OF,Mike Yastrzemski,Balanced,0.0,False
+7,RP 7,RP,Matt Strahm,SV+HLD Specialist,0.0,False
+7,OF 7,OF,Dylan Beavers,Balanced,0.0,False
+7,SP 7,SP,Jeffrey Springs,QS+W Specialist,0.0,False
+7,OF 7,OF,Anthony Santander,Balanced,0.0,False
+7,SP 7,SP,Cade Cavalli,Balanced,0.0,False
+7,RP 7,RP,Adrian Morejon,Balanced,0.0,False
+7,SP 7,SP,Brandon Pfaadt,QS+W Specialist,0.0,False
+7,SP 7,SP,Zebby Matthews,Balanced,0.0,False
+7,SP 7,SP,Justin Steele,Balanced,0.0,False
+7,OF 7,OF,Matt Wallner,Balanced,0.0,False
+7,SP 7,SP,Hurston Waldrep,Balanced,0.0,False
+7,SS 7,SS,Javier Báez,Balanced,0.0,False
+7,C 7,C,Carson Kelly,Balanced,0.0,False
+7,SP 7,SP,Will Warren,Balanced,0.0,False
+7,2B 7,2B,Jeff McNeil,Balanced,0.0,False
+7,3B 7,3B,Ryan McMahon,Balanced,0.0,False
+7,2B 7,2B,Andrés Giménez,Balanced,0.0,False
+7,SP 7,SP,Reynaldo López,Balanced,0.0,False
+7,SP 7,SP,Tyler Mahle,Balanced,0.0,False
+7,SP 7,SP,Chad Patrick,Balanced,0.0,False
+7,SP 7,SP,Max Meyer,Balanced,0.0,False
+7,OF 7,OF,Owen Caissie,Balanced,0.0,False
+7,OF 7,OF,Harrison Bader,Balanced,0.0,False
+7,C 7,C,Moisés Ballesteros,Balanced,0.0,False
+7,RP 7,RP,Luke Weaver,SV+HLD Specialist,0.0,False
+7,RP 7,RP,Clayton Beeter,SV+HLD Specialist,0.0,False
+7,SP 7,SP,Zach Eflin,Balanced,0.0,False
+7,SP 7,SP,Grant Holmes,Balanced,0.0,False
+7,SP 7,SP,Dustin May,Balanced,0.0,False
+7,RP 7,RP,Kyle Finnegan,Balanced,0.0,False
+7,C 7,C,Carlos Narváez,Balanced,0.0,False
+7,RP 7,RP,Alex Vesia,SV+HLD Specialist,0.0,False
+7,SP 7,SP,Corbin Burnes,Balanced,0.0,False
+7,SP 7,SP,Cristian Javier,Balanced,0.0,False
+7,SP 7,SP,Robby Snelling,Balanced,0.0,False
+7,1B 7,1B,Paul Goldschmidt,Balanced,0.0,False
+7,RP 7,RP,JoJo Romero,SV+HLD Specialist,0.0,False
+7,SP 7,SP,Justin Verlander,Balanced,0.0,False
+7,SS 7,SS,Ha-Seong Kim,Balanced,0.0,False
+7,1B 7,1B,Triston Casas,Balanced,0.0,False
+7,1B 7,1B,Jake Cronenworth,Balanced,0.0,False
+7,RP 7,RP,Troy Melton,Balanced,0.0,False
+7,OF 7,OF,Jonny DeLuca,Balanced,0.0,False
+7,C 7,C,Miguel Amaya,Balanced,0.0,False
+7,RP 7,RP,Louis Varland,Balanced,0.0,False
+7,3B 7,3B,Enrique Hernández,Balanced,0.0,False
+7,SP 7,SP,Luis Morales,Balanced,0.0,False
+7,2B 7,2B,Luis Rengifo,Balanced,0.0,False
+7,C 7,C,Sean Murphy,Balanced,0.0,False
+7,RP 7,RP,Bryan King,Balanced,0.0,False
+7,OF 7,OF,Lane Thomas,Balanced,0.0,False
+7,SP 7,SP,Eduardo Rodriguez,Balanced,0.0,False
+7,3B 7,3B,Brady House,Balanced,0.0,False
+7,1B 7,1B,Kody Clemens,Balanced,0.0,False
+7,3B 7,3B,Max Muncy,Balanced,0.0,False
+7,2B 7,2B,Max Muncy,Balanced,0.0,False
+7,C 7,C,Dalton Rushing,Balanced,0.0,False
+7,SP 7,SP,Landen Roupp,Balanced,0.0,False
+7,RP 7,RP,Bennett Sousa,Balanced,0.0,False
+7,SS 7,SS,Miguel Rojas,Balanced,0.0,False
+7,2B 7,2B,Kristian Campbell,Balanced,0.0,False
+7,2B 7,2B,Christian Moore,Balanced,0.0,False
+7,2B 7,2B,Cole Young,Balanced,0.0,False
+7,RP 7,RP,Brooks Raley,Balanced,0.0,False
+7,OF 7,OF,Lourdes Gurriel Jr.,Balanced,0.0,False
+7,C 7,C,Jesus Rodriguez,Balanced,0.0,False
+7,OF 7,OF,Jake Meyers,Balanced,0.0,False
+7,OF 7,OF,Nolan Jones,Balanced,0.0,False
+7,SS 7,SS,Tyler Fitzgerald,Balanced,0.0,False
+7,RP 7,RP,Fernando Cruz,Balanced,0.0,False
+7,RP 7,RP,José Alvarado,Balanced,0.0,False
+7,SS 7,SS,Colt Emerson,Balanced,0.0,False
+7,OF 7,OF,Miguel Andujar,Balanced,0.0,False
+7,OF 7,OF,Wenceel Pérez,Balanced,0.0,False
+7,OF 7,OF,Zach Cole,Balanced,0.0,False
+7,1B 7,1B,Rhys Hoskins,Balanced,0.0,False
+7,SP 7,SP,Kyle Harrison,Balanced,0.0,False
+7,C 7,C,Keibert Ruiz,Balanced,0.0,False
+7,C 7,C,Victor Caratini,Balanced,0.0,False
+7,RP 7,RP,Shawn Armstrong,Balanced,0.0,False
+7,SS 7,SS,Nasim Nuñez,Balanced,0.0,False
+7,2B 7,2B,Travis Bazzana,Balanced,0.0,False
+7,OF 7,OF,Denzel Clarke,Balanced,0.0,False
+7,2B 7,2B,Jared Triolo,Balanced,0.0,False
+7,RP 7,RP,Matt Svanson,Balanced,0.0,False
+7,OF 7,OF,Trevor Larnach,Balanced,0.0,False
+7,RP 7,RP,Camilo Doval,Balanced,0.0,False
+7,RP 7,RP,Matt Brash,SV+HLD Specialist,0.0,False
+7,RP 7,RP,Brad Keller,SV+HLD Specialist,0.0,False
+7,2B 7,2B,Isaac Collins,Balanced,0.0,False
+7,RP 7,RP,Hunter Gaddis,SV+HLD Specialist,0.0,False
+7,SP 7,SP,Thomas White,Balanced,0.0,False
+7,C 7,C,Patrick Bailey,Balanced,0.0,False
+7,2B 7,2B,Chase Meidroth,Balanced,0.0,False
+7,RP 7,RP,Robert Stephenson,Balanced,0.0,False
+7,OF 7,OF,Jesús Sánchez,Balanced,0.0,False
+7,SP 7,SP,Jonah Tong,Balanced,0.0,False
+7,SP 7,SP,Johan Oviedo,Balanced,0.0,False
+7,OF 7,OF,Spencer Jones,Balanced,0.0,False
+7,RP 7,RP,Tyler Holton,Balanced,0.0,False
+7,C 7,C,Freddy Fermin,Balanced,0.0,False
+7,SP 7,SP,Dean Kremer,Balanced,0.0,False
+7,SP 7,SP,Max Scherzer,Balanced,0.0,False
+7,OF 7,OF,Parker Meadows,Balanced,0.0,False
+7,3B 7,3B,Ke'Bryan Hayes,Balanced,0.0,False
+7,RP 7,RP,Paul Sewald,Balanced,0.0,False
+7,RP 7,RP,Gabe Speier,SV+HLD Specialist,0.0,False
+7,1B 7,1B,Mauricio Dubón,Balanced,0.0,False
+7,OF 7,OF,Jake McCarthy,Balanced,0.0,False
+7,2B 7,2B,Javier Sanoja,Balanced,0.0,False
+7,OF 7,OF,Walker Jenkins,Balanced,0.0,False
+7,SP 7,SP,Simeon Woods Richardson,Balanced,0.0,False
+7,3B 7,3B,Joey Ortiz,Balanced,0.0,False
+7,RP 7,RP,Lucas Erceg,SV+HLD Specialist,0.0,False
+7,OF 7,OF,Victor Robles,Balanced,0.0,False
+7,OF 7,OF,Jorge Soler,Balanced,0.0,False
+7,SP 7,SP,Slade Cecconi,Balanced,0.0,False
+7,SP 7,SP,Taj Bradley,Balanced,0.0,False
+7,SP 7,SP,Braxton Garrett,Balanced,0.0,False
+7,OF 7,OF,Josh Lowe,Balanced,0.0,False
+7,RP 7,RP,Riley O'Brien,SV+HLD Specialist,0.0,False
+7,DH 7,DH,Rafael Flores Jr.,Balanced,0.0,False
+7,SP 7,SP,Jack Leiter,K Specialist,0.0,False
+7,OF 7,OF,Heliot Ramos,Balanced,0.0,False
+7,OF 7,OF,Brenton Doyle,Balanced,0.0,False
+7,3B 7,3B,Royce Lewis,Balanced,0.0,False
+7,2B 7,2B,Jordan Westburg,Balanced,0.0,False
+7,SP 7,SP,Gerrit Cole,Balanced,0.0,False
+7,2B 7,2B,Jorge Polanco,Balanced,0.0,False
+7,OF 7,OF,Sal Frelick,Balanced,0.0,False
+7,RP 7,RP,Ryan Walker,SV+HLD Specialist,0.0,False
+7,2B 7,2B,José Caballero,SB Specialist,0.0,False
+7,OF 7,OF,Daylen Lile,Balanced,0.0,False
+7,2B 7,2B,Marcus Semien,Balanced,0.0,False
+7,OF 7,OF,Dylan Crews,SB Specialist,0.0,False
+7,OF 7,OF,Daulton Varsho,Balanced,0.0,False
+7,2B 7,2B,Matt McLain,Balanced,0.0,False
+7,RP 7,RP,Dennis Santana,SV+HLD Specialist,0.0,False
+7,1B 7,1B,Christian Walker,Balanced,0.0,False
+7,3B 7,3B,Addison Barger,Balanced,0.0,False
+7,C 7,C,Gabriel Moreno,Balanced,0.0,False
+7,OF 7,OF,Wilyer Abreu,Balanced,0.0,False
+7,SS 7,SS,Ezequiel Tovar,Balanced,0.0,False
+7,C 7,C,Austin Wells,Balanced,0.0,False
+7,SP 7,SP,Roki Sasaki,Balanced,0.0,False
+7,OF 7,OF,TJ Friedl,Balanced,0.0,False
+7,1B 7,1B,Kyle Manzardo,Balanced,0.0,False
+7,2B 7,2B,Otto Lopez,Balanced,0.0,False
+7,SP 7,SP,Noah Cameron,QS+W Specialist,0.0,False
+7,SS 7,SS,Carlos Correa,Balanced,0.0,False
+7,3B 7,3B,Alec Bohm,Balanced,0.0,False
+7,OF 7,OF,Giancarlo Stanton,Balanced,0.0,False
+7,OF 7,OF,Adolis García,Balanced,0.0,False
+7,1B 7,1B,Luis Arraez,Balanced,0.0,False
+7,C 7,C,J.T. Realmuto,Balanced,0.0,False
+7,2B 7,2B,Caleb Durbin,Balanced,0.0,False
+7,OF 7,OF,Trent Grisham,Balanced,0.0,False
+7,C 7,C,Samuel Basallo,Balanced,0.0,False
+7,OF 7,OF,Kerry Carpenter,Balanced,0.0,False
+7,OF 7,OF,Ramón Laureano,Balanced,0.0,False
+7,1B 7,1B,Jac Caglianone,Balanced,0.0,False
+7,SP 7,SP,Cade Horton,Balanced,0.0,False
+7,1B 7,1B,Munetaka Murakami,HR Specialist,0.0,False
+7,SP 7,SP,Jacob Misiorowski,K Specialist,0.0,False
+7,OF 7,OF,Andy Pages,Balanced,0.0,False
+7,RP 7,RP,Carlos Estévez,SV+HLD Specialist,0.0,False
+7,OF 7,OF,Lawrence Butler,Balanced,0.0,False
+7,2B 7,2B,Ozzie Albies,Balanced,0.0,False
+7,OF 7,OF,Jo Adell,HR Specialist,0.0,False
+7,SP 7,SP,Cam Schlittler,Balanced,0.0,False
+7,SS 7,SS,Trevor Story,Balanced,0.0,False
+7,SP 7,SP,Hunter Greene,Balanced,0.0,False
+7,RP 7,RP,Emilio Pagán,SV+HLD Specialist,0.0,False
+7,SS 7,SS,Jeremy Peña,Balanced,0.0,False
+7,OF 7,OF,Michael Harris II,Balanced,0.0,False
+7,DH 7,DH,Shohei Ohtani,WHIP Specialist,0.0,False
+7,SS 7,SS,Bo Bichette,Balanced,0.0,False
+7,1B 7,1B,Tyler Soderstrom,Balanced,0.0,False
+7,SS 7,SS,CJ Abrams,SB Specialist,0.0,False
+7,1B 7,1B,Ben Rice,Balanced,0.0,False
+7,C 7,C,Yainer Diaz,Balanced,0.0,False
+7,3B 7,3B,Noelvi Marte,Balanced,0.0,False
+7,3B 7,3B,Isaac Paredes,Balanced,0.0,False
+7,2B 7,2B,Jackson Holliday,Balanced,0.0,False
+7,1B 7,1B,Jonathan Aranda,Balanced,0.0,False
+7,1B 7,1B,Spencer Torkelson,Balanced,0.0,False
+7,3B 7,3B,Colson Montgomery,Balanced,0.0,False
+7,OF 7,OF,Bryan Reynolds,Balanced,0.0,False
+7,C 7,C,Alejandro Kirk,Balanced,0.0,False
+7,OF 7,OF,Alec Burleson,Balanced,0.0,False
+7,1B 7,1B,Kazuma Okamoto,Balanced,0.0,False
+7,OF 7,OF,Chandler Simpson,SB Specialist,0.0,False
+7,SP 7,SP,Trevor Rogers,QS+W Specialist,0.0,False
+7,SP 7,SP,Tatsuya Imai,K Specialist,0.0,False
+7,SS 7,SS,Jacob Wilson,Balanced,0.0,False
+7,SS 7,SS,Xavier Edwards,SB Specialist,0.0,False
+7,RP 7,RP,Kenley Jansen,SV+HLD Specialist,0.0,False
+7,SP 7,SP,Robbie Ray,K Specialist,0.0,False
+7,SS 7,SS,Ceddanne Rafaela,Balanced,0.0,False
+7,2B 7,2B,Brandon Lowe,Balanced,0.0,False
+7,C 7,C,Francisco Alvarez,Balanced,0.0,False
+7,SP 7,SP,Shane Bieber,Balanced,0.0,False
+7,SP 7,SP,Reid Detmers,K Specialist,0.0,False
+7,OF 7,OF,Jung Hoo Lee,Balanced,0.0,False
+7,SP 7,SP,Jameson Taillon,QS+W Specialist,0.0,False
+7,3B 7,3B,Brett Baty,Balanced,0.0,False
+7,OF 7,OF,Nick Castellanos,Balanced,0.0,False
+7,SP 7,SP,Seth Lugo,QS+W Specialist,0.0,False
+7,SP 7,SP,Brayan Bello,QS+W Specialist,0.0,False
+7,2B 7,2B,Jonathan India,Balanced,0.0,False
+7,SP 7,SP,Bailey Ober,QS+W Specialist,0.0,False
+7,OF 7,OF,Victor Scott II,SB Specialist,0.0,False
+7,3B 7,3B,Matt Shaw,Balanced,0.0,False
+7,SP 7,SP,Andrew Painter,Balanced,0.0,False
+7,3B 7,3B,Zach McKinstry,Balanced,0.0,False
+7,SP 7,SP,Yusei Kikuchi,K Specialist,0.0,False
+7,SP 7,SP,Michael Wacha,QS+W Specialist,0.0,False
+7,SP 7,SP,Brady Singer,QS+W Specialist,0.0,False
+7,C 7,C,Ryan Jeffers,Balanced,0.0,False
+7,RP 7,RP,Robert Garcia,SV+HLD Specialist,0.0,False
+7,SS 7,SS,Masyn Winn,Balanced,0.0,False
+7,SP 7,SP,Parker Messick,Balanced,0.0,False
+7,SS 7,SS,Jordan Lawlar,Balanced,0.0,False
+7,OF 7,OF,Carson Benge,Balanced,0.0,False
+7,3B 7,3B,Nolan Arenado,Balanced,0.0,False
+7,OF 7,OF,Cedric Mullins,Balanced,0.0,False
+7,SP 7,SP,Ian Seymour,Balanced,0.0,False
+7,RP 7,RP,Edwin Uceta,SV+HLD Specialist,0.0,False
+7,1B 7,1B,Bryce Eldridge,Balanced,0.0,False
+7,2B 7,2B,Lenyn Sosa,Balanced,0.0,False
+7,RP 7,RP,Kirby Yates,SV+HLD Specialist,0.0,False
+7,3B 7,3B,Josh Jung,Balanced,0.0,False
+7,SS 7,SS,Anthony Volpe,Balanced,0.0,False
+7,OF 7,OF,Tommy Edman,Balanced,0.0,False
+7,3B 7,3B,Josh Smith,Balanced,0.0,False
+7,1B 7,1B,Nolan Schanuel,OBP Specialist,0.0,False
+7,SS 7,SS,J.P. Crawford,Balanced,0.0,False
+7,SP 7,SP,David Peterson,QS+W Specialist,0.0,False
+7,SS 7,SS,Brooks Lee,Balanced,0.0,False
+7,SP 7,SP,Chris Bassitt,QS+W Specialist,0.0,False
+7,SP 7,SP,Mitch Keller,QS+W Specialist,0.0,False
+7,RP 7,RP,Will Vest,SV+HLD Specialist,0.0,False
+7,2B 7,2B,Colt Keith,Balanced,0.0,False
+7,SP 7,SP,Cody Ponce,Balanced,0.0,False
+7,C 7,C,Logan O'Hoppe,Balanced,0.0,False
+7,RP 7,RP,Luis García,Balanced,0.0,False
+7,1B 7,1B,Spencer Steer,Balanced,0.0,False
+7,SP 7,SP,Ryan Weathers,Balanced,0.0,False
+7,1B 7,1B,Jake Burger,Balanced,0.0,False
+7,SP 7,SP,Bryce Miller,Balanced,0.0,False
+7,SP 7,SP,Shane Smith,K Specialist,0.0,False
+7,SP 7,SP,Quinn Priester,Balanced,0.0,False
+7,3B 7,3B,Ernie Clement,Balanced,0.0,False
+7,RP 7,RP,Luis Garcia,Balanced,0.0,False
+7,SP 7,SP,Ryne Nelson,QS+W Specialist,0.0,False
+7,C 7,C,Dillon Dingler,Balanced,0.0,False
+7,RP 7,RP,Seranthony Domínguez,SV+HLD Specialist,0.0,False
+7,OF 7,OF,Jordan Beck,Balanced,0.0,False
+7,C 7,C,Kyle Teel,Balanced,0.0,False
+7,SS 7,SS,Kevin McGonigle,Balanced,0.0,False
+7,OF 7,OF,Colton Cowser,Balanced,0.0,False
+7,2B 7,2B,Luis García Jr.,Balanced,0.0,False
+7,1B 7,1B,Andrew Vaughn,Balanced,0.0,False
+7,SP 7,SP,Grayson Rodriguez,Balanced,0.0,False
+7,SP 7,SP,Braxton Ashcraft,Balanced,0.0,False
+7,SP 7,SP,Logan Henderson,Balanced,0.0,False
+7,3B 7,3B,Miguel Vargas,Balanced,0.0,False
+7,SP 7,SP,Mike Burrows,Balanced,0.0,False
+7,SP 7,SP,Luis Gil,Balanced,0.0,False
+7,OF 7,OF,Mickey Moniak,Balanced,0.0,False
+7,SP 7,SP,Joey Cantillo,Balanced,0.0,False
+7,OF 7,OF,Evan Carter,Balanced,0.0,False
+7,SP 7,SP,Casey Mize,Balanced,0.0,False
+7,OF 7,OF,Justin Crawford,Balanced,0.0,False
+7,OF 7,OF,Jasson Domínguez,Balanced,0.0,False
+7,3B 7,3B,Mark Vientos,Balanced,0.0,False
+7,OF 7,OF,Chase DeLauter,Balanced,0.0,False
+7,SP 7,SP,Spencer Schwellenbach,Balanced,0.0,False
+7,1B 7,1B,Ryan O'Hearn,Balanced,0.0,False
+7,C 7,C,Tyler Stephenson,Balanced,0.0,False
+7,SP 7,SP,Clay Holmes,Balanced,0.0,False
+7,SP 7,SP,Rhett Lowder,Balanced,0.0,False
+7,C 7,C,Liam Hicks,Balanced,0.0,False
+7,3B 7,3B,Oswaldo Cabrera,Balanced,0.0,False
+7,C 7,C,David Fry,Balanced,0.0,False
+7,OF 7,OF,Angel Martínez,Balanced,0.0,False
+7,1B 7,1B,Tre' Morgan,Balanced,0.0,False
+7,2B 7,2B,Jared Serna,Balanced,0.0,False
+7,SP 7,SP,Miles Mikolas,Balanced,0.0,False
+7,2B 7,2B,Kyren Paris,Balanced,0.0,False
+7,2B 7,2B,Shay Whitcomb,Balanced,0.0,False
+7,SP 7,SP,Aaron Civale,Balanced,0.0,False
+7,SP 7,SP,Bryce Elder,Balanced,0.0,False
+7,RP 7,RP,Carmen Mlodzinski,Balanced,0.0,False
+7,SP 7,SP,J.T. Ginn,Balanced,0.0,False
+7,RP 7,RP,Hunter Harvey,Balanced,0.0,False
+7,C 7,C,Jorge Alfaro,Balanced,0.0,False
+7,SP 7,SP,Kyle Leahy,Balanced,0.0,False
+7,RP 7,RP,Orion Kerkering,Balanced,0.0,False
+7,RP 7,RP,Robert Gasser,Balanced,0.0,False
+7,RP 7,RP,Drew Anderson,Balanced,0.0,False
+7,SP 7,SP,Randy Vásquez,Balanced,0.0,False
+7,OF 7,OF,Brandon Lockridge,Balanced,0.0,False
+7,OF 7,OF,Eli White,Balanced,0.0,False
+7,DH 7,DH,Bryce Teodosio,Balanced,0.0,False
+7,OF 7,OF,Joey Loperfido,Balanced,0.0,False
+7,DH 7,DH,Miles Mastrobuoni,Balanced,0.0,False
+7,2B 7,2B,Jahmai Jones,Balanced,0.0,False
+7,C 7,C,Korey Lee,Balanced,0.0,False
+7,OF 7,OF,Tyrone Taylor,Balanced,0.0,False
+7,DH 7,DH,Jorbit Vivas,Balanced,0.0,False
+7,SS 7,SS,Mason McCoy,Balanced,0.0,False
+7,C 7,C,Elias Díaz,Balanced,0.0,False
+7,OF 7,OF,Robert Hassell III,Balanced,0.0,False
+7,OF 7,OF,Johnathan Rodríguez,Balanced,0.0,False
+7,OF 7,OF,Joey Wiemer,Balanced,0.0,False
+7,1B 7,1B,Tristan Gray,Balanced,0.0,False
+7,OF 7,OF,Mike Tauchman,Balanced,0.0,False
+7,2B 7,2B,Kyle Farmer,Balanced,0.0,False
+7,OF 7,OF,Chas McCormick,Balanced,0.0,False
+7,DH 7,DH,Carlos Cortes,Balanced,0.0,False
+7,OF 7,OF,Taylor Trammell,Balanced,0.0,False
+7,SP 7,SP,Ryan Feltner,Balanced,0.0,False
+7,SP 7,SP,Kumar Rocker,Balanced,0.0,False
+7,SP 7,SP,Davis Martin,Balanced,0.0,False
+7,SP 7,SP,Steven Matz,Balanced,0.0,False
+7,DH 7,DH,Jhostynxon Garcia,Balanced,0.0,False
+7,OF 7,OF,Braden Montgomery,Balanced,0.0,False
+7,3B 7,3B,Jace Jung,Balanced,0.0,False
+7,SP 7,SP,Andre Pallante,Balanced,0.0,False
+7,DH 7,DH,Willie MacIver,Balanced,0.0,False
+7,2B 7,2B,Isiah Kiner-Falefa,Balanced,0.0,False
+7,SP 7,SP,Hunter Barco,Balanced,0.0,False
+7,C 7,C,Shane McGuire,Balanced,0.0,False
+7,3B 7,3B,Nick Madrigal,Balanced,0.0,False
+7,DH 7,DH,Tanner Murray,Balanced,0.0,False
+7,SS 7,SS,Liover Peguero,Balanced,0.0,False
+7,1B 7,1B,Tyler Locklear,Balanced,0.0,False
+7,2B 7,2B,Ildemaro Vargas,Balanced,0.0,False
+7,3B 7,3B,Darell Hernaiz,Balanced,0.0,False
+7,DH 7,DH,Joshua Báez,Balanced,0.0,False
+7,OF 7,OF,Randal Grichuk,Balanced,0.0,False
+7,DH 7,DH,Yanquiel Fernández,Balanced,0.0,False
+7,OF 7,OF,Jose Siri,Balanced,0.0,False
+7,SP 7,SP,Jose Quintana,Balanced,0.0,False
+7,1B 7,1B,Andrés Chaparro,Balanced,0.0,False
+7,SP 7,SP,Anthony Kay,Balanced,0.0,False
+7,SP 7,SP,Logan Allen,Balanced,0.0,False
+7,SP 7,SP,Jacob Latz,Balanced,0.0,False
+7,SP 7,SP,Michael Lorenzen,Balanced,0.0,False
+7,RP 7,RP,Patrick Sandoval,Balanced,0.0,False
+7,SP 7,SP,Chris Paddack,Balanced,0.0,False
+7,OF 7,OF,Myles Straw,Balanced,0.0,False
+7,DH 7,DH,Nate Eaton,Balanced,0.0,False
+7,OF 7,OF,Gabriel Rincones Jr.,Balanced,0.0,False
+7,2B 7,2B,Ronny Mauricio,Balanced,0.0,False
+7,OF 7,OF,Dylan Carlson,Balanced,0.0,False
+7,2B 7,2B,Vidal Bruján,Balanced,0.0,False
+7,2B 7,2B,Richie Palacios,Balanced,0.0,False
+7,DH 7,DH,Bryan Torres,Balanced,0.0,False
+7,C 7,C,Jhonny Pereda,Balanced,0.0,False
+7,2B 7,2B,Chris Taylor,Balanced,0.0,False
+7,3B 7,3B,Gio Urshela,Balanced,0.0,False
+7,1B 7,1B,DJ LeMahieu,Balanced,0.0,False
+7,C 7,C,Endy Rodríguez,Balanced,0.0,False
+7,C 7,C,Brett Sullivan,Balanced,0.0,False
+7,SS 7,SS,Edwin Arroyo,Balanced,0.0,False
+7,2B 7,2B,Alika Williams,Balanced,0.0,False
+7,3B 7,3B,Yohandy Morales,Balanced,0.0,False
+7,DH 7,DH,Kahlil Watson,Balanced,0.0,False
+7,C 7,C,Drew Romo,Balanced,0.0,False
+7,1B 7,1B,LaMonte Wade Jr.,Balanced,0.0,False
+7,DH 7,DH,César Prieto,Balanced,0.0,False
+7,OF 7,OF,Jorge Barrosa,Balanced,0.0,False
+7,3B 7,3B,Gabriel Arias,Balanced,0.0,False
+7,C 7,C,Luis Campusano,Balanced,0.0,False
+7,2B 7,2B,Andruw Monasterio,Balanced,0.0,False
+7,C 7,C,Kyle Higashioka,Balanced,0.0,False
+7,OF 7,OF,Manuel Margot,Balanced,0.0,False
+7,DH 7,DH,Sterlin Thompson,Balanced,0.0,False
+7,C 7,C,Chadwick Tromp,Balanced,0.0,False
+7,SS 7,SS,Brayan Rocchio,Balanced,0.0,False
+7,1B 7,1B,Juan Yepez,Balanced,0.0,False
+7,C 7,C,Jacob Stallings,Balanced,0.0,False
+7,2B 7,2B,Adael Amador,Balanced,0.0,False
+7,OF 7,OF,Tirso Ornelas,Balanced,0.0,False
+7,OF 7,OF,Austin Martin,Balanced,0.0,False
+7,1B 7,1B,Justin Foscue,Balanced,0.0,False
+7,1B 7,1B,Matt Mervis,Balanced,0.0,False
+7,1B 7,1B,Mark Canha,Balanced,0.0,False
+7,DH 7,DH,Tristan Peters,Balanced,0.0,False
+7,DH 7,DH,Bryce Johnson,Balanced,0.0,False
+7,OF 7,OF,Tommy Pham,Balanced,0.0,False
+7,OF 7,OF,Garrett Mitchell,Balanced,0.0,False
+7,2B 7,2B,Curtis Mead,Balanced,0.0,False
+7,DH 7,DH,A.J. Vukovich,Balanced,0.0,False
+7,DH 7,DH,Joe Mack,Balanced,0.0,False
+7,2B 7,2B,Luke Williams,Balanced,0.0,False
+7,OF 7,OF,Jack Suwinski,Balanced,0.0,False
+7,3B 7,3B,Jose Miranda,Balanced,0.0,False
+7,OF 7,OF,Ben Gamel,Balanced,0.0,False
+7,C 7,C,Adrian Del Castillo,Balanced,0.0,False
+7,OF 7,OF,Alex Verdugo,Balanced,0.0,False
+7,DH 7,DH,Gabriel Gonzalez,Balanced,0.0,False
+7,OF 7,OF,Ji Hwan Bae,Balanced,0.0,False
+7,DH 7,DH,Justin Dean,Balanced,0.0,False
+7,DH 7,DH,Heriberto Hernández,Balanced,0.0,False
+7,C 7,C,Eric Haase,Balanced,0.0,False
+7,OF 7,OF,Victor Mesa Jr.,Balanced,0.0,False
+7,C 7,C,Jeferson Quero,Balanced,0.0,False
+7,SS 7,SS,Tim Anderson,Balanced,0.0,False
+7,1B 7,1B,Nathaniel Lowe,Balanced,0.0,False
+7,2B 7,2B,Brendan Rodgers,Balanced,0.0,False
+7,DH 7,DH,Esmerlyn Valdez,Balanced,0.0,False
+7,DH 7,DH,Will Banfield,Balanced,0.0,False
+7,1B 7,1B,Jonah Bride,Balanced,0.0,False
+7,DH 7,DH,Maximo Acosta,Balanced,0.0,False
+7,OF 7,OF,Blake Dunn,Balanced,0.0,False
+7,DH 7,DH,Tyler Tolbert,Balanced,0.0,False
+7,OF 7,OF,Will Brennan,Balanced,0.0,False
+7,3B 7,3B,Josh Rojas,Balanced,0.0,False
+7,C 7,C,Riley Adams,Balanced,0.0,False
+7,OF 7,OF,Michael Siani,Balanced,0.0,False
+7,DH 7,DH,Nelson Rada,Balanced,0.0,False
+7,OF 7,OF,Jonatan Clase,Balanced,0.0,False
+7,2B 7,2B,Nick Gonzales,Balanced,0.0,False
+7,1B 7,1B,Zach Dezenzo,Balanced,0.0,False
+7,2B 7,2B,Juan Brito,Balanced,0.0,False
+7,1B 7,1B,Niko Kavadas,Balanced,0.0,False
+7,OF 7,OF,DaShawn Keirsey Jr.,Balanced,0.0,False
+7,OF 7,OF,Gustavo Campero,Balanced,0.0,False
+7,DH 7,DH,Matthew Lugo,Balanced,0.0,False
+7,1B 7,1B,Joey Meneses,Balanced,0.0,False
+7,C 7,C,Mickey Gasper,Balanced,0.0,False
+7,C 7,C,Henry Davis,Balanced,0.0,False
+7,OF 7,OF,Austin Slater,Balanced,0.0,False
+7,C 7,C,Austin Barnes,Balanced,0.0,False
+7,OF 7,OF,Jacob Young,Balanced,0.0,False
+7,2B 7,2B,James Triantos,Balanced,0.0,False
+7,SP 7,SP,Hunter Dobbins,Balanced,0.0,False
+7,SP 7,SP,Michael Soroka,Balanced,0.0,False
+7,SP 7,SP,Brad Lord,Balanced,0.0,False
+7,3B 7,3B,Max Schuemann,Balanced,0.0,False
+7,C 7,C,Alex Jackson,Balanced,0.0,False
+7,OF 7,OF,Jesse Winker,Balanced,0.0,False
+7,DH 7,DH,Jon Berti,Balanced,0.0,False
+7,RP 7,RP,Janson Junk,Balanced,0.0,False
+7,SP 7,SP,Kyle Freeland,Balanced,0.0,False
+7,1B 7,1B,Jake Bauers,Balanced,0.0,False
+7,OF 7,OF,Drew Gilbert,Balanced,0.0,False
+7,OF 7,OF,Jhonkensy Noel,Balanced,0.0,False
+7,OF 7,OF,Nathan Lukes,Balanced,0.0,False
+7,OF 7,OF,Bryan De La Cruz,Balanced,0.0,False
+7,2B 7,2B,Christopher Morel,Balanced,0.0,False
+7,2B 7,2B,Nacho Alvarez Jr.,Balanced,0.0,False
+7,C 7,C,James McCann,Balanced,0.0,False
+7,OF 7,OF,Masataka Yoshida,Balanced,0.0,False
+7,SP 7,SP,JP Sears,Balanced,0.0,False
+7,RP 7,RP,José Leclerc,Balanced,0.0,False
+7,2B 7,2B,Jorge Mateo,Balanced,0.0,False
+7,2B 7,2B,Amed Rosario,Balanced,0.0,False
+7,2B 7,2B,Zack Gelof,Balanced,0.0,False
+7,1B 7,1B,Warming Bernabel,Balanced,0.0,False
+7,2B 7,2B,Sung-Mun Song,Balanced,0.0,False
+7,2B 7,2B,Dylan Moore,Balanced,0.0,False
+7,OF 7,OF,Will Benson,Balanced,0.0,False
+7,OF 7,OF,Andrew McCutchen,Balanced,0.0,False
+7,SS 7,SS,Leo Rivas,Balanced,0.0,False
+7,DH 7,DH,Braxton Fulford,Balanced,0.0,False
+7,3B 7,3B,Ramón Urías,Balanced,0.0,False
+7,1B 7,1B,Connor Joe,Balanced,0.0,False
+7,DH 7,DH,Colby Thomas,Balanced,0.0,False
+7,DH 7,DH,Kyle Karros,Balanced,0.0,False
+7,2B 7,2B,David Hamilton,Balanced,0.0,False
+7,2B 7,2B,Will Wagner,Balanced,0.0,False
+7,OF 7,OF,Akil Baddoo,Balanced,0.0,False
+7,OF 7,OF,Esteury Ruiz,Balanced,0.0,False
+7,C 7,C,Tomás Nido,Balanced,0.0,False
+7,RP 7,RP,Ben Brown,Balanced,0.0,False
+7,C 7,C,Jake Rogers,Balanced,0.0,False
+7,C 7,C,Connor Wong,Balanced,0.0,False
+7,C 7,C,Luis Torrens,Balanced,0.0,False
+7,C 7,C,Gary Sánchez,Balanced,0.0,False
+7,OF 7,OF,Kyle Isbel,Balanced,0.0,False
+7,2B 7,2B,Sam Antonacci,Balanced,0.0,False
+7,SP 7,SP,Foster Griffin,Balanced,0.0,False
+7,1B 7,1B,Nick Sogard,Balanced,0.0,False
+7,SS 7,SS,Aidan Miller,Balanced,0.0,False
+7,1B 7,1B,Carlos Santana,Balanced,0.0,False
+7,RP 7,RP,Andrew Kittredge,SV+HLD Specialist,0.0,False
+7,OF 7,OF,Justyn-Henry Malloy,Balanced,0.0,False
+7,SP 7,SP,Adrian Houser,Balanced,0.0,False
+7,2B 7,2B,Edmundo Sosa,Balanced,0.0,False
+7,1B 7,1B,Abimelec Ortiz,Balanced,0.0,False
+7,OF 7,OF,Wade Meckler,Balanced,0.0,False
+7,OF 7,OF,Johan Rojas,Balanced,0.0,False
+7,C 7,C,Joey Bart,Balanced,0.0,False
+7,1B 7,1B,Otto Kemp,Balanced,0.0,False
+7,SP 7,SP,Taijuan Walker,Balanced,0.0,False
+7,RP 7,RP,Alexis Díaz,Balanced,0.0,False
+7,2B 7,2B,Davis Schneider,Balanced,0.0,False
+7,RP 7,RP,Bobby Miller,Balanced,0.0,False
+7,SP 7,SP,Michael McGreevy,Balanced,0.0,False
+7,RP 7,RP,Hunter Strickland,Balanced,0.0,False
+7,RP 7,RP,Jack Dreyer,Balanced,0.0,False
+7,OF 7,OF,Alek Thomas,Balanced,0.0,False
+7,C 7,C,Pedro Pagés,Balanced,0.0,False
+7,2B 7,2B,Gavin Lux,Balanced,0.0,False
+7,RP 7,RP,Gregory Soto,SV+HLD Specialist,0.0,False
+7,SP 7,SP,Brandon Sproat,Balanced,0.0,False
+7,3B 7,3B,Eric Wagaman,Balanced,0.0,False
+7,SP 7,SP,Sean Burke,Balanced,0.0,False
+7,OF 7,OF,Stuart Fairchild,Balanced,0.0,False
+7,1B 7,1B,Romy Gonzalez,Balanced,0.0,False
+7,SS 7,SS,Carson Williams,Balanced,0.0,False
+7,OF 7,OF,Heston Kjerstad,Balanced,0.0,False
+7,SP 7,SP,Joe Boyle,Balanced,0.0,False
+7,2B 7,2B,Casey Schmitt,Balanced,0.0,False
+7,RP 7,RP,Mitch Spence,Balanced,0.0,False
+7,SS 7,SS,Leo De Vries,Balanced,0.0,False
+7,1B 7,1B,Ryan Clifford,Balanced,0.0,False
+7,RP 7,RP,Tyler Wells,Balanced,0.0,False
+7,C 7,C,Danny Jansen,Balanced,0.0,False
+7,RP 7,RP,Carlos Rodriguez,Balanced,0.0,False
+7,OF 7,OF,Drew Waters,Balanced,0.0,False
+7,OF 7,OF,Rece Hinds,Balanced,0.0,False
+7,2B 7,2B,Brooks Baldwin,Balanced,0.0,False
+7,DH 7,DH,Alex Freeland,Balanced,0.0,False
+7,OF 7,OF,Kameron Misner,Balanced,0.0,False
+7,SS 7,SS,Orlando Arcia,Balanced,0.0,False
+7,2B 7,2B,Thairo Estrada,Balanced,0.0,False
+7,OF 7,OF,Leody Taveras,Balanced,0.0,False
+7,C 7,C,Dom Keegan,Balanced,0.0,False
+7,OF 7,OF,Derek Hill,Balanced,0.0,False
+7,C 7,C,Austin Hedges,Balanced,0.0,False
+7,SS 7,SS,Ryan Kreidler,Balanced,0.0,False
+7,3B 7,3B,Abraham Toro,Balanced,0.0,False
+7,DH 7,DH,George Valera,Balanced,0.0,False
+7,C 7,C,Luke Maile,Balanced,0.0,False
+7,C 7,C,César Salazar,Balanced,0.0,False
+7,2B 7,2B,Nick Loftin,Balanced,0.0,False
+7,C 7,C,Christian Vázquez,Balanced,0.0,False
+7,1B 7,1B,Ryan Mountcastle,Balanced,0.0,False
+7,DH 7,DH,J.C. Escarra,Balanced,0.0,False
+7,C 7,C,Kyle McCann,Balanced,0.0,False
+7,C 7,C,Travis d'Arnaud,Balanced,0.0,False
+7,C 7,C,Tom Murphy,Balanced,0.0,False
+7,3B 7,3B,José Tena,Balanced,0.0,False
+7,2B 7,2B,Ryan Bliss,Balanced,0.0,False
+7,DH 7,DH,Tyler Austin,Balanced,0.0,False
+7,3B 7,3B,Ezequiel Duran,Balanced,0.0,False
+7,DH 7,DH,Tommy Troy,Balanced,0.0,False
+7,OF 7,OF,Starling Marte,Balanced,0.0,False
+7,C 7,C,Mitch Garver,Balanced,0.0,False
+7,C 7,C,Brandon Valenzuela,Balanced,0.0,False
+7,C 7,C,Reese McGuire,Balanced,0.0,False
+7,DH 7,DH,Denzer Guzman,Balanced,0.0,False
+7,OF 7,OF,Max Kepler,Balanced,0.0,False
+7,DH 7,DH,Andrew Knizner,Balanced,0.0,False
+7,OF 7,OF,James Outman,Balanced,0.0,False
+7,SS 7,SS,Daniel Schneemann,Balanced,0.0,False
+7,DH 7,DH,Ben Williamson,Balanced,0.0,False
+7,OF 7,OF,Alex Call,Balanced,0.0,False
+7,C 7,C,Nick Fortes,Balanced,0.0,False
+7,DH 7,DH,Sam Haggerty,Balanced,0.0,False
+7,DH 7,DH,Jeremiah Jackson,Balanced,0.0,False
+7,C 7,C,Tyler Heineman,Balanced,0.0,False
+7,2B 7,2B,Vaughn Grissom,Balanced,0.0,False
+7,OF 7,OF,Dane Myers,Balanced,0.0,False
+7,DH 7,DH,Ryan Ritter,Balanced,0.0,False
+7,C 7,C,Jonah Heim,Balanced,0.0,False
+7,C 7,C,Jose Trevino,Balanced,0.0,False
+7,3B 7,3B,Oswald Peraza,Balanced,0.0,False
+7,C 7,C,Ben Rortvedt,Balanced,0.0,False
+7,C 7,C,Austin Wynns,Balanced,0.0,False
+7,2B 7,2B,Santiago Espinal,Balanced,0.0,False
+7,1B 7,1B,Ty France,Balanced,0.0,False
+7,1B 7,1B,Donovan Solano,Balanced,0.0,False
+7,2B 7,2B,Michael Massey,Balanced,0.0,False
+7,OF 7,OF,JJ Bleday,Balanced,0.0,False
+7,2B 7,2B,Kevin Newman,Balanced,0.0,False
+7,DH 7,DH,Christian Franklin,Balanced,0.0,False
+7,2B 7,2B,Cavan Biggio,Balanced,0.0,False
+7,DH 7,DH,Dustin Harris,Balanced,0.0,False
+7,OF 7,OF,Pavin Smith,Balanced,0.0,False
+7,2B 7,2B,Leo Jiménez,Balanced,0.0,False
+7,DH 7,DH,Cody Freeman,Balanced,0.0,False
+7,SS 7,SS,Jett Williams,Balanced,0.0,False
+7,DH 7,DH,Jacob Melton,Balanced,0.0,False
+7,3B 7,3B,Luis Urías,Balanced,0.0,False
+7,2B 7,2B,Brett Wisely,Balanced,0.0,False
+7,OF 7,OF,Everson Pereira,Balanced,0.0,False
+7,2B 7,2B,Nick Yorke,Balanced,0.0,False
+7,DH 7,DH,Alejandro Osuna,Balanced,0.0,False
+7,DH 7,DH,Nathan Church,Balanced,0.0,False
+7,3B 7,3B,Michael Helman,Balanced,0.0,False
+7,DH 7,DH,CJ Kayfus,Balanced,0.0,False
+7,SS 7,SS,Trey Sweeney,Balanced,0.0,False
+7,DH 7,DH,Daniel Susac,Balanced,0.0,False
+7,3B 7,3B,Brett Harris,Balanced,0.0,False
+7,DH 7,DH,Tyler Callihan,Balanced,0.0,False
+7,2B 7,2B,Jose Iglesias,Balanced,0.0,False
+7,DH 7,DH,Tim Tawa,Balanced,0.0,False
+7,DH 7,DH,Christian Koss,Balanced,0.0,False
+7,RP 7,RP,Zach Agnos,Balanced,0.0,False
